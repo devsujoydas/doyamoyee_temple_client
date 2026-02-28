@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -27,25 +27,30 @@ const Header = () => {
           <a href="#home" className="hover:text-yellow-600 transition">
             {t("nav_home")}
           </a>
+
+
           <a href="#history" className="hover:text-yellow-600 transition">
             {t("nav_history")}
           </a>
           <a href="#events" className="hover:text-yellow-600 transition">
             {t("nav_events")}
           </a>
-          <a href="#gallery" className="hover:text-yellow-600 transition">
+          <NavLink to="/gallery" className="hover:text-yellow-600 transition">
+
             {t("nav_gallery")}
-          </a>
+          </NavLink>
           <a href="#volunteer" className="hover:text-yellow-600 transition">
             {t("nav_volunteer")}
           </a>
-          <a href="#notice" className="hover:text-yellow-600 transition">
+          <NavLink to="/notice" className="hover:text-yellow-600 transition">
             {t("nav_notice")}
-          </a>
+          </NavLink>
           <a href="#contact" className="hover:text-yellow-600 transition">
             {t("nav_contact")}
           </a>
-
+          <a href="#blogs" className="hover:text-yellow-600 transition">
+            {t("nav_blogs")}
+          </a>
           {/* 🔹 Language Select */}
           <select
             onChange={handleLanguageChange}

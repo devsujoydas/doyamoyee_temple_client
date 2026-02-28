@@ -1,14 +1,19 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import img1 from "/temple_imgs/main-gate.png"
+import img2 from "/temple_imgs/ma-kali.png"
+import img3 from "/temple_imgs/annapurna.png"
+import img4 from "/temple_imgs/siva-liggo.png"
+
 
 const Gallery = () => {
   const { t } = useTranslation();
 
   const images = [
-    "/images/gallery1.jpg",
-    "/images/gallery2.jpg",
-    "/images/gallery3.jpg",
-    "/images/gallery4.jpg"
+    `${img1}`,
+    `${img2}`,
+    `${img3}`,
+    `${img4}`,
   ];
 
   return (

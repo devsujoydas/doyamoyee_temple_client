@@ -1,5 +1,6 @@
 {
   "nav_home": "Home",
+  "nav_blogs": "Blogs",
   "nav_history": "History",
   "nav_events": "Events / Puja",
   "nav_gallery": "Gallery",
@@ -19,11 +20,35 @@
   "events_text": "Doyamoyee Temple holds Durga Puja, Ashtami Fair, and annual Chaitra festivals. Each event will feature a countdown timer.",
   "volunteer_title": "Become a Volunteer",
   "volunteer_text": "If you wish to participate as a volunteer at Doyamoyee Temple, please fill out the form below.",
+  "blogs_title": "Blogs",
+  "blogs_text": "Stay updated with the latest news, events, and important announcements from Doyamoyee Temple. Explore our articles, festivals, and spiritual insights to keep connected with the temple community.",
   "notice_title": "Notice Board",
   "notice_text": "View recent announcements, puja schedules, and important notifications here.",
   "gallery_title": "Gallery",
   "gallery_text": "Photo gallery showcasing the temple's beauty and centuries-old murals.",
   "contact_title": "Contact Us",
   "contact_text": "Address: Zero Point, Jamalpur\nPhone: +880 123456789\nEmail: info@doyamoyeemandir.com",
-  "footer_text": "© 2026 Doyamoyee Temple. All rights reserved."
+  
+  
+   "footer_about_title": "About Temple",
+  "footer_about_text": "Sri Sri Ri Doyamoyee Temple is a sacred place of worship, devotion and spiritual peace located in Jamalpur. Devotees gather here for puja, festivals and community service.",
+
+  "footer_temple_title": "Temple",
+  "footer_history": "History",
+  "footer_puja": "Puja",
+  "footer_events": "Events",
+  "footer_gallery": "Gallery",
+  "footer_notice": "Notice",
+
+  "footer_get_involved_title": "Get Involved",
+  "footer_volunteer": "Volunteer",
+  "footer_donation": "Donation",
+  "footer_blog": "Blog",
+  "footer_contact": "Contact Us",
+
+  "footer_location_title": "Location Map",
+
+  "footer_rights": "All Rights Reserved.",
+  "footer_developed": "Developed with",
+  "footer_by": "by"
 }
