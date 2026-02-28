@@ -7,12 +7,12 @@ import ErrorPage from "../pages/ErrorPage/Errorpage";
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <PrivateRoutes><Layout /></PrivateRoutes>,
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
-        element: <Home />,
+        element: <App />,
       }
     ]
   }
