@@ -4,6 +4,8 @@ import omSymbolsvg from "/Om_symbol.svg"
 
 const BlogCard = ({ blog }) => {
 
+
+
     return (
         <div className="p-1">
             <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
@@ -29,7 +31,7 @@ const BlogCard = ({ blog }) => {
                         </div>
                         {/* Tags */}
                         <div className="flex gap-2  items-center">
-                            <FaRegCalendarAlt className="text-[#DB4242]" size={14}/>
+                            <FaRegCalendarAlt className="text-[#DB4242]" size={14} />
                             <span className="  text-[13px] font-semibold text-[#44233B]">
                                 {blog?.date}
                             </span>
@@ -39,13 +41,20 @@ const BlogCard = ({ blog }) => {
 
                     </div>
                     {/* Title */}
-                    <h3 className="text-2xl font-bold  font-family-lora mb-2">
+                    <h3 className="text-2xl hover:text-[#DB4242] cursor-pointer font-bold  font-family-lora mb-2">
                         {blog?.title}
                     </h3>
 
                     {/* Short Description */}
-                    <p className="text-[#777777] line-clamp-3 text-[16px ] mb-4">{blog?.disc}</p>
+                    <div>
 
+                        <p className="text-[#777777] line-clamp-3 text-[16px ] mb-4">
+                            {blog.disc.length > 60
+                                ? blog.disc.slice(0, 120) + "..."
+                                : blog.disc}
+                        </p>
+
+                    </div>
 
                     {/* Author  */}
                     <div className="flex items-center mt-auto gap-3">

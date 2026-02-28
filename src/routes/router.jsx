@@ -3,7 +3,8 @@ import Home from "../pages/Home/Home";
 import Layout from "../layouts/layout";
 import ErrorPage from "../pages/ErrorPage/Errorpage";
 import Notice from "../pages/Notice/Notice";
-import GalleryPage from "../pages/GalleryPage/GalleryPage";
+import GalleryPage from "../pages/GalleryPage/GalleryPage";  
+import Videos from "../pages/Videos/Videos";
 
 
 
@@ -26,8 +27,8 @@ export const router = createBrowserRouter([
         element: <GalleryPage />,
       },
       {
-        path: '/notice',
-        element: <Notice />,
+        path: '/videos',
+        element: <Videos />,
       },
     ]
   }

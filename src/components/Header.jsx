@@ -32,12 +32,15 @@ const Header = () => {
           <a href="#history" className="hover:text-yellow-600 transition">
             {t("nav_history")}
           </a>
-          <a href="#events" className="hover:text-yellow-600 transition">
+          <a href="#puja" className="hover:text-yellow-600 transition">
             {t("nav_events")}
           </a>
           <NavLink to="/gallery" className="hover:text-yellow-600 transition">
 
             {t("nav_gallery")}
+          </NavLink>
+          <NavLink to="/videos" className="hover:text-yellow-600 transition">
+            {t("nav_video")}
           </NavLink>
           <a href="#volunteer" className="hover:text-yellow-600 transition">
             {t("nav_volunteer")}

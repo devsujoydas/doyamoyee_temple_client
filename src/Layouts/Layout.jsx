@@ -11,7 +11,7 @@ const Layout = () => {
         document.body.style.fontFamily =
             i18n.language === "bn"
                 ? '"Hind Siliguri", sans-serif'
-                : '"Poppins", sans-serif';
+                : '"Playfair Display", sans-serif';
 
         document.documentElement.lang = i18n.language;
     }, [i18n.language]);

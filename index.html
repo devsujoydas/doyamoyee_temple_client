@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/omsymboll.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="/src/style.css" rel="stylesheet">
-  
+
   <title>দয়াময়ী মন্দির | Doyamoyee Temple</title>
   <meta name="description" content="দয়াময়ী মন্দিরের ইতিহাস, পূজার সময়সূচি ও যোগাযোগের তথ্য জানুন।">
   <meta name="keywords" content="দয়াময়ী মন্দির, Doyamoyee Temple, temple in Bangladesh">
@@ -14,14 +14,63 @@
   <meta name="robots" content="index, follow">
 
   <style>
-    html{
+    html {
       scroll-behavior: smooth;
+    }
+
+    .cursor-dot {
+      width: 10px;
+      height: 10px;
+      background-color: rgb(255, 157, 0);
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 3px solid hsla(27, 100%, 50%, 0.921);
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 100;
+      pointer-events: none;
     }
   </style>
 </head>
 
 <body>
   <div id="root"></div>
+  <!-- <div class="cursor-dot md:block hidden" data-cursor-dot></div>
+  <div class="cursor-outline md:block hidden" data-cursor-outline></div> -->
+  <script>
+    const cursorDot = document.querySelector('[data-cursor-dot]')
+    const cursorOutline = document.querySelector('[data-cursor-outline]')
+
+    window.addEventListener('mousemove', function (e) {
+      const posX = e.clientX
+      const posY = e.clientY
+
+      cursorDot.style.left = `${posX}px`
+      cursorDot.style.top = `${posY}px`
+
+      cursorOutline.animate(
+        {
+          left: `${posX}px`,
+          top: `${posY}px`
+        },
+        {
+          duration: 500,
+          fill: 'forwards'
+        }
+      )
+    })
+  </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
