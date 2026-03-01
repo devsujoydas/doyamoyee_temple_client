@@ -8,10 +8,11 @@ const Header = () => {
 
   const handleLanguageChange = (e) => {
     i18n.changeLanguage(e.target.value);
+    setMenuOpen(!menuOpen)
   };
 
   return (
-    <header className="sticky top-0 bg-white shadow-md z-50">
+    <header className="sticky top-0 bg-[#fdf8f2] shadow-md z-30">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
 
         {/* 🔹 Logo / Temple Name */}
@@ -63,7 +64,7 @@ const Header = () => {
           <div
 
             className=" md:hidden bg-white shadow-md px-4 pb-4 space-y-3">
-            <Link to="/" className="block" onClick={() => setMenuOpen(!menuOpen)} > {t("nav_home")} </Link>
+            <Link to="/" className="block pt-4" onClick={() => setMenuOpen(!menuOpen)} > {t("nav_home")} </Link>
             <a href="#history" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_history")} </a>
             <a href="#puja" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_events")} </a>
             <NavLink to="/gallery" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_gallery")} </NavLink>

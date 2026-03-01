@@ -1,119 +1,132 @@
-import { useEffect, useState } from "react";
-import placeholder from "/placeholder.png";
+import React, { useState, useEffect, useMemo } from "react";
 import NoticsTimelineCard from "./NoticsTimelineCard";
-import { motion } from "framer-motion";
-
-// Categories
-const categories = ["all", "mondir", "durgapuja", "kalipuja", "lokkhipuja"];
 
 const NoticesTimeline = () => {
+  // ---------------- STATE ----------------
   const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("all"); // all | upcoming | past
 
-  const [filterType, setFilterType] = useState("all");
-  const [filterCategory, setFilterCategory] = useState("all");
-
+  // ---------------- FETCH ----------------
   useEffect(() => {
-    fetch("/notice.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const sorted = data.sort(
-          (a, b) => new Date(a.date) - new Date(b.date)
-        );
-        setNotices(sorted);
+    const fetchNotices = async () => {
+      try {
+        const res = await fetch("/notice.json");
+        const data = await res.json();
+        setNotices(data);
+        console.log(data)
+      } catch (err) {
+        console.error("Failed to load notices:", err);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => console.error(err));
+      }
+    };
+
+    fetchNotices();
   }, []);
 
-  if (loading)
-    return <p className="text-center py-20 text-gray-500">Loading...</p>;
+  // ---------------- FILTER ----------------
+  const filteredNotices = useMemo(() => {
+    if (!notices.length) return [];
 
-  // Filter notices
-  const filteredNotices = notices.filter((n) => {
-    const typeMatch = filterType === "all" ? true : n.type === filterType;
-    const categoryMatch =
-      filterCategory === "all" ? true : n.category === filterCategory;
-    return typeMatch && categoryMatch;
-  });
+    const now = new Date();
 
+    let filtered = [...notices];
+
+    if (filter === "upcoming") {
+      filtered = filtered.filter(
+        (n) => n.eventDate && new Date(n.eventDate) >= now
+      );
+    }
+
+    if (filter === "past") {
+      filtered = filtered.filter(
+        (n) => n.eventDate && new Date(n.eventDate) < now
+      );
+    }
+
+    return filtered;
+  }, [notices, filter]);
+
+  // ---------------- SORT ----------------
+  const sortedNotices = useMemo(() => {
+    if (!filteredNotices.length) return [];
+
+    return [...filteredNotices].sort((a, b) => {
+      // pinned first
+      if (a.isPinned && !b.isPinned) return -1;
+      if (!a.isPinned && b.isPinned) return 1;
+
+      // then by eventDate or publishDate
+      const dateA = new Date(a.eventDate || a.publishDate);
+      const dateB = new Date(b.eventDate || b.publishDate);
+
+      return dateB - dateA; // latest first
+    });
+  }, [filteredNotices]);
+
+  // ---------------- LOADING ----------------
+  if (loading) {
+    return (
+      <div className="text-center py-20 text-lg font-semibold">
+        Loading notices...
+      </div>
+    );
+  }
+
+  // ---------------- EMPTY ----------------
+  if (!sortedNotices.length) {
+    return (
+      <div className="text-center min-h-100 flex justify-center items-center text-gray-500">
+        কোন নোটিশ পাওয়া যায়নি।
+      </div>
+    );
+  }
+
+  // ---------------- UI ----------------
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-        Temple Notices Timeline
-      </h2>
+    <div className="max-w-5xl mx-auto px-4 py-16">
+      {/* Filter Buttons */}
+      <div className="flex gap-3 mb-10 justify-center">
+        <button
+          onClick={() => setFilter("all")}
+          className={`px-4 py-2 rounded-full ${
+            filter === "all"
+              ? "bg-indigo-600 text-white"
+              : "bg-gray-200"
+          }`}
+        >
+          সব
+        </button>
 
-      {/* Filters */}
-      <div className="flex flex-wrap justify-center gap-4 mb-10">
-        {/* Type Filter */}
-        <div className="relative w-52">
-          <select
-            value={filterType}
-            onChange={(e) => setFilterType(e.target.value)}
-            className="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-xl shadow-sm appearance-none focus:outline-none  cursor-pointer"
-          >
-            <option value="all">All Types</option>
-            <option value="event">Event</option>
-            <option value="registration">Registration</option>
-            <option value="announcement">Announcement</option>
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-            <svg
-              className="w-4 h-4 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </div>
-        </div>
+        <button
+          onClick={() => setFilter("upcoming")}
+          className={`px-4 py-2 rounded-full ${
+            filter === "upcoming"
+              ? "bg-indigo-600 text-white"
+              : "bg-gray-200"
+          }`}
+        >
+          আসন্ন
+        </button>
 
-        {/* Category Filter */}
-        <div className="relative w-52">
-          <select
-            value={filterCategory}
-            onChange={(e) => setFilterCategory(e.target.value)}
-            className="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-xl shadow-sm appearance-none focus:outline-none cursor-pointer"
-          >
-            <option value="all">All Categories</option>
-            <option value="mondir">Mondir</option>
-            <option value="durgapuja">Durga Puja</option>
-            <option value="kalipuja">Kali Puja</option>
-            <option value="lokkhipuja">Lokkhi Puja</option>
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-            <svg
-              className="w-4 h-4 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </div>
-        </div>
+        <button
+          onClick={() => setFilter("past")}
+          className={`px-4 py-2 rounded-full ${
+            filter === "past"
+              ? "bg-indigo-600 text-white"
+              : "bg-gray-200"
+          }`}
+        >
+          পূর্ববর্তী
+        </button>
       </div>
 
       {/* Timeline */}
-      <div className="relative border-l-2 border-gray-200 ml-5 pl-6 min-h-96">
-        {filteredNotices.length === 0 && (
-          <p className="text-center text-gray-500 py-10">
-            No notices found.
-          </p>
-        )}
-
-        {filteredNotices.map((notice, idx) => <NoticsTimelineCard notice={notice} key={idx} />)}
+      <div className="relative border-l-2 border-gray-200 ml-3">
+        {sortedNotices.map((notice) => (
+          <NoticsTimelineCard key={notice.id} notice={notice} />
+        ))}
       </div>
     </div>
   );

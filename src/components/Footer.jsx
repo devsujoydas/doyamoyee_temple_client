@@ -23,10 +23,10 @@ const Footer = () => {
 
           <div className="space-y-2 text-sm">
             <p className="flex items-center gap-2">
-              <IoCall /> 01303436299
+              <IoCall /> +880 1234-567890
             </p>
             <p className="flex items-center gap-2">
-              <MdOutlineAlternateEmail /> devsujoydas@gmail.com
+              <MdOutlineAlternateEmail /> doyamoyee@gmail.com
             </p>
             <p className="flex items-center gap-2">
               <IoLocationSharp /> Medical Rd, Jamalpur
@@ -85,13 +85,13 @@ const Footer = () => {
 
       {/* Bottom */}
       <div className="border-t border-gray-700 mt-12 pt-6">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 gap-4">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center text-sm text-gray-400 gap-4">
 
           <p>
             © {new Date().getFullYear()} {t("site_name")}. {t("footer_rights")}
           </p>
 
-          <p className="flex items-center gap-1">
+          {/* <p className="flex items-center gap-1">
             {t("footer_developed")}
             {t("footer_by")}{" "}
             <a
@@ -102,7 +102,7 @@ const Footer = () => {
             >
               Sujoy Das
             </a>
-          </p>
+          </p> */}
 
         </div>
       </div>

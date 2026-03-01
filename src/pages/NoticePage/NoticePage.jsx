@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import NoticeCard from "./NoticeCard";
-import placeholder from "/placeholder.png";
 
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);
@@ -9,45 +8,94 @@ const NoticePage = () => {
   useEffect(() => {
     fetch("/notice.json")
       .then((res) => res.json())
-      .then((data) => setNotices(data))
-      .catch((err) => console.error(err));
+      .then(setNotices)
+      .catch(console.error);
   }, []);
 
   const today = new Date();
-  const activeNotices = notices.filter((n) => new Date(n.date) >= today);
-  const importantNotices = activeNotices.filter((n) => n.important);
-  const regularNotices = activeNotices.filter((n) => !n.important);
 
-  const filteredRegular =
-    filter === "all"
-      ? regularNotices
-      : regularNotices.filter((n) => n.type === filter);
+  /* ===============================
+     ACTIVE NOTICE LOGIC
+     =============================== */
+
+  const activeNotices = useMemo(() => {
+    return notices.filter((n) => {
+      if (n.status !== "active") return false;
+
+      if (n.expiryDate) {
+        return new Date(n.expiryDate) >= today;
+      }
+
+      if (n.eventDate) {
+        return new Date(n.eventDate) >= today;
+      }
+
+      return true;
+    });
+  }, [notices]);
+
+  /* ===============================
+     IMPORTANT + PINNED
+     =============================== */
+
+  const importantNotices = useMemo(
+    () => activeNotices.filter((n) => n.isImportant),
+    [activeNotices]
+  );
+
+  const regularNotices = useMemo(
+    () => activeNotices.filter((n) => !n.isImportant),
+    [activeNotices]
+  );
+
+  /* ===============================
+     FILTER LOGIC (category based)
+     =============================== */
+
+  const filteredRegular = useMemo(() => {
+    if (filter === "all") return regularNotices;
+    return regularNotices.filter((n) => n.category === filter);
+  }, [filter, regularNotices]);
+
+  const noticeTypes = ["all", "event", "religious", "meeting", "announcement"];
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16">
+      
       {/* Heading */}
-      <div className="text-center mb-14">
-        <h2 className="text-3xl md:text-4xl font-bold">Temple Notices</h2>
-        <p className="text-gray-600 mt-2">Stay updated with latest announcements</p>
+      <div className="text-center mb-5">
+        <h2 className="text-3xl md:text-4xl font-bold">
+          শ্রী শ্রী দয়াময়ী মন্দিরের নোটিশ
+        </h2>
+        <p className="text-gray-600 mt-2">
+          মন্দিরের সকল গুরুত্বপূর্ণ ঘোষণা ও অনুষ্ঠান
+        </p>
       </div>
 
-      {/* Important Notices */}
+      {/* ===============================
+          IMPORTANT NOTICE SECTION
+         =============================== */}
+
       {importantNotices.length > 0 && (
         <div className="mb-16">
           <h3 className="text-xl font-semibold mb-8 text-red-600">
-            Important Notices
+            গুরুত্বপূর্ণ নোটিশ
           </h3>
-          <div className="grid md:grid-cols-2 gap-8">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {importantNotices.map((notice) => (
-              <NoticeCard key={notice.id} notice={notice} placeholder={placeholder} />
+              <NoticeCard key={notice.id} notice={notice} />
             ))}
           </div>
         </div>
       )}
 
-      {/* Filters */}
+      {/* ===============================
+          FILTER BUTTONS
+         =============================== */}
+
       <div className="flex justify-center gap-4 mb-10 flex-wrap">
-        {["all", "event", "announcement", "registration"].map((type) => (
+        {noticeTypes.map((type) => (
           <button
             key={type}
             onClick={() => setFilter(type)}
@@ -63,14 +111,19 @@ const NoticePage = () => {
         ))}
       </div>
 
-      {/* Regular Notices */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 min-h-96">
+      {/* ===============================
+          REGULAR NOTICE GRID
+         =============================== */}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 min-h-96">
         {filteredRegular.length > 0 ? (
           filteredRegular.map((notice) => (
-            <NoticeCard key={notice.id} notice={notice} placeholder={placeholder} />
+            <NoticeCard key={notice.id} notice={notice} />
           ))
         ) : (
-          <p className="text-center text-gray-500 mt-10">No notices available.</p>
+          <p className="text-center text-gray-500 mt-10 col-span-full">
+            বর্তমানে কোনো নোটিশ নেই।
+          </p>
         )}
       </div>
     </div>

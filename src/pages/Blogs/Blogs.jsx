@@ -107,7 +107,7 @@ const Blogs = () => {
   ]
 
   return (
-    <section id="blogs" className="relative bg-no-repeat bg-center w-full h-screen " style={{ backgroundImage: `url(${banner})` }} >
+    <section id="blogs" className="relative bg-[#FDF8F2] bg-no-repeat bg-center w-full h-screen " style={{ backgroundImage: `url(${""})` }} >
 
       <div className="max-w-7xl xl:mx-auto mx-3 md:mx-10 py-10 md:py-20">
 

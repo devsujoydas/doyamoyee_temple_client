@@ -7,7 +7,7 @@ import Videos from "../pages/Videos/Videos";
 import NoticePage from "../pages/NoticePage/NoticePage";
 import NoticeDetails from "../pages/NoticePage/NoticeDetails";
 import NoticesTimeline from "../pages/NoticeTimeline/NoticesTimeline";
-
+ 
 
 
 export const router = createBrowserRouter([

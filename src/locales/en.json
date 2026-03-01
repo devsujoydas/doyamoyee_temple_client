@@ -2,7 +2,7 @@
   "nav_home": "Home",
   "nav_blogs": "Blogs",
   "nav_history": "History",
-  "nav_events": "Events / Puja",
+  "nav_events": "Puja",
   "nav_gallery": "Gallery",
   "nav_video": "Video",
   "nav_volunteer": "Volunteer",
@@ -14,10 +14,23 @@
   "hero_subtitle": "A historic and spiritual sacred place in Jamalpur",
   "hero_cta_events": "View Puja Schedule",
   "hero_cta_volunteer": "Become a Volunteer",
-  "about_title": "About The Temple",
-  "about_text": "Doyamoyee Temple, located at Zero Point in Jamalpur, is a historic Hindu temple established in 1698 by Sri Krishna Roy Chowdhury during the reign of Nawab Murshid Quli Khan. The complex includes Shiva, Kali, Nat Mandir, and Manasa Devi shrines and is renowned for centuries-old murals.",
-  "history_title": "History of Doyamoyee Temple",
-  "history_text": "This 321-year-old temple hosts daily worship and draws devotees from across the country during the annual Ashtami Fair. The temple is open from 6:00 AM to 10:00 PM.",
+
+
+  
+  "about_title": "About Doyamoyee Temple",
+  "about_text": "Doyamoyee Temple, located at Zero Point in Jamalpur, is a historic Hindu temple established in 1698 (1104 Bengali Era) during the reign of Nawab Murshid Quli Khan. Founded by Jagirdar Sri Krishna Roy Chowdhury, the temple complex includes shrines dedicated to Shiva, Kali, Nat Mandir, and Manasa Devi. It is renowned for its centuries-old murals and traditional architectural heritage.",
+
+  "history_title": "History & Legacy",
+  "history_text": "For over 321 years, the temple has remained a center of daily worship and spiritual devotion. During the annual Ashtami Fair, devotees from across the country gather in large numbers. The Debottor Estate was established by Rani Shrimati Narayani Roy Chowdhury, and the temple’s structural development was later enhanced by Raja Jogendra Kishore Roy Chowdhury. The temple remains open daily from 6:00 AM to 10:00 PM.",
+
+  "establishment_title": "Establishment & Contribution",
+  "established": "Established: 1104 Bengali Era (1698 AD)",
+  "founder": "Founder: Jagirdar Sri Krishna Roy Chowdhury",
+  "estate_founder": "Debottor Estate Founder: Rani Shrimati Narayani Roy Chowdhury",
+  "development": "Infrastructure Development: Raja Jogendra Kishore Roy Chowdhury",
+
+
+  
   "events_title": "Upcoming Puja & Events",
   "events_text": "Doyamoyee Temple holds Durga Puja, Ashtami Fair, and annual Chaitra festivals. Each event will feature a countdown timer.",
   "volunteer_title": "Become a Volunteer",
@@ -51,6 +64,6 @@
   "footer_location_title": "Location Map",
 
   "footer_rights": "All Rights Reserved.",
-  "footer_developed": "Developed with",
+  "footer_developed": "Developed ",
   "footer_by": "by"
 }
