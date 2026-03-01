@@ -93,7 +93,6 @@ const Footer = () => {
 
           <p className="flex items-center gap-1">
             {t("footer_developed")}
-            <span className="text-red-500 animate-pulse">❤️</span>
             {t("footer_by")}{" "}
             <a
               href="https://devsujoydas.vercel.app"

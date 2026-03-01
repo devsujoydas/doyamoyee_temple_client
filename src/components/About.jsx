@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import templeImage from "/about/tample-about.png"; // আপনার image path
+import templeImage from "/about/tample-about.webp"; // আপনার image path
 import { useTranslation } from "react-i18next";
 
 

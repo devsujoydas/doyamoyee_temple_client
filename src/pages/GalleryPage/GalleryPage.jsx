@@ -13,7 +13,7 @@ import lgZoom from "lightgallery/plugins/zoom";
 
 // Auto-import all images from gallery folder
 const images = Object.values(
-  import.meta.glob("../../assets/gallery/*.{jpg,jpeg,png}", {
+  import.meta.glob("../../assets/gallery/*.{jpg,jpeg,png,webp}", {
     eager: true,
     import: "default",
   })

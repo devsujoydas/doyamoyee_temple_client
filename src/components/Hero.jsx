@@ -1,16 +1,16 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import banner from "/banner/banner.jpg"
-import banner2 from "/banner/banner2.png"
-import banner3 from "/banner/banner3.png"
-import banner4 from "/banner/banner4.png"
-import banner5 from "/banner/banner5.png"
-import banner6 from "/banner/banner6.png"
-import banner7 from "/banner/banner7.png"
-import banner8 from "/banner/banner8.png"
-import banner9 from "/banner/banner9.png"
-import banner10 from "/banner/banner10.png"
-import banner11 from "/about/tample-about.png"
+import banner from "/banner/banner.webp"
+import banner2 from "/banner/banner2.webp"
+import banner3 from "/banner/banner3.webp"
+import banner4 from "/banner/banner4.webp"
+import banner5 from "/banner/banner5.webp"
+import banner6 from "/banner/banner6.webp"
+import banner7 from "/banner/banner7.webp"
+import banner8 from "/banner/banner8.webp"
+import banner9 from "/banner/banner9.webp"
+import banner10 from "/banner/banner10.webp"
+import banner11 from "/about/tample-about.webp"
 
 
 import { FaArrowRight } from 'react-icons/fa'

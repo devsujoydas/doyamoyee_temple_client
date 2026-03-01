@@ -61,18 +61,18 @@ const Header = () => {
       {
         menuOpen && (
           <div
-            onClick={() => setMenuOpen(!menuOpen)}
+
             className=" md:hidden bg-white shadow-md px-4 pb-4 space-y-3">
-            <Link to="/" className="block" > {t("nav_home")} </Link>
-            <a href="#history" className="block"> {t("nav_history")} </a>
-            <a href="#puja" className="block"> {t("nav_events")} </a>
-            <NavLink to="/gallery" className="block"> {t("nav_gallery")} </NavLink>
-            <NavLink to="/videos" className="block"> {t("nav_video")} </NavLink>
-            <a href="#volunteer" className="block"> {t("nav_volunteer")} </a>
-            <NavLink to="/notices" className="block"> {t("nav_notice")} </NavLink>
-            <NavLink to="/notices/timeline" className="block"> {t("nav_timeline")} </NavLink>
-            <a href="#contact" className="block"> {t("nav_contact")} </a>
-            <a href="#blogs" className="block"> {t("nav_blogs")} </a>
+            <Link to="/" className="block" onClick={() => setMenuOpen(!menuOpen)} > {t("nav_home")} </Link>
+            <a href="#history" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_history")} </a>
+            <a href="#puja" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_events")} </a>
+            <NavLink to="/gallery" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_gallery")} </NavLink>
+            <NavLink to="/videos" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_video")} </NavLink>
+            <a href="#volunteer" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_volunteer")} </a>
+            <NavLink to="/notices" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_notice")} </NavLink>
+            <NavLink to="/notices/timeline" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_timeline")} </NavLink>
+            <a href="#contact" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_contact")} </a>
+            <a href="#blogs" className="block" onClick={() => setMenuOpen(!menuOpen)}> {t("nav_blogs")} </a>
 
 
 
