@@ -45,7 +45,7 @@ const Footer = () => {
             <li><Link to="/puja" className="hover:text-yellow-400">{t("footer_puja")}</Link></li>
             <li><Link to="/events" className="hover:text-yellow-400">{t("footer_events")}</Link></li>
             <li><Link to="/gallery" className="hover:text-yellow-400">{t("footer_gallery")}</Link></li>
-            <li><Link to="/notice" className="hover:text-yellow-400">{t("footer_notice")}</Link></li>
+            <li><Link to="/notices" className="hover:text-yellow-400">{t("footer_notice")}</Link></li>
           </ul>
         </div>
 

@@ -1,0 +1,59 @@
+[
+    {
+        "id": 1,
+        "type": "event",
+        "title": "দোল উৎসব ২০২৬",
+        "shortDescription": "দোল উৎসব ২০২৬ অনুষ্ঠিত হবে ৩ মার্চ।",
+        "date": "2026-03-03",
+        "category": "mondir",
+        "important": true,
+        "image": "https://i.ibb.co.com/NdHPXPg9/holil1.jpg",
+        "details": {
+            "dateBangla": "১৮ ফাল্গুন ১৪৩২",
+            "time": "সকাল ৯:০০ ঘোটিকা",
+            "registrationFee": "৩০০ টাকা",
+            "venue": "শ্রী শ্রী রাধা মোহন জিও মন্দির প্রাঙ্গন",
+            "organizedBy": "শ্রী শ্রী রাধা মোহন জিও মন্দির , ঠাকুরবাড়ি, জামালপুর",
+            "contact": [
+                {
+                    "number": "01840542890",
+                    "type": "Bkash"
+                },
+                {
+                    "number": "01727635429",
+                    "type": "Phone"
+                }
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "type": "announcement",
+        "title": "Friday Evening Arati Cancelled",
+        "shortDescription": "আগামী শুক্রবার সন্ধ্যা আরতি সাময়িকভাবে বন্ধ থাকবে।",
+        "date": "2026-04-12",
+        "category": "mondir",
+        "important": false,
+        "image": "https://i.ibb.co.com/v4NGnTVj/holi2.jpg"
+    },
+    {
+        "id": 3,
+        "type": "registration",
+        "title": "Kali Puja Volunteer Registration",
+        "shortDescription": "Registration open until 20 October.",
+        "date": "2026-10-20",
+        "category": "kalipuja",
+        "important": false,
+        "image": "https://byubd.org/front/volunteer.jpg",
+        "details": {
+            "deadline": "20 October 2026",
+            "contact": [
+                {
+                    "number": "01727635429",
+                    "type": "Phone"
+                }
+            ],
+            "attachment": "/pdf/volunteer-form.pdf"
+        }
+    }
+]
