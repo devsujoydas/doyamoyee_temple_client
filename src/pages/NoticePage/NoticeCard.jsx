@@ -11,15 +11,16 @@ const NoticeCard = ({ notice }) => {
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            layout
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
             className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden group"
         >
             {/* Image */}
             <div className="relative overflow-hidden">
-                <Link  to={`/notices/${notice.id}`}>
+                <Link to={`/notices/${notice.id}`}>
                     <img
                         src={notice.image || placeholder}
                         alt={notice.title}

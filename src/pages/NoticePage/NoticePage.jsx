@@ -51,7 +51,7 @@ const NoticePage = () => {
           <button
             key={type}
             onClick={() => setFilter(type)}
-            className={`px-5 py-2 rounded-full border capitalize transition-all duration-300
+            className={`px-5 py-2 rounded-full shadow-lg capitalize transition-all duration-300 cursor-pointer
               ${
                 filter === type
                   ? "bg-indigo-600 text-white"
