@@ -41,7 +41,7 @@ const PujaGallery = () => {
                     {filters.map((filter) => (
                         <button
                             key={filter}
-                            className={`px-4 py-2 border-b-2   transition-all  font-semibold cursor-pointer ${activeFilter === filter
+                            className={`md:px-4 px-2 md:py-2 py-1 border-b-2   transition-all  font-semibold cursor-pointer ${activeFilter === filter
                                 ? "border-[#DB4242]  text-[#DB4242]"
                                 : "border-b-transparent hover:text-[#DB4242]"
                                 }`}
@@ -54,7 +54,7 @@ const PujaGallery = () => {
             </div>
 
             {/* Grid Gallery */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
                 <AnimatePresence>
                     {filteredItems.map((item) => (
                         <motion.div
@@ -74,8 +74,8 @@ const PujaGallery = () => {
 
                             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
-                                <h5 className="text-2xl font-semibold text-white">{item.title}</h5>
+                            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-300 z-10">
+                                <h5 className="text-xl md:text-2xl font-semibold text-white">{item.title}</h5>
                                 <p className="text-sm text-white">{item.description}</p>
                             </div>
                         </motion.div>

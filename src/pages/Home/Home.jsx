@@ -1,10 +1,8 @@
  
 
 import Hero from "../../components/Hero";
-import About from "../../components/About";
-import Events from "../../components/Events";
-import Volunteer from "../../components/Volunteer"; 
-// import Gallery from "../../components/Gallery";
+import About from "../../components/About"; 
+import Volunteer from "../../components/Volunteer";  
 import Blogs from "../Blogs/Blogs";
 import PujaGallery from "../../components/PujaGallery";
 

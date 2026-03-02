@@ -7,7 +7,7 @@ const About = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="history" className="py-24 bg-[#fdf8f2] min-h-screen flex items-center">
+    <section id="history" className="py-24 bg-color-primary min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-14 px-6">
 
         {/* Image */}
@@ -34,7 +34,7 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           {/* About Title */}
-          <h2 className="text-4xl font-bold text-amber-800 tracking-wide">
+          <h2 className="text-4xl font-bold text-color-secondary tracking-wide">
             {t("about_title")}
           </h2>
 
@@ -46,7 +46,7 @@ const About = () => {
           <div className="w-24 h-1 bg-amber-500 rounded-full"></div>
 
           {/* History */}
-          <h3 className="text-2xl font-semibold text-amber-700">
+          <h3 className="text-2xl font-semibold text-color-secondary">
             {t("history_title")}
           </h3>
 
@@ -56,7 +56,7 @@ const About = () => {
 
           {/* Establishment Card */}
           <div className="bg-white shadow-xl rounded-2xl p-6 border border-amber-200 space-y-3">
-            <h4 className="text-xl font-semibold text-amber-800 mb-3">
+            <h4 className="text-xl font-semibold text-color-secondary mb-3">
               {t("establishment_title")}
             </h4>
 

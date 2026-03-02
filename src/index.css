@@ -30,15 +30,31 @@
 .font-family-lora {
   font-family: "Lora", serif;
 }
+
 .font-family-opensans {
   font-family: "Open Sans", sans-serif;
 }
 
 .section-title {
   color: #fa0002;
-  
+
 }
 
 .section-text {
   color: #44233B;
+}
+
+.text-color-primary {
+  color: white;
+}
+.text-color-secondary {
+  color: #CB8401;
+}
+
+.bg-color-primary {
+  background-color: #FDF8F2;
+}
+
+.bg-color-secondary {
+  background-color: #101828;
 }

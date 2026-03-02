@@ -74,7 +74,7 @@ const NoticeDetails = () => {
       className="max-w-7xl mx-auto px-4 py-12"
     >
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(-1 )}
         className="inline-block mb-8 text-indigo-600 hover:underline"
       >
         ← সকল নোটিশে ফিরে যান
