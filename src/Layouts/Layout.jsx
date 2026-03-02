@@ -25,7 +25,7 @@ const Layout = () => {
     }, 500);
 
     return (
-        <div className=''>
+        <div className='bg-linear-to-b from-[#fffaf3] via-[#f7e6d3] to-[#f1dcc6]'>
             {loading ?
                 <LoadingScreen />
                 :

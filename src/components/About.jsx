@@ -21,7 +21,7 @@ const About = () => {
           <img
             src={templeImage}
             alt="Doyamoyee Temple"
-            className="w-full md:h-[520px] object-cover"
+            className="w-full md:h-130 object-cover"
           />
         </motion.div>
 

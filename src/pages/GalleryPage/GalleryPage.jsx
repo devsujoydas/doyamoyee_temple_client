@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 // Fancybox imports
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import PageHeading from "../../components/PageHeading";
 
 // Auto-import all images from gallery folder
 const images = Object.values(
@@ -52,52 +53,55 @@ function Gallery() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto p-4 my-5 min-h-screen">
-      {/* Section Title */}
-      <div className="text-center">
-        <h2 className="text-3xl font-bold mb-3">{t("gallery_title")}</h2>
-        <p className="mb-10">{t("gallery_text")}</p>
-      </div>
+    <div className="bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 py-14 sm:py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto p-4 my-5 min-h-screen ">
+        {/* Section Title */}
 
-      {/* Gallery Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {images.slice(0, visibleCount).map((img, index) => (
-          <motion.a
-            key={index}
-            href={img}
-            data-fancybox="gallery"
-            data-caption={`Gallery Image ${index + 1}`}
-            className="block"
-            custom={index}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={itemVariants}
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="w-full h-32 object-cover md:h-60 rounded-lg cursor-pointer overflow-hidden shadow-md">
-              <img
-                src={img}
-                alt={`gallery-${index}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.a>
-        ))}
-      </div>
+        <PageHeading
+          title={t("gallery_title")}
+          desc={t("gallery_text")}
+        />
 
-      {/* View More Button */}
-      {visibleCount < images.length && (
-        <div className="text-center mt-8">
-          <button
-            onClick={handleViewMore}
-            className="bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 cursor-pointer transition"
-          >
-            View More
-          </button>
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {images.slice(0, visibleCount).map((img, index) => (
+            <motion.a
+              key={index}
+              href={img}
+              data-fancybox="gallery"
+              data-caption={`Gallery Image ${index + 1}`}
+              className="block"
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={itemVariants}
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="w-full h-32 object-cover md:h-60 rounded-lg cursor-pointer overflow-hidden shadow-md">
+                <img
+                  src={img}
+                  alt={`gallery-${index}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.a>
+          ))}
         </div>
-      )}
+
+        {/* View More Button */}
+        {visibleCount < images.length && (
+          <div className="text-center mt-8">
+            <button
+              onClick={handleViewMore}
+              className="bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 cursor-pointer transition"
+            >
+              View More
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

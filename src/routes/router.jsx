@@ -6,10 +6,16 @@ import GalleryPage from "../pages/GalleryPage/GalleryPage";
 import Videos from "../pages/Videos/Videos";
 import NoticePage from "../pages/NoticePage/NoticePage";
 import NoticeDetails from "../pages/NoticePage/NoticeDetails";
-import NoticesTimeline from "../pages/NoticeTimeline/NoticesTimeline";
 import Pandits from "../pages/Pandits/Pandits";
 import PanditDetails from "../pages/Pandits/PanditDetails";
 import CommitteePage from "../pages/CommitteePage/CommitteePage";
+import AdvisorsPage from "../pages/AdvisorsPage/AdvisorsPage";
+import LifetimeMembersPage from "../pages/LifetimeMembersPage/LifetimeMembersPage";
+import ContactPage from "../pages/ContactPage/ContactPage";
+import Signup from "../pages/Authentication/Signup/Signup";
+import Signin from "../pages/Authentication/Signin/Signin";
+import ResetPassword from "../pages/Authentication/ResetPassword/ResetPassword";
+import Auth from "../pages/Authentication/Auth";
 
 
 
@@ -19,42 +25,27 @@ export const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      { path: '/', element: <Home />, },
+      { path: '/notices', element: <NoticePage />, },
+      { path: '/notices/:id', element: <NoticeDetails />, },
+
+      { path: '/gallery', element: <GalleryPage />, },
+      { path: '/videos', element: <Videos />, },
+      { path: '/pandits', element: <Pandits />, },
+      { path: '/pandits/:id', element: <PanditDetails />, },
+      { path: '/committee', element: <CommitteePage />, },
+      { path: '/advisor', element: <AdvisorsPage />, },
+      { path: '/lifetime-members', element: <LifetimeMembersPage />, },
+      { path: '/contact', element: <ContactPage />, },
       {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/notices',
-        element: <NoticePage />,
-      },
-      {
-        path: '/notices/:id',
-        element: <NoticeDetails />,
-      },
-      {
-        path: '/notices/Timeline',
-        element: <NoticesTimeline />,
-      },
-      {
-        path: '/gallery',
-        element: <GalleryPage />,
-      },
-      {
-        path: '/videos',
-        element: <Videos />,
-      },
-      {
-        path: '/pandits',
-        element: <Pandits />,
-      },
-      {
-        path: '/pandits/:id',
-        element: <PanditDetails />,
-      },
-      {
-        path: '/committee',
-        element: <CommitteePage />,
-      },
+        path: 'auth',
+        element: <Auth />,
+        children: [
+          { path: 'signup', element: <Signup /> },
+          { path: 'signin', element: <Signin /> },
+          { path: 'reset-password', element: <ResetPassword /> },
+        ]
+      }
     ]
   }
 ]);
