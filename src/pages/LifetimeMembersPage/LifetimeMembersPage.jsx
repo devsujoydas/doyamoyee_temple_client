@@ -14,7 +14,7 @@ const LifetimeMembersPage = () => {
         { "sl_no": "০৭", "name": "শ্রী লক্ষ্মীকান্ত পন্ডিত" },
         { "sl_no": "০৮", "name": "শ্রী বীরেন্দ্র চন্দ্র দেবনাথ" },
         { "sl_no": "০৯", "name": "শ্রী কার্তিক চন্দ্র সাহা" },
-        { "sl_no": "১০", "name": "শ্রী প্রণব কুমার বসাক (সুবল)" },
+        { "sl_no": "১০", "name": "শ্রী প্রনব কুমার বসাক (সুবল)" },
         { "sl_no": "১১", "name": "শ্রী বীরেন্দ্র চন্দ্র দাস" },
         { "sl_no": "১২", "name": "ডাঃ অসীম কান্তি ধর" },
         { "sl_no": "১৩", "name": "শ্রী প্রলয় কুমার গুহ নিয়োগী" },
@@ -28,14 +28,14 @@ const LifetimeMembersPage = () => {
         { "sl_no": "২১", "name": "শ্রীমতি অমিতা রায় বিউটি" },
         { "sl_no": "২২", "name": "শ্রীযুক্তা অঞ্জলীসেন শর্মা" },
         { "sl_no": "২৩", "name": "শ্রীমতি ভারতী পন্ডিত" },
-        { "sl_no": "২৪", "name": "শ্রী অরবিন্দ কুমার নাগ এ.ডি." },
+        { "sl_no": "২৪", "name": "শ্রী অরবিন্দ কুমার নাগ এড." },
         { "sl_no": "২৫", "name": "শ্রী অজয় চক্রবর্তী বাদল" },
         { "sl_no": "২৬", "name": "শ্রী হরেকৃষ্ণ কর্মকার" },
         { "sl_no": "২৭", "name": "শ্রী রনজিত কুমার বসাক" },
         { "sl_no": "২৮", "name": "শ্রীমতি প্রতিমা ধর বিউটি" },
         { "sl_no": "২৯", "name": "শ্রী বিমল কুমার আর্য্য" },
         { "sl_no": "৩০", "name": "প্রকৌশলী মলয় কুমার সাহা" },
-        { "sl_no": "৩১", "name": "শ্রী সুশীল কুমার কর্মকার" },
+        { "sl_no": "৩১", "name": "শ্রী শুশীল কুমার কর্মকার" },
         { "sl_no": "৩২", "name": "শ্রী নিখিল রঞ্জন দাম" },
         { "sl_no": "৩৩", "name": "অধ্যক্ষ অলক ভদ্র" },
         { "sl_no": "৩৪", "name": "শ্রীমতি চম্পা রানী স্বর্ণকার" },
@@ -60,7 +60,7 @@ const LifetimeMembersPage = () => {
         { "sl_no": "৫৩", "name": "শ্রী মৃনাল কান্তি দেব" },
         { "sl_no": "৫৪", "name": "শ্রী সুজিত কুমার বসাক লক্ষণ" },
         { "sl_no": "৫৫", "name": "শ্রী ত্রিভঙ্গ চন্দ্র দাস" },
-        { "sl_no": "৫৬", "name": "শ্রী অলক কুমার দেব" },
+        { "sl_no": "৫৬", "name": "শ্রী অলোক কুমার দেব" },
         { "sl_no": "৫৭", "name": "শ্রী অনিরুদ্ধ সান্যাল" },
         { "sl_no": "৫৮", "name": "শ্রী বাসুদেব মিত্র" },
         { "sl_no": "৫৯", "name": "শ্রী কাঞ্চন কুমার পোদ্দার" },
@@ -83,7 +83,7 @@ const LifetimeMembersPage = () => {
         { "sl_no": "৭৬", "name": "শ্রী বাসুদেব বণিক" },
         { "sl_no": "৭৭", "name": "শ্রী সুমন কুমার সাহা" },
         { "sl_no": "৭৮", "name": "শ্রী রবীন্দ্র চন্দ্র বসাক" },
-        { "sl_no": "৭৯", "name": "শ্রী অসিত বরণ দাম" },
+        { "sl_no": "৭৯", "name": "শ্রী অসিত বরন দাম" },
         { "sl_no": "৮০", "name": "শ্রীযুক্তা কমলা রানী সাহা" },
         { "sl_no": "৮১", "name": "শ্রী নিখিল চন্দ্র বিশ্বাস" },
         { "sl_no": "৮২", "name": "শ্রী সুব্রত চক্রবর্তী (বাপ্পী)" },
@@ -95,7 +95,7 @@ const LifetimeMembersPage = () => {
         { "sl_no": "৮৮", "name": "শ্রীমতি মনি রানী সাহা" },
         { "sl_no": "৮৯", "name": "শ্রী অজিত কুমার সোমকানু" },
         { "sl_no": "৯০", "name": "শ্রীমতি জ্যোৎস্না রানী সাহা" },
-        { "sl_no": "৯১", "name": "প্রকৌশলী অসিত বরণ দেব" },
+        { "sl_no": "৯১", "name": "প্রকৌশলী অসিত বরন দেব" },
         { "sl_no": "৯২", "name": "শ্রী সুব্রত কুমার দে" },
         { "sl_no": "৯৩", "name": "শ্রী প্রসাদ চৌধুরী রানা" },
         { "sl_no": "৯৪", "name": "শ্রী ভানু প্রসাদ কালোয়ার" },
@@ -129,43 +129,35 @@ const LifetimeMembersPage = () => {
 
 
     return (
-        <section className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 py-14 sm:py-20 px-4 sm:px-6">
+        <section className="py-24 px-4 sm:px-6 ">
+
             <div className="max-w-7xl mx-auto">
 
-                {/* Heading */}
                 <PageHeading
                     title={"শ্রী শ্রী দয়াময়ী মন্দির পরিচালনা পরিষদ"}
                     desc={"আজীবন সদস্যদের তালিকা"}
                     shortdesc={` মোট সদস্য: ${members.length} জন`}
                 />
 
-        
-                {/* Members Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
                     {members.map((member, index) => (
                         <motion.div
+                            key={member.sl_no}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.001 }}
-                            key={member.sl_no}
-                            className="group bg-white border border-orange-200 rounded-xl p-4 sm:p-5 shadow-sm hover:shadow-lg active:shadow-none cursor-pointer transition-all duration-300"
+                            className="relative bg-white/80 backdrop-blur border border-yellow-500/30 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-5 text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                         >
-                            <div className="flex items-center gap-4">
-
-                                {/* Serial */}
-                                <div className="shrink-0 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-orange-800 text-white text-sm sm:text-base font-semibold group-hover:bg-orange-700 transition">
-                                    {member.sl_no}
-                                </div>
-
-                                {/* Name */}
-                                <div>
-                                    <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 leading-snug font-family-hindSiliguri">
-                                        {member.name}
-                                    </h3>
-                                </div>
+                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-yellow-500 to-red-700 text-white px-2 sm:px-4 py-1 rounded-full text-xs">
+                                আজীবন সদস্য
 
                             </div>
+
+                            <h3 className="mt-3 text-sm sm:text-base md:text-lg font-semibold text-gray-800 font-family-hindSiliguri">
+                                {member.name}
+                            </h3>
                         </motion.div>
                     ))}
 

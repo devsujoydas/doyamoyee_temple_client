@@ -27,10 +27,10 @@ const Header = () => {
     { to: "/videos", label: t("nav_video") },
     { to: "/pandits", label: t("nav_pandits") },
     { to: "/committee", label: t("nav_committee") },
-    { to: "/advisor", label: t("nav_advisor") },
     { to: "/lifetime-members", label: t("nav_members") },
+    { to: "/advisor", label: t("nav_advisor") },
     { to: "/notices", label: t("nav_notice") },
-    { to: "#contact", label: t("nav_contact"), anchor: true },
+    { to: "/contact", label: t("nav_contact"), },
   ];
 
   return (
@@ -113,7 +113,7 @@ const Header = () => {
                   exit={{ opacity: 0, y: -10 }}
                   className="absolute right-0 mt-2 w-30 bg-white shadow-lg rounded-md overflow-hidden z-50"
                 >
-                  {user ? (
+                  {!user ? (
                     <>
                       <Link
                         onClick={() => setUserMenuOpen(!userMenuOpen)}

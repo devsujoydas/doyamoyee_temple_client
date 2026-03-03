@@ -13,7 +13,6 @@ import banner9 from "/banner/banner9.webp"
 import banner10 from "/banner/banner10.webp"
 import banner11 from "/about/tample-about.webp"
 
-import bannerforsm from "/banner/bannerforsm.webp"
 import bannerforsm1 from "/banner/bannerforsm1.webp"
 import bannerforsm2 from "/banner/bannerforsm2.webp"
 import bannerforsm3 from "/banner/bannerforsm3.webp"
@@ -43,7 +42,6 @@ const Hero = () => {
     { url: banner11 },
   ]
   const heroBannerforsm = [
-    { url: bannerforsm },
     { url: bannerforsm1 },
     { url: bannerforsm2 },
     { url: bannerforsm3 },

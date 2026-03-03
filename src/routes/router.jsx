@@ -16,6 +16,13 @@ import Signup from "../pages/Authentication/Signup/Signup";
 import Signin from "../pages/Authentication/Signin/Signin";
 import ResetPassword from "../pages/Authentication/ResetPassword/ResetPassword";
 import Auth from "../pages/Authentication/Auth";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
+import NoticesPage from "../pages/Dashboard/NoticesPage";
+import MembersPage from "../pages/Dashboard/MembersPage";
+import EventsPage from "../pages/Dashboard/EventsPage";
+import AdminGalleryPage from "../pages/Dashboard/AdminGalleryPage";
+import AdminAdvisorsPage from "../pages/Dashboard/AdminAdvisorsPage";
 
 
 
@@ -44,6 +51,18 @@ export const router = createBrowserRouter([
           { path: 'signup', element: <Signup /> },
           { path: 'signin', element: <Signin /> },
           { path: 'reset-password', element: <ResetPassword /> },
+        ]
+      },
+      {
+        path: 'dashboard',
+        element: <DashboardLayout />,
+        children: [
+          { path: '', element: <DashboardHome /> },            // Overview
+          { path: 'notices', element: <NoticesPage /> },
+          { path: 'members', element: <MembersPage /> },
+          { path: 'advisors', element: <AdminAdvisorsPage /> },
+          { path: 'events', element: <EventsPage /> },
+          { path: 'gallery', element: <AdminGalleryPage /> },
         ]
       }
     ]
