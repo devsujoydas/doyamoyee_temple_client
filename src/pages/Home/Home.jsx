@@ -1,10 +1,11 @@
- 
+
 
 import Hero from "../../components/Hero";
-import About from "../../components/About"; 
-import Volunteer from "../../components/Volunteer";  
+import About from "../../components/About";
+import Volunteer from "../../components/Volunteer";
 import Blogs from "../Blogs/Blogs";
 import PujaGallery from "../../components/PujaGallery";
+import BlogsSection from "../../components/BlogsSection";
 
 
 
@@ -17,7 +18,7 @@ const Home = () => {
       {/* <Events /> */}
       {/* <Volunteer /> */}
       <PujaGallery />
-      <Blogs />
+      <BlogsSection />
 
     </div>
   )

@@ -148,6 +148,7 @@ const LifetimeMembersPage = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.001 }}
+                            viewport={{ once: true }} 
                             className="relative bg-white/80 backdrop-blur border border-yellow-500/30 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-5 text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                         >
                             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-yellow-500 to-red-700 text-white px-2 sm:px-4 py-1 rounded-full text-xs">

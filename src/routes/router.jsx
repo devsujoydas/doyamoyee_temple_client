@@ -23,6 +23,8 @@ import DashboardMembersPage from "../pages/Dashboard/DashboardMembersPage";
 import DashboardAdvisorsPage from "../pages/Dashboard/DashboardAdvisorsPage";
 import DashboardEventsPage from "../pages/Dashboard/DashboardEventsPage";
 import DashboardGalleryPage from "../pages/Dashboard/DashboardGalleryPage";
+import Blogs from "../pages/Blogs/Blogs";
+import BlogsDetails from "../pages/Blogs/BlogsDetails";
 
 
 
@@ -35,6 +37,9 @@ export const router = createBrowserRouter([
       { path: '/', element: <Home />, },
       { path: '/notices', element: <NoticePage />, },
       { path: '/notices/:id', element: <NoticeDetails />, },
+
+      { path: '/blogs', element: <Blogs />, },
+      { path: '/blogs/:id', element: <BlogsDetails />, },
 
       { path: '/gallery', element: <GalleryPage />, },
       { path: '/videos', element: <Videos />, },
@@ -57,7 +62,7 @@ export const router = createBrowserRouter([
         path: 'dashboard',
         element: <DashboardLayout />,
         children: [
-          { path: '', element: <DashboardHome/> },
+          { path: '', element: <DashboardHome /> },
           { path: 'notices', element: <DashboardNoticesPage /> },
           { path: 'members', element: <DashboardMembersPage /> },
           { path: 'advisors', element: <DashboardAdvisorsPage /> },

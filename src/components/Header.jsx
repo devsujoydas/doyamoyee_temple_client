@@ -29,6 +29,7 @@ const Header = () => {
     { to: "/committee", label: t("nav_committee") },
     { to: "/lifetime-members", label: t("nav_members") },
     { to: "/advisor", label: t("nav_advisor") },
+    { to: "/blogs", label: "ব্লগ" },
     { to: "/notices", label: t("nav_notice") },
     { to: "/contact", label: t("nav_contact"), },
   ];

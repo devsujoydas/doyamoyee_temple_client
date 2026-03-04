@@ -75,6 +75,7 @@ const CommitteePage = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.7 }}
+                        viewport={{ once: true }} 
                         className="mb-10 sm:mb-20 flex justify-center"
                     >
                         <div className="relative bg-linear-to-r from-yellow-500 to-red-700 text-white rounded-2xl sm:rounded-3xl p-3 sm:p-6 md:p-8 text-center shadow-2xl w-full max-w-xs sm:max-w-md md:max-w-xl">
@@ -101,6 +102,7 @@ const CommitteePage = () => {
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.01 }}
+                                viewport={{ once: true }} 
                                 className="relative bg-white/80 backdrop-blur border border-yellow-500/30 rounded-xl sm:rounded-2xl 
                                 p-5 sm:p-6 md:p-5 text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                             >

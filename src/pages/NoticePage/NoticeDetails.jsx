@@ -25,7 +25,7 @@ const NoticeDetails = () => {
   useEffect(() => {
     Fancybox.bind("[data-fancybox='notice-gallery']", {});
 
-    fetch("/notice.json")
+    fetch("/json/notice.json")
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((item) => item.id === id);

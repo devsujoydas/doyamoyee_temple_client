@@ -43,6 +43,7 @@ const AdvisorsPage = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: index * 0.01 }}
+                            
                             className="group bg-white border border-amber-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                         >
 

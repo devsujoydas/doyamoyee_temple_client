@@ -10,6 +10,7 @@ const PageHeading = ({ title, desc, shortdesc }) => {
                 initial={{ opacity: 0, y: -30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
+                viewport={{ once: true }} 
                 className="text-center mb-8 sm:mb-16 md:mb-20"
             >
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#7a0c0c] font-family-hindSiligurileading-snug">

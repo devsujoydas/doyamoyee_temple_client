@@ -7,7 +7,7 @@ const NoticePage = () => {
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    fetch("/notice.json")
+    fetch("/json/notice.json")
       .then((res) => res.json())
       .then(setNotices)
       .catch(console.error);
