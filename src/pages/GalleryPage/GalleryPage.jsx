@@ -54,7 +54,7 @@ function Gallery() {
 
   return (
     <div className="bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 py-14 sm:py-20 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto p-4 my-5 min-h-screen ">
+      <div className="max-w-7xl mx-auto p-4 my-5 ">
         {/* Section Title */}
 
         <PageHeading

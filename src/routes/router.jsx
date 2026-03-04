@@ -18,11 +18,11 @@ import ResetPassword from "../pages/Authentication/ResetPassword/ResetPassword";
 import Auth from "../pages/Authentication/Auth";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
-import NoticesPage from "../pages/Dashboard/NoticesPage";
-import MembersPage from "../pages/Dashboard/MembersPage";
-import EventsPage from "../pages/Dashboard/EventsPage";
-import AdminGalleryPage from "../pages/Dashboard/AdminGalleryPage";
-import AdminAdvisorsPage from "../pages/Dashboard/AdminAdvisorsPage";
+import DashboardNoticesPage from "../pages/Dashboard/DashboardNoticesPage";
+import DashboardMembersPage from "../pages/Dashboard/DashboardMembersPage";
+import DashboardAdvisorsPage from "../pages/Dashboard/DashboardAdvisorsPage";
+import DashboardEventsPage from "../pages/Dashboard/DashboardEventsPage";
+import DashboardGalleryPage from "../pages/Dashboard/DashboardGalleryPage";
 
 
 
@@ -57,12 +57,12 @@ export const router = createBrowserRouter([
         path: 'dashboard',
         element: <DashboardLayout />,
         children: [
-          { path: '', element: <DashboardHome /> },            // Overview
-          { path: 'notices', element: <NoticesPage /> },
-          { path: 'members', element: <MembersPage /> },
-          { path: 'advisors', element: <AdminAdvisorsPage /> },
-          { path: 'events', element: <EventsPage /> },
-          { path: 'gallery', element: <AdminGalleryPage /> },
+          { path: '', element: <DashboardHome/> },
+          { path: 'notices', element: <DashboardNoticesPage /> },
+          { path: 'members', element: <DashboardMembersPage /> },
+          { path: 'advisors', element: <DashboardAdvisorsPage /> },
+          { path: 'events', element: <DashboardEventsPage /> },
+          { path: 'gallery', element: <DashboardGalleryPage /> },
         ]
       }
     ]

@@ -3,77 +3,77 @@ import PageHeading from "../../components/PageHeading";
 import DashboardGrid from "../../components/DashboardGrid";
 import ModalForm from "../../components/ModalForm";
 
-const EventsPage = () => {
-  const [events, setEvents] = useState([
-    { id: 1, title: "শ্রী শ্রী দয়াময়ী পূজা", date: "2026-03-10" },
-    { id: 2, title: "নববর্ষ অনুষ্ঠান", date: "2026-04-14" },
+const DashboardAdvisorsPage = () => {
+  const [advisors, setAdvisors] = useState([
+    { id: 1, name: "শ্রী রফিকুল ইসলাম", address: "জামালপুর" },
+    { id: 2, name: "শ্রী মনিরুল ইসলাম", address: "জামালপুর" },
   ]);
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [editingEvent, setEditingEvent] = useState(null);
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
+  const [editingAdvisor, setEditingAdvisor] = useState(null);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
 
   const openAddModal = () => {
-    setEditingEvent(null);
-    setTitle("");
-    setDate("");
+    setEditingAdvisor(null);
+    setName("");
+    setAddress("");
     setModalOpen(true);
   };
 
-  const openEditModal = (event) => {
-    setEditingEvent(event);
-    setTitle(event.title);
-    setDate(event.date);
+  const openEditModal = (adv) => {
+    setEditingAdvisor(adv);
+    setName(adv.name);
+    setAddress(adv.address);
     setModalOpen(true);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (editingEvent) {
-      setEvents(
-        events.map((ev) =>
-          ev.id === editingEvent.id ? { ...ev, title, date } : ev
+    if (editingAdvisor) {
+      setAdvisors(
+        advisors.map((a) =>
+          a.id === editingAdvisor.id ? { ...a, name, address } : a
         )
       );
     } else {
-      setEvents([...events, { id: Date.now(), title, date }]);
+      setAdvisors([...advisors, { id: Date.now(), name, address }]);
     }
     setModalOpen(false);
   };
 
   const handleDelete = (id) => {
-    setEvents(events.filter((ev) => ev.id !== id));
+    setAdvisors(advisors.filter((a) => a.id !== id));
   };
 
   return (
     <div>
-      <PageHeading title="Events" desc={`Total Events: ${events.length}`} />
+      <PageHeading title="Advisors" desc={`Total Advisors: ${advisors.length}`} />
 
       <button
         onClick={openAddModal}
         className="mb-6 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition"
       >
-        Add Event
+        Add Advisor
       </button>
 
       <DashboardGrid>
-        {events.map((ev) => (
+        {advisors.map((a) => (
           <div
-            key={ev.id}
+            key={a.id}
             className="bg-white p-6 rounded-xl border border-amber-200 shadow-sm hover:shadow-md text-center relative"
           >
-            <h3 className="text-lg font-semibold text-gray-900">{ev.title}</h3>
-            <p className="text-sm text-gray-500 mt-1">{ev.date}</p>
+            <h3 className="text-lg font-semibold text-gray-900">{a.name}</h3>
+            <p className="text-sm text-gray-500 mt-1">{a.address}</p>
             <div className="absolute top-2 right-2 flex gap-2">
               <button
-                onClick={() => openEditModal(ev)}
+                onClick={() => openEditModal(a)}
                 className="text-blue-600 hover:underline text-sm"
               >
                 Edit
               </button>
               <button
-                onClick={() => handleDelete(ev.id)}
+                onClick={() => handleDelete(a.id)}
                 className="text-red-600 hover:underline text-sm"
               >
                 Delete
@@ -86,27 +86,28 @@ const EventsPage = () => {
       <ModalForm
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        title={editingEvent ? "Edit Event" : "Add Event"}
+        title={editingAdvisor ? "Edit Advisor" : "Add Advisor"}
         onSubmit={handleSubmit}
       >
         <input
           type="text"
-          placeholder="Event Title"
+          placeholder="Advisor Name"
           className="w-full border border-gray-300 rounded-lg p-2"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           required
         />
         <input
-          type="date"
+          type="text"
+          placeholder="Address"
           className="w-full border border-gray-300 rounded-lg p-2 mt-2"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
           required
         />
       </ModalForm>
     </div>
   );
 };
-
-export default EventsPage;
+ 
+export default DashboardAdvisorsPage;

@@ -3,77 +3,73 @@ import PageHeading from "../../components/PageHeading";
 import DashboardGrid from "../../components/DashboardGrid";
 import ModalForm from "../../components/ModalForm";
 
-const AdminAdvisorsPage = () => {
-  const [advisors, setAdvisors] = useState([
-    { id: 1, name: "শ্রী রফিকুল ইসলাম", address: "জামালপুর" },
-    { id: 2, name: "শ্রী মনিরুল ইসলাম", address: "জামালপুর" },
+const DashboardMembersPage = () => {
+  const [members, setMembers] = useState([
+    { id: 1, name: "শ্রী রাম চন্দ্র কানু" },
+    { id: 2, name: "শ্রী সিতাংশু কুমার সোম" },
+    { id: 3, name: "শ্রী বাসুদেব চক্রবর্তী" },
   ]);
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [editingAdvisor, setEditingAdvisor] = useState(null);
+  const [editingMember, setEditingMember] = useState(null);
   const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
 
   const openAddModal = () => {
-    setEditingAdvisor(null);
+    setEditingMember(null);
     setName("");
-    setAddress("");
     setModalOpen(true);
   };
 
-  const openEditModal = (adv) => {
-    setEditingAdvisor(adv);
-    setName(adv.name);
-    setAddress(adv.address);
+  const openEditModal = (member) => {
+    setEditingMember(member);
+    setName(member.name);
     setModalOpen(true);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (editingAdvisor) {
-      setAdvisors(
-        advisors.map((a) =>
-          a.id === editingAdvisor.id ? { ...a, name, address } : a
-        )
+    if (editingMember) {
+      setMembers(
+        members.map((m) => (m.id === editingMember.id ? { ...m, name } : m))
       );
     } else {
-      setAdvisors([...advisors, { id: Date.now(), name, address }]);
+      setMembers([...members, { id: Date.now(), name }]);
     }
     setModalOpen(false);
+    setName("");
   };
 
   const handleDelete = (id) => {
-    setAdvisors(advisors.filter((a) => a.id !== id));
+    setMembers(members.filter((m) => m.id !== id));
   };
 
   return (
     <div>
-      <PageHeading title="Advisors" desc={`Total Advisors: ${advisors.length}`} />
+      <PageHeading title="Members" desc={`Total Members: ${members.length}`} />
 
       <button
         onClick={openAddModal}
         className="mb-6 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition"
       >
-        Add Advisor
+        Add Member
       </button>
 
       <DashboardGrid>
-        {advisors.map((a) => (
+        {members.map((m) => (
           <div
-            key={a.id}
+            key={m.id}
             className="bg-white p-6 rounded-xl border border-amber-200 shadow-sm hover:shadow-md text-center relative"
           >
-            <h3 className="text-lg font-semibold text-gray-900">{a.name}</h3>
-            <p className="text-sm text-gray-500 mt-1">{a.address}</p>
+            <h3 className="text-lg font-semibold text-gray-900">{m.name}</h3>
             <div className="absolute top-2 right-2 flex gap-2">
               <button
-                onClick={() => openEditModal(a)}
+                onClick={() => openEditModal(m)}
                 className="text-blue-600 hover:underline text-sm"
               >
                 Edit
               </button>
               <button
-                onClick={() => handleDelete(a.id)}
+                onClick={() => handleDelete(m.id)}
                 className="text-red-600 hover:underline text-sm"
               >
                 Delete
@@ -86,28 +82,20 @@ const AdminAdvisorsPage = () => {
       <ModalForm
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        title={editingAdvisor ? "Edit Advisor" : "Add Advisor"}
+        title={editingMember ? "Edit Member" : "Add Member"}
         onSubmit={handleSubmit}
       >
         <input
           type="text"
-          placeholder="Advisor Name"
+          placeholder="Member Name"
           className="w-full border border-gray-300 rounded-lg p-2"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Address"
-          className="w-full border border-gray-300 rounded-lg p-2 mt-2"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
           required
         />
       </ModalForm>
     </div>
   );
 };
- 
-export default AdminAdvisorsPage;
+
+export default DashboardMembersPage;

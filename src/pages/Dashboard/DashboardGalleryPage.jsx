@@ -3,7 +3,7 @@ import PageHeading from "../../components/PageHeading";
 import DashboardGrid from "../../components/DashboardGrid";
 import ModalForm from "../../components/ModalForm";
 
-const AdminGalleryPage = () => {
+const DashboardGalleryPage = () => {
   const [images, setImages] = useState([
     { id: 1, src: "/images/temple1.jpg", alt: "Temple 1" },
     { id: 2, src: "/images/temple2.jpg", alt: "Temple 2" },
@@ -87,4 +87,4 @@ const AdminGalleryPage = () => {
   );
 };
  
-export default AdminGalleryPage;
+export default DashboardGalleryPage;
