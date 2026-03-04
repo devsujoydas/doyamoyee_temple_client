@@ -1,30 +1,46 @@
-import React from 'react'
-import BlogDetailsLeft from './BlogDetailsLeft'
-import SharedPageHeading from '../../shared/SharedPageHeading'
+import React, { useState, useEffect } from "react";
+import BlogDetailsLeft from "./BlogDetailsLeft";
+import SharedPageHeading from "../../shared/SharedPageHeading";
+import BlogDetailsRight from "./BlogDetailsRight";
+import { useParams } from "react-router-dom";
 
 const BlogsDetails = () => {
-    return (
-        <div>
-            <SharedPageHeading
-                title="Blog Details"
-                path="Blog"
-                path2="Blog Details"
-            />
+  const { slug } = useParams(); // get blog slug from URL
+  const [blogsData, setBlogsData] = useState([]);
+  const [currentBlog, setCurrentBlog] = useState(null);
 
-            <div className="max-w-7xl xl:mx-auto mx-3 md:mx-0 py-10 md:py-20">
+  useEffect(() => {
+    fetch("/json/blogs.json")
+      .then((res) => res.json())
+      .then((data) => setBlogsData(data))
+      .catch(console.error);
+  }, []);
 
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5'>
-                    <div className='col-span-2 border rounded-md border-gray-500 p-6 bg-[#ffffffd7]'>
-                        <BlogDetailsLeft />
-                    </div>
+  // Update currentBlog when blogsData or slug changes
+  useEffect(() => {
+    if (blogsData.length && slug) {
+      const found = blogsData.find((b) => b.slug === slug);
+      setCurrentBlog(found || blogsData[0]); // fallback to first blog
+    }
+  }, [blogsData, slug]);
 
-                    <div className='border rounded-md border-gray-500 p-6 bg-[#FFFFFF]'>
+  if (!currentBlog) return null; // or loading state
 
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="bg-white">
+      <SharedPageHeading title="পোস্টের বিস্তারিত" path="পোস্ট" path2="" />
+
+      <div className="max-w-7xl xl:mx-auto mx-3 md:mx-0 py-10 md:py-20">
+        <div className="flex md:flex-row flex-col gap-5">
+          <BlogDetailsLeft blog={currentBlog} />
+          <BlogDetailsRight
+            blog={currentBlog}
+            recentPosts={blogsData}
+          />
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default BlogsDetails
+export default BlogsDetails;

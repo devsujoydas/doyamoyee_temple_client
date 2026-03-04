@@ -39,7 +39,28 @@ export const router = createBrowserRouter([
       { path: '/notices/:id', element: <NoticeDetails />, },
 
       { path: '/blogs', element: <Blogs />, },
-      { path: '/blogs/:id', element: <BlogsDetails />, },
+      {
+        path: '/blogs/:slug',
+        element: <BlogsDetails />,
+        loader: async ({ params }) => {
+          const slug = params.slug;
+
+          try {
+            const res = await fetch('/json/blogs.json');
+            if (!res.ok) throw new Error('Failed to fetch blogs');
+
+            const blogs = await res.json();
+            
+            const blog = blogs.find(b => b.slug === slug);
+            if (!blog) throw new Response("Not Found", { status: 404 });
+
+            return blog;
+          } catch (err) {
+            console.error(err);
+            throw new Response("Failed to load blog", { status: 500 });
+          }
+        },
+      },
 
       { path: '/gallery', element: <GalleryPage />, },
       { path: '/videos', element: <Videos />, },

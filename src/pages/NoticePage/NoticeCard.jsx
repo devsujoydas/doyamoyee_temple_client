@@ -28,9 +28,7 @@ const NoticeCard = ({ notice }) => {
       transition={{ duration: 0.3 }}
       className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden group relative"
     >
-      {/* ===============================
-          IMAGE
-         =============================== */}
+      {/* IMAGE */}
       <Link to={`/notices/${id}`} className="relative block w-full h-56">
         <LazyImage
           src={thumbnail || placeholder}
@@ -39,14 +37,11 @@ const NoticeCard = ({ notice }) => {
           placeholder={placeholder}
         />
 
-        {/* Important Badge */}
         {isImportant && (
           <span className="absolute top-4 left-4 bg-red-600 text-white text-xs px-3 py-1 rounded-full shadow">
             গুরুত্বপূর্ণ
           </span>
         )}
-
-        {/* Pinned Badge */}
         {isPinned && (
           <span className="absolute top-4 right-4 bg-yellow-500 text-white text-xs px-3 py-1 rounded-full shadow">
             📌 পিন করা
@@ -54,33 +49,22 @@ const NoticeCard = ({ notice }) => {
         )}
       </Link>
 
-      {/* ===============================
-          CONTENT
-         =============================== */}
+      {/* CONTENT */}
       <div className="p-5">
-        {/* Date */}
         <p className="text-sm text-gray-500 mb-2">
           {displayDate && formatBanglaDate(displayDate)}
         </p>
 
-        {/* Title */}
-        <h3 className="text-lg font-semibold mb-2 line-clamp-2">
-          {title}
-        </h3>
+        <h3 className="text-lg font-semibold mb-2 line-clamp-2">{title}</h3>
 
-        {/* Short Description */}
-        <p className="text-gray-600 text-sm line-clamp-3">
-          {shortDescription}
-        </p>
+        <p className="text-gray-600 text-sm line-clamp-3">{shortDescription}</p>
 
-        {/* Category Tag */}
         {category && (
           <span className="inline-block mt-3 text-xs bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full capitalize">
             {category}
           </span>
         )}
 
-        {/* Read More */}
         <Link
           to={`/notices/${id}`}
           className="inline-block mt-4 text-indigo-600 font-medium hover:underline"
