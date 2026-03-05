@@ -28,7 +28,7 @@ const BlogsDetails = () => {
 
   return (
     <div className="bg-white">
-      <SharedPageHeading title="পোস্টের বিস্তারিত" path="পোস্ট" path2="" />
+      <SharedPageHeading title="পোস্টের বিস্তারিত" path="পোস্ট" path2="পোস্টের বিস্তারিত" />
 
       <div className="max-w-7xl xl:mx-auto mx-3 md:mx-0 py-10 md:py-20">
         <div className="flex md:flex-row flex-col gap-5">

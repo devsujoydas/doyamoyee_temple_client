@@ -1,6 +1,6 @@
 {
   "nav_home": "Home",
-  "nav_blogs": "Blogs",
+  "nav_posts": "Posts",
   "nav_history": "History",
   "nav_events": "Puja",
   "nav_gallery": "Gallery",
@@ -11,6 +11,16 @@
   "nav_members": "Members",
   "nav_notice": "Notice",
   "nav_contact": "Contact",
+  "nav_about": "About",
+  "nav_media": "Media",
+  "nav_management": "Management",
+  "nav_updates": "Updates",
+
+  "auth_signin": "Signin",
+  "auth_signup": "Signup",
+  "auth_dashboard": "Dashboard",
+  "auth_myposts": "My Posts",
+  "auth_logout": "Logout",
 
   
   "site_name": "Sri Sri Ri Doyamoyee Temple",

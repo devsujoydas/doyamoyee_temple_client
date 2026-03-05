@@ -38,9 +38,9 @@ export const router = createBrowserRouter([
       { path: '/notices', element: <NoticePage />, },
       { path: '/notices/:id', element: <NoticeDetails />, },
 
-      { path: '/blogs', element: <Blogs />, },
+      { path: '/posts', element: <Blogs />, },
       {
-        path: '/blogs/:slug',
+        path: '/posts/:slug',
         element: <BlogsDetails />,
         loader: async ({ params }) => {
           const slug = params.slug;
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
             if (!res.ok) throw new Error('Failed to fetch blogs');
 
             const blogs = await res.json();
-            
+
             const blog = blogs.find(b => b.slug === slug);
             if (!blog) throw new Response("Not Found", { status: 404 });
 

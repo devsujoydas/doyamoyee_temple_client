@@ -7,7 +7,7 @@ const About = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="history" className="py-24 bg-color-primary flex items-center">
+    <section id="history" className="py-24 bg-color-primary flex items-center overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-14 px-6">
 
         {/* Image */}

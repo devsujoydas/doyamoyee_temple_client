@@ -18,7 +18,7 @@ import bannerforsm2 from "/banner/bannerforsm2.webp"
 import bannerforsm3 from "/banner/bannerforsm3.webp"
 import bannerforsm4 from "/banner/bannerforsm4.webp"
 
-import herosmvd from "../../public/hero/herosmvd.mp4"
+import herosmvd from "/hero/herosmvd.mp4"
 
 
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -145,7 +145,7 @@ const Hero = () => {
           </video>
 
           {/* Overlay Content */}
-          <div className="md:h-212.5 min-h-[93vh] w-full flex justify-center items-center relative z-10">
+          <div className="md:h-212.5 min-h-screen w-full flex justify-center items-center relative z-10">
 
             <motion.div
               initial={{ opacity: 0, y: 5 }}

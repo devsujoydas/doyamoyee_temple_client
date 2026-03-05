@@ -1,63 +1,129 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, ChevronDown } from "lucide-react";
+import { Menu, X, User, ChevronDown } from "lucide-react";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [mobileDropdown, setMobileDropdown] = useState(null);
+  const [user, setUser] = useState(null);
+  const [hideHeader, setHideHeader] = useState(false);
 
-  // Mock user state
-  const [user, setUser] = useState(null); // null = guest, else {name: 'xyz'}
+  // Header hide/show on scroll
+  useEffect(() => {
+    let lastScrollY = 0;
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 80) setHideHeader(true);
+      else setHideHeader(false);
+      lastScrollY = window.scrollY;
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const handleLanguageChange = (lang) => {
+  const changeLang = (lang) => {
     i18n.changeLanguage(lang);
     setLangOpen(false);
-    setMenuOpen(false);
+  };
+
+  const toggleMobileDropdown = (index) => {
+    setMobileDropdown(mobileDropdown === index ? null : index);
   };
 
   const navItems = [
-    { to: "/", label: t("nav_home") },
-    { to: "#history", label: t("nav_history"), anchor: true },
-    { to: "#puja", label: t("nav_events"), anchor: true },
-    { to: "/gallery", label: t("nav_gallery") },
-    { to: "/videos", label: t("nav_video") },
-    { to: "/pandits", label: t("nav_pandits") },
-    { to: "/committee", label: t("nav_committee") },
-    { to: "/lifetime-members", label: t("nav_members") },
-    { to: "/advisor", label: t("nav_advisor") },
-    { to: "/blogs", label: "পোস্ট" },
-    { to: "/notices", label: t("nav_notice") },
-    { to: "/contact", label: t("nav_contact"), },
+    { label: t("nav_home"), to: "/" },
+    {
+      label: t("nav_about"),
+      dropdown: [
+        { label: t("nav_history"), to: "#history", anchor: true },
+        { label: t("nav_events"), to: "#puja", anchor: true },
+      ],
+    },
+    {
+      label: t("nav_media"),
+      dropdown: [
+        { label: t("nav_gallery"), to: "/gallery" },
+        { label: t("nav_video"), to: "/videos" },
+      ],
+    },
+    {
+      label: t("nav_management"),
+      dropdown: [
+        { label: t("nav_pandits"), to: "/pandits" },
+        { label: t("nav_committee"), to: "/committee" },
+        { label: t("nav_members"), to: "/lifetime-members" },
+        { label: t("nav_advisor"), to: "/advisor" },
+      ],
+    },
+    { label: t("nav_notice"), to: "/notices" },
+    { label: t("nav_posts"), to: "/posts" },
+    { label: t("nav_contact"), to: "/contact" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-color-secondary shadow-md">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
+    <header
+      className={`fixed w-full z-50 backdrop-blur-md transition-transform duration-300
+        ${hideHeader ? "-translate-y-full" : "translate-y-0"}
+        bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 shadow-sm
+      `}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-color-secondary">
+        <Link
+          to="/"
+          className="text-xl md:text-2xl font-bold text-yellow-600 dark:text-yellow-400"
+        >
           {t("site_name")}
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden lg:flex items-center gap-6 font-medium text-color-primary">
+        <nav className="hidden lg:flex items-center gap-6 font-medium">
+
           {navItems.map((item, idx) =>
-            item.anchor ? (
-              <a
-                key={idx}
-                href={item.to}
-                className="hover:text-yellow-600 transition-all duration-200"
-              >
-                {item.label}
-              </a>
+            item.dropdown ? (
+              <div key={idx} className="relative group">
+                <button className="flex items-center gap-1 transition-colors hover:text-yellow-600 dark:hover:text-yellow-400">
+                  {item.label}
+                  <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                  {item.dropdown.map((sub, i) =>
+                    sub.anchor ? (
+                      <a
+                        key={i}
+                        href={sub.to}
+                        className="block px-4 py-2 text-gray-700 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
+                      >
+                        {sub.label}
+                      </a>
+                    ) : (
+                      <NavLink
+                        key={i}
+                        to={sub.to}
+                        className="block px-4 py-2 text-gray-700 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
+                      >
+                        {sub.label}
+                      </NavLink>
+                    )
+                  )}
+                </div>
+              </div>
             ) : (
               <NavLink
                 key={idx}
                 to={item.to}
-                className="hover:text-yellow-600 transition-all duration-200"
+                className={({ isActive }) =>
+                  `transition hover:text-yellow-600 dark:hover:text-yellow-400 ${
+                    isActive ? "text-yellow-700 dark:text-yellow-300 font-semibold" : ""
+                  }`
+                }
               >
                 {item.label}
               </NavLink>
@@ -68,28 +134,28 @@ const Header = () => {
           <div className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1 border px-3 py-1 rounded-md bg-yellow-100 text-black transition"
+              className="border px-3 py-1 rounded-md bg-yellow-100 dark:bg-yellow-800 text-gray-800 dark:text-gray-100 text-sm flex items-center gap-1"
             >
-              {i18n.language === "bn" ? "বাংলা" : "English"}
-              <ChevronDown size={16} />
+              {i18n.language === "bn" ? "বাংলা" : "EN"}
+              <ChevronDown size={14} />
             </button>
             <AnimatePresence>
               {langOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-50"
+                  exit={{ opacity: 0 }}
+                  className="absolute right-0 mt-2 bg-white dark:bg-gray-800 shadow-md rounded-md overflow-hidden"
                 >
                   <div
-                    onClick={() => handleLanguageChange("bn")}
-                    className="px-4 py-2 cursor-pointer hover:bg-yellow-100 text-black transition"
+                    onClick={() => changeLang("bn")}
+                    className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
                   >
                     বাংলা
                   </div>
                   <div
-                    onClick={() => handleLanguageChange("en")}
-                    className="px-4 py-2 cursor-pointer hover:bg-yellow-100 text-black transition"
+                    onClick={() => changeLang("en")}
+                    className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
                   >
                     English
                   </div>
@@ -98,41 +164,39 @@ const Header = () => {
             </AnimatePresence>
           </div>
 
-          {/* User Dropdown */}
+          {/* User Menu */}
           <div className="relative">
             <button
               onClick={() => setUserMenuOpen(!userMenuOpen)}
-              className="ml-4 w-10 h-10 rounded-full bg-yellow-600 flex items-center justify-center text-white hover:scale-105 transition"
+              className="ml-2 w-10 h-10 bg-yellow-600 dark:bg-yellow-400 text-white rounded-full flex items-center justify-center"
             >
               <User size={18} />
             </button>
             <AnimatePresence>
               {userMenuOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute right-0 mt-2 w-30 bg-white shadow-lg rounded-md overflow-hidden z-50"
+                  exit={{ opacity: 0 }}
+                  className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 shadow-md rounded-md overflow-hidden"
                 >
-                  {!user ? (
+                  {user ? (
                     <>
                       <Link
-                        onClick={() => setUserMenuOpen(!userMenuOpen)}
                         to="/dashboard"
-                        className="block px-4 py-2 hover:bg-yellow-100 text-black transition"
+                        className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
                         Dashboard
                       </Link>
                       <Link
-                        onClick={() => setUserMenuOpen(!userMenuOpen)}
                         to="/my-blogs"
-                        className="block px-4 py-2 hover:bg-yellow-100 text-black transition"
+                        className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
                         My Blogs
                       </Link>
                       <button
                         onClick={() => setUser(null)}
-                        className="w-full text-left px-4 py-2 hover:bg-yellow-100 text-black transition"
+                        className="w-full text-left px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
                         Logout
                       </button>
@@ -140,18 +204,16 @@ const Header = () => {
                   ) : (
                     <>
                       <Link
-                        onClick={() => setUserMenuOpen(!userMenuOpen)}
-                        to="/auth/signup"
-                        className="block px-4 py-2 hover:bg-yellow-100 text-black transition"
-                      >
-                        Signup
-                      </Link>
-                      <Link
-                        onClick={() => setUserMenuOpen(!userMenuOpen)}
                         to="/auth/signin"
-                        className="block px-4 py-2 hover:bg-yellow-100 text-black transition"
+                        className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
                         Signin
+                      </Link>
+                      <Link
+                        to="/auth/signup"
+                        className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
+                      >
+                        Signup
                       </Link>
                     </>
                   )}
@@ -161,124 +223,64 @@ const Header = () => {
           </div>
         </nav>
 
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden text-2xl text-white"
-        >
-          ☰
+        {/* Mobile Toggle */}
+        <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden">
+          {menuOpen ? <X size={28} className="text-gray-800 dark:text-gray-100" /> : <Menu size={28} className="text-gray-800 dark:text-gray-100" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden overflow-hidden bg-color-primary shadow-md"
-          >
-            <div className="flex flex-col space-y-3 px-4 py-4">
+          <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-col px-4 py-4 space-y-3 text-gray-800 dark:text-gray-100">
               {navItems.map((item, idx) =>
-                item.anchor ? (
-                  <a
-                    key={idx}
-                    href={item.to}
-                    onClick={() => setMenuOpen(false)}
-                    className="hover:text-yellow-600 transition"
-                  >
-                    {item.label}
-                  </a>
+                item.dropdown ? (
+                  <div key={idx}>
+                    <button
+                      onClick={() => toggleMobileDropdown(idx)}
+                      className="flex justify-between items-center w-full font-semibold text-gray-800 dark:text-gray-100"
+                    >
+                      {item.label}
+                      <ChevronDown size={16} className={`transition ${mobileDropdown === idx ? "rotate-180" : ""}`} />
+                    </button>
+                    <AnimatePresence>
+                      {mobileDropdown === idx && (
+                        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="ml-3 mt-2 flex flex-col space-y-1">
+                          {item.dropdown.map((sub, i) =>
+                            sub.anchor ? (
+                              <a key={i} href={sub.to} onClick={() => setMenuOpen(false)} className="py-1 text-sm text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                                {sub.label}
+                              </a>
+                            ) : (
+                              <NavLink key={i} to={sub.to} onClick={() => setMenuOpen(false)} className="py-1 text-sm text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                                {sub.label}
+                              </NavLink>
+                            )
+                          )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 ) : (
-                  <NavLink
-                    key={idx}
-                    to={item.to}
-                    onClick={() => setMenuOpen(false)}
-                    className="hover:text-yellow-600 transition"
-                  >
+                  <NavLink key={idx} to={item.to} onClick={() => setMenuOpen(false)} className="text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
                     {item.label}
                   </NavLink>
                 )
               )}
 
-              {/* Mobile Language */}
-              <div className="relative">
-                <button
-                  onClick={() => setLangOpen(!langOpen)}
-                  className="border px-3 py-2 rounded-md w-full text-left hover:bg-yellow-100 text-black transition"
-                >
-                  {i18n.language === "bn" ? "বাংলা" : "English"}
-                </button>
-                <AnimatePresence>
-                  {langOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute w-full bg-white rounded-md shadow-lg overflow-hidden z-50"
-                    >
-                      <div
-                        onClick={() => handleLanguageChange("bn")}
-                        className="px-4 py-2 cursor-pointer hover:bg-yellow-100 text-black transition"
-                      >
-                        বাংলা
-                      </div>
-                      <div
-                        onClick={() => handleLanguageChange("en")}
-                        className="px-4 py-2 cursor-pointer hover:bg-yellow-100 text-black transition"
-                      >
-                        English
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* User Links */}
-              <div className="border-t border-gray-300  pt-3 space-y-2">
+              {/* Auth */}
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-3 flex flex-col space-y-2">
                 {user ? (
                   <>
-                    <Link
-                      to="/dashboard"
-                      onClick={() => setMenuOpen(false)}
-                      className="block px-4 py-2 hover:bg-yellow-100 text-black transition"
-                    >
-                      Dashboard
-                    </Link>
-                    <Link
-                      to="/my-blogs"
-                      onClick={() => setMenuOpen(false)}
-                      className="block px-4 py-2 hover:bg-yellow-100 text-black transition"
-                    >
-                      My Blogs
-                    </Link>
-                    <button
-                      onClick={() => {
-                        setUser(null);
-                        setMenuOpen(false);
-                      }}
-                      className="w-full text-left px-4 py-2 hover:bg-yellow-100 text-black transition"
-                    >
-                      Logout
-                    </button>
+                    <Link to="/dashboard" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">Dashboard</Link>
+                    <Link to="/my-blogs" className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-center">My Blogs</Link>
+                    <button onClick={() => setUser(null)} className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center">Logout</button>
                   </>
                 ) : (
                   <>
-                    <Link
-                      to="/auth/signup"
-                      onClick={() => setMenuOpen(false)}
-                      className="block px-4 py-2 hover:bg-yellow-100 text-black transition"
-                    >
-                      Signup
-                    </Link>
-                    <Link
-                      to="/auth/signin"
-                      onClick={() => setMenuOpen(false)}
-                      className="block px-4 py-2 hover:bg-yellow-100 text-black transition"
-                    >
-                      Signin
-                    </Link>
+                    <Link to="/auth/signin" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">Signin</Link>
+                    <Link to="/auth/signup" className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center">Signup</Link>
                   </>
                 )}
               </div>

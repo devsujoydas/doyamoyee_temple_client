@@ -1,6 +1,6 @@
 {
- "nav_home": "হোম",
-  "nav_blogs": "ব্লগ",
+"nav_home": "হোম",
+  "nav_posts": "পোস্ট",
   "nav_history": "ইতিহাস",
   "nav_events": "পূজা",
   "nav_gallery": "গ্যালারি",
@@ -11,6 +11,16 @@
   "nav_members": "সদস্য",
   "nav_notice": "নোটিশ",
   "nav_contact": "যোগাযোগ",
+  "nav_about": "পরিচিতি",
+  "nav_media": "মিডিয়া",
+  "nav_management": "পরিচালনা",
+  "nav_updates": "আপডেট",
+
+  "auth_signin": "সাইন ইন",
+  "auth_signup": "সাইন আপ",
+  "auth_dashboard": "ড্যাশবোর্ড",
+  "auth_myposts": "আমার পোস্ট",
+  "auth_logout": "লগ আউট",
   
   "site_name": "শ্রী শ্রী রীঁ দয়াময়ী মন্দির",
   

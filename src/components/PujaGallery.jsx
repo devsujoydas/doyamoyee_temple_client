@@ -28,7 +28,7 @@ const PujaGallery = () => {
             {/* Section Header */}
             <div className="flex flex-col md:flex-row justify-between items-center mb-8 md:mb-12">
                 <div>
-                    <div className="flex flex-col md:flex-row items-center gap-3">
+                    <div className="flex flex-row items-center gap-3">
                         <img src={omSymbolsvg} alt="Om" className="w-6 h-6" />
                         <span className="text-xl font-semibold text-[#DB4242]">PUJA</span>
                         <img src={omSymbolsvg} alt="Om" className="w-6 h-6" />
