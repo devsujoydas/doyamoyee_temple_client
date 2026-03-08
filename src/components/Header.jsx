@@ -16,16 +16,16 @@ const Header = () => {
   const [hideHeader, setHideHeader] = useState(false);
 
   // Header hide/show on scroll
-  useEffect(() => {
-    let lastScrollY = 0;
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 80) setHideHeader(true);
-      else setHideHeader(false);
-      lastScrollY = window.scrollY;
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   let lastScrollY = 0;
+  //   const handleScroll = () => {
+  //     if (window.scrollY > lastScrollY && window.scrollY > 80) setHideHeader(true);
+  //     else setHideHeader(false);
+  //     lastScrollY = window.scrollY;
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const changeLang = (lang) => {
     i18n.changeLanguage(lang);
@@ -68,7 +68,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 backdrop-blur-md transition-transform duration-300
+      className={`sticky top-0 w-full z-50 backdrop-blur-md transition-transform duration-300
         ${hideHeader ? "-translate-y-full" : "translate-y-0"}
         bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 shadow-sm
       `}
@@ -93,7 +93,7 @@ const Header = () => {
                   {item.label}
                   <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
                 </button>
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-active::visible group-active:opacity-100 group-hover:visible  transition-all">
                   {item.dropdown.map((sub, i) =>
                     sub.anchor ? (
                       <a
@@ -120,8 +120,7 @@ const Header = () => {
                 key={idx}
                 to={item.to}
                 className={({ isActive }) =>
-                  `transition hover:text-yellow-600 dark:hover:text-yellow-400 ${
-                    isActive ? "text-yellow-700 dark:text-yellow-300 font-semibold" : ""
+                  `transition hover:text-yellow-600 dark:hover:text-yellow-400 ${isActive ? "text-yellow-700 dark:text-yellow-300 font-semibold" : ""
                   }`
                 }
               >
@@ -232,8 +231,15 @@ const Header = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex flex-col px-4 py-4 space-y-3 text-gray-800 dark:text-gray-100">
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
+          >
+            <div className="flex flex-col px-4 py-4 space-y-3">
+
               {navItems.map((item, idx) =>
                 item.dropdown ? (
                   <div key={idx}>
@@ -269,8 +275,42 @@ const Header = () => {
                 )
               )}
 
+              {/* Mobile Language Switch */}
+              <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
+                <button
+                  onClick={() => setLangOpen(!langOpen)}
+                  className="w-full px-3 py-2 bg-yellow-100 dark:bg-yellow-800 text-gray-800 dark:text-gray-100 rounded-md flex justify-between items-center"
+                >
+                  {i18n.language === "bn" ? "বাংলা" : "EN"}
+                  <ChevronDown size={16} />
+                </button>
+                <AnimatePresence>
+                  {langOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="flex flex-col mt-2 bg-white dark:bg-gray-800 rounded-md overflow-hidden"
+                    >
+                      <div
+                        onClick={() => changeLang("bn")}
+                        className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
+                      >
+                        বাংলা
+                      </div>
+                      <div
+                        onClick={() => changeLang("en")}
+                        className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
+                      >
+                        English
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               {/* Auth */}
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-3 flex flex-col space-y-2">
+              <div className="pt-3 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-2">
                 {user ? (
                   <>
                     <Link to="/dashboard" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">Dashboard</Link>

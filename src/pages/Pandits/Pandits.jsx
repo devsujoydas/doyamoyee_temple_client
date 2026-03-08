@@ -61,7 +61,7 @@ const Pandits = () => {
         />
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-10">
           {pandits.map((pandit, index) => (
             <motion.div
               key={pandit.id}
@@ -73,7 +73,7 @@ const Pandits = () => {
             >
 
               {/* Image halo */}
-              <div className="pt-10 pb-6 flex flex-col items-center relative">
+              <div className="pt-10 pb-3 flex flex-col items-center relative">
                 <div className="absolute -top-4 w-32 h-32 bg-yellow-100/40 rounded-full blur-2xl"></div>
                 <div className="relative w-28 h-28 rounded-full bg-yellow-50 flex items-center justify-center shadow-inner z-10">
                   <img

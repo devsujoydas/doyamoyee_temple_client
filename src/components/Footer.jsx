@@ -67,7 +67,7 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          <div className="flex flex-1 flex-wrap gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10">
             {/* Temple */}
             <div>
               <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">মন্দির</h3>
@@ -114,9 +114,9 @@ const Footer = () => {
 
       {/* Bottom */}
       <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-4 text-sm">
           <p>© {new Date().getFullYear()} {t("site_name")}. {t("footer_rights")}</p>
-          <p className="flex items-center gap-1">
+          {/* <p className="flex items-center gap-1">
             {t("footer_developed")} {t("footer_by")}{" "}
             <a
               href="https://devsujoydas.vercel.app"
@@ -126,7 +126,7 @@ const Footer = () => {
             >
               Sujoy Das
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>

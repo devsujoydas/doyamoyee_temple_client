@@ -73,17 +73,18 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
         <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-900">
           Recent Posts
         </h3>
-        <motion.div
-          layout
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
+
           className="space-y-3 sm:space-y-4">
           {randomPosts.map((post) => (
-            <div
+            <motion.div
               key={post.id}
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               className="flex gap-3 sm:gap-4 items-center pb-3 sm:pb-4 border-b border-gray-200 last:border-b-0 last:pb-0"
             >
-              <Link to={`/blogs/${post.slug}`}>
+              <Link to={`/posts/${post.slug}`}>
                 <img
                   src={post.postImg}
                   alt={post.title}
@@ -91,16 +92,16 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
                 />
               </Link>
               <div className="flex flex-col">
-                <Link to={`/blogs/${post.slug}`}>
+                <Link to={`/posts/${post.slug}`}>
                   <h4 className="text-gray-800 hover:text-red-500 font-semibold text-xs sm:text-base">
                     {post.title}
                   </h4>
                 </Link>
                 <span className="text-gray-500 text-xs sm:text-sm">{post.date}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div >
   );

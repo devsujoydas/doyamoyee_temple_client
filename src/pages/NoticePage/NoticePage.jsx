@@ -58,8 +58,8 @@ const NoticePage = () => {
 
           {/* Important Notices */}
           {importantNotices.length > 0 && (
-            <div className="mb-10">
-              <h3 className="text-xl font-semibold mb-6 text-red-600">
+            <div className="mb-10 -mt-5">
+              <h3 className="text-xl font-semibold mb-5 text-red-600">
                 গুরুত্বপূর্ণ নোটিশ
               </h3>
 
