@@ -25,6 +25,7 @@ import DashboardEventsPage from "../pages/Dashboard/DashboardEventsPage";
 import DashboardGalleryPage from "../pages/Dashboard/DashboardGalleryPage";
 import Blogs from "../pages/Blogs/Blogs";
 import BlogsDetails from "../pages/Blogs/BlogsDetails";
+import TempleHistory from "../pages/TempleHistory/TempleHistory";
 
 
 
@@ -35,6 +36,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: '/', element: <Home />, },
+      { path: '/history', element: <TempleHistory />, },
       { path: '/notices', element: <NoticePage />, },
       { path: '/notices/:id', element: <NoticeDetails />, },
 

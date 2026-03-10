@@ -38,13 +38,14 @@ const Header = () => {
 
   const navItems = [
     { label: t("nav_home"), to: "/" },
-    {
-      label: t("nav_about"),
-      dropdown: [
-        { label: t("nav_history"), to: "#history", anchor: true },
-        { label: t("nav_events"), to: "#puja", anchor: true },
-      ],
-    },
+    { label: t("nav_history"), to: "/history" },
+    // {
+    //   label: t("nav_about"),
+    //   dropdown: [
+    //     { label: t("nav_history"), to: "#history", anchor: true },
+    //     { label: t("nav_events"), to: "#puja", anchor: true },
+    //   ],
+    // },
     {
       label: t("nav_media"),
       dropdown: [
