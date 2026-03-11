@@ -36,9 +36,9 @@ export default function TempleHistory() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          src="/temple.jpg"
+          src="https://doyamoyee.netlify.app/assets/image1-lvr4Vja7.webp"
           alt="Dayamoyee Temple"
-          className="rounded-2xl shadow-xl mb-16"
+          className="rounded-2xl shadow-xl mb-16 w-full"
         />
 
         {/* Section Component */}

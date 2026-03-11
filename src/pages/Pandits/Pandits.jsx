@@ -6,25 +6,25 @@ const Pandits = () => {
   const pandits = [
     {
       id: 1,
-      name: "শ্রী রামেশ চক্রবর্তী",
+      name: "শ্রী সজল চক্রবর্তী",
       designation: "প্রধান পুরোহিত",
       experience: "১৫ বছর",
       phone: "017XXXXXXXX",
-      email: "ramesh@example.com",
+      email: "sajal@gmail.com",
       speciality: "দুর্গাপূজা ও কালীপূজা",
       availableDays: "প্রতিদিন সকাল ৮টা - দুপুর ১টা",
-      image: "https://i.fbcd.co/products/original/c-1000-designbundle-indian-pandit-19-09-c8a9cc9a82dbdb20aefac3ca28cbeb82a05609a36cbcbb3789590c2f058581cd.jpg"
+      image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?_=20170328184010"
     },
     {
       id: 2,
-      name: "শ্রী সুভাষ ভট্টাচার্য",
-      designation: "সহকারী পুরোহিত",
-      experience: "১০ বছর",
+      name: "শ্রী নিরঞ্জন ভাদুড়ি",
+      designation: "প্রধান পুরোহিত",
+      experience: "১৫ বছর",
       phone: "018XXXXXXXX",
-      email: "",
-      speciality: "গৃহ পূজা ও নামকরণ অনুষ্ঠান",
+      email: "niranjan@gmail.com",
+      speciality: "দুর্গাপূজা ও কালীপূজা",
       availableDays: "শুক্র ও শনিবার",
-      image: "https://t3.ftcdn.net/jpg/06/81/63/00/360_F_681630040_C2eolGEtUHmPAfKtLdwX6fJnvBT37M2G.jpg"
+      image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?_=20170328184010"
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const Pandits = () => {
       email: "amitabh.pandit@example.com",
       speciality: "বিবাহ ও উপনয়ন অনুষ্ঠান",
       availableDays: "সোম - বৃহস্পতি",
-      image: "https://t3.ftcdn.net/jpg/06/51/52/56/360_F_651525680_DERm3VNypYv6Sav4cmeZZuQoZ6YN8Ksq.jpg"
+      image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?_=20170328184010"
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ const Pandits = () => {
       email: "",
       speciality: "যজ্ঞ, গৃহশান্তি ও বিশেষ পূজা",
       availableDays: "শনিবার ও রবিবার",
-      image: "https://yt3.googleusercontent.com/fK0DGeqS2jEmF2qo40T7YBkK3LGge5L0iVDadJjF1ItS3KHOhm_mbW5CQRHcRy46CG4yN-Lo=s900-c-k-c0x00ffffff-no-rj"
+      image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?_=20170328184010"
     }
   ];
 
@@ -55,7 +55,7 @@ const Pandits = () => {
       <div className="max-w-7xl mx-auto">
 
         <PageHeading
-          title={"পন্ডিত"}
+          title={"পুরোহিত"}
           desc={"আমাদের মন্দিরে নিয়মিত পূজা ও ধর্মীয় আচার অনুষ্ঠান সম্পাদন করেন অভিজ্ঞ পুরোহিতবৃন্দ।"}
           shortdesc={"তারা প্রতিদিনের পূজা, বিশেষ উৎসব এবং ভক্তদের ধর্মীয় নির্দেশনা প্রদান করেন।"}
         />
