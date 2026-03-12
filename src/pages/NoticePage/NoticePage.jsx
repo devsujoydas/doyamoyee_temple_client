@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import NoticeCard from "./NoticeCard";
 import PageHeading from "../../components/PageHeading";
-import NoticeSidebar from "./NoticeSidebar";
 
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);
@@ -46,7 +45,7 @@ const NoticePage = () => {
 
   return (
     <div className="bg-linear-to-b from-[#fffaf3] via-[#f7e6d3] to-[#f1dcc6] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 py-16 flex flex-col lg:flex-row gap-8">
+      <div className="container mx-auto px-4 py-16 flex flex-col lg:flex-row gap-8">
 
         {/* Main Content */}
         <div className="flex-1">
@@ -101,7 +100,7 @@ const NoticePage = () => {
             )}
           </div>
         </div>
-       
+
       </div>
     </div>
   );

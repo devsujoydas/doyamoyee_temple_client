@@ -84,7 +84,7 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
               animate={{ opacity: 1, y: 0 }}
               className="flex gap-3 sm:gap-4 items-center pb-3 sm:pb-4 border-b border-gray-200 last:border-b-0 last:pb-0"
             >
-              <Link to={`/posts/${post.slug}`}>
+              <Link to={`/blogs/${post.slug}`}>
                 <img
                   src={post.postImg}
                   alt={post.title}
@@ -92,7 +92,7 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
                 />
               </Link>
               <div className="flex flex-col">
-                <Link to={`/posts/${post.slug}`}>
+                <Link to={`/blogs/${post.slug}`}>
                   <h4 className="text-gray-800 hover:text-red-500 font-semibold text-xs sm:text-base">
                     {post.title}
                   </h4>

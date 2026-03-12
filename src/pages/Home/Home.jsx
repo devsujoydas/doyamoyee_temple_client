@@ -1,11 +1,10 @@
 
 
 import Hero from "../../components/Hero";
-import About from "../../components/About";
-import Volunteer from "../../components/Volunteer";
-import Blogs from "../Blogs/Blogs";
-import PujaGallery from "../../components/PujaGallery";
-import BlogsSection from "../../components/BlogsSection";
+import About from "../../components/About";   
+import BlogsSection from "./BlogsSection";
+import LatestNotice from "./LatestNotice"; 
+import UpcommingEvents from "./UpcommingEvents";
 
 
 
@@ -14,10 +13,9 @@ const Home = () => {
     <div className="">
 
       <Hero />
-      <About />
-      {/* <Events /> */}
-      {/* <Volunteer /> */}
-      <PujaGallery />
+      <LatestNotice /> 
+      {/* <About />  */}
+      <UpcommingEvents />
       <BlogsSection />
 
     </div>

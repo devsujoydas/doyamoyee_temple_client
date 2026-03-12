@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import Layout from "../layouts/layout";
 import ErrorPage from "../pages/ErrorPage/Errorpage";
 import GalleryPage from "../pages/GalleryPage/GalleryPage";
 import Videos from "../pages/Videos/Videos";
@@ -16,23 +15,25 @@ import Signup from "../pages/Authentication/Signup/Signup";
 import Signin from "../pages/Authentication/Signin/Signin";
 import ResetPassword from "../pages/Authentication/ResetPassword/ResetPassword";
 import Auth from "../pages/Authentication/Auth";
-import DashboardLayout from "../Layouts/DashboardLayout";
-import DashboardHome from "../pages/Dashboard/DashboardHome";
-import DashboardNoticesPage from "../pages/Dashboard/DashboardNoticesPage";
-import DashboardMembersPage from "../pages/Dashboard/DashboardMembersPage";
-import DashboardAdvisorsPage from "../pages/Dashboard/DashboardAdvisorsPage";
-import DashboardEventsPage from "../pages/Dashboard/DashboardEventsPage";
-import DashboardGalleryPage from "../pages/Dashboard/DashboardGalleryPage";
-import Blogs from "../pages/Blogs/Blogs";
-import BlogsDetails from "../pages/Blogs/BlogsDetails";
+import DashboardLayout from "../Layouts/DashboardLayout"; 
 import TempleHistory from "../pages/TempleHistory/TempleHistory";
+import MainLayout from "../Layouts/MainLayout";
+import AdminOverview from "../pages/Admin/AdminOverview";
+import AdminBlogs from "../pages/Admin/AdminBlogs";
+import AdminNotices from "../pages/Admin/AdminNotices";
+import AdminEvents from "../pages/Admin/AdminEvents";
+import AdminDonations from "../pages/Admin/AdminDonations";
+import Donation from "../pages/Donate/Donation";
+import PujaPage from "../pages/PujaPage/PujaPage";
+import BlogsPage from "../pages/BlogsPage/BlogsPage";
+import BlogsDetails from "../pages/BlogsPage/BlogsDetails";
 
 
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <MainLayout />,
     errorElement: <ErrorPage />,
     children: [
       { path: '/', element: <Home />, },
@@ -40,9 +41,9 @@ export const router = createBrowserRouter([
       { path: '/notices', element: <NoticePage />, },
       { path: '/notices/:id', element: <NoticeDetails />, },
 
-      { path: '/posts', element: <Blogs />, },
+      { path: '/blogs', element: <BlogsPage />, },
       {
-        path: '/posts/:slug',
+        path: '/blogs/:slug',
         element: <BlogsDetails />,
         loader: async ({ params }) => {
           const slug = params.slug;
@@ -69,30 +70,31 @@ export const router = createBrowserRouter([
       { path: '/pandits', element: <Pandits />, },
       { path: '/pandits/:id', element: <PanditDetails />, },
       { path: '/committee', element: <CommitteePage />, },
-      { path: '/advisor', element: <AdvisorsPage />, },
-      { path: '/lifetime-members', element: <LifetimeMembersPage />, },
+      { path: '/advisors', element: <AdvisorsPage />, },
+      { path: '/members', element: <LifetimeMembersPage />, },
       { path: '/contact', element: <ContactPage />, },
-      {
-        path: 'auth',
-        element: <Auth />,
-        children: [
-          { path: 'signup', element: <Signup /> },
-          { path: 'signin', element: <Signin /> },
-          { path: 'reset-password', element: <ResetPassword /> },
-        ]
-      },
-      {
-        path: 'dashboard',
-        element: <DashboardLayout />,
-        children: [
-          { path: '', element: <DashboardHome /> },
-          { path: 'notices', element: <DashboardNoticesPage /> },
-          { path: 'members', element: <DashboardMembersPage /> },
-          { path: 'advisors', element: <DashboardAdvisorsPage /> },
-          { path: 'events', element: <DashboardEventsPage /> },
-          { path: 'gallery', element: <DashboardGalleryPage /> },
-        ]
-      }
+      { path: '/puja', element: <PujaPage />, },
+      { path: '/donate', element: <Donation />, },
+    ]
+  },
+  {
+    path: 'auth',
+    element: <Auth />,
+    children: [
+      { path: 'signup', element: <Signup /> },
+      { path: 'signin', element: <Signin /> },
+      { path: 'reset-password', element: <ResetPassword /> },
+    ]
+  },
+  {
+    path: 'admin',
+    element: <DashboardLayout />,
+    children: [
+      { path: '', element: < AdminOverview/> },
+      { path: 'blogs', element: <AdminBlogs /> },
+      { path: 'notices', element: <AdminNotices /> },
+      { path: 'events', element: <AdminEvents /> },
+      { path: 'donations', element: <AdminDonations /> },
     ]
   }
 ]);

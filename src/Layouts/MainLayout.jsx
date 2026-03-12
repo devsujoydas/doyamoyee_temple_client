@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom'
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header'; 
 import LoadingScreen from '../components/LoadingScreen';
-const Layout = () => {
+import Footer from '../components/Footer'; 
+const MainLayout = () => {
 
     const { i18n } = useTranslation();
     const [loading, setLoading] = useState(true)
@@ -13,9 +13,9 @@ const Layout = () => {
     useEffect(() => {
         document.body.style.fontFamily =
             i18n.language === "bn"
-                // ? '"Hind Siliguri", sans-serif'
-                ? '"Noto Sans Bengali", sans-serif'
-                : '"Playfair Display", sans-serif';
+                ? '"Hind Siliguri", sans-serif'
+                // ? '"Noto Sans Bengali", sans-serif'
+                : '"Inter", sans-serif';
 
         document.documentElement.lang = i18n.language;
     }, [i18n.language]);
@@ -39,4 +39,4 @@ const Layout = () => {
     )
 }
 
-export default Layout
+export default MainLayout

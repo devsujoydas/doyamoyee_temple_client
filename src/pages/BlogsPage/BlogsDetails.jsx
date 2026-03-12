@@ -42,7 +42,7 @@ const BlogsDetails = () => {
 
       <div className="max-w-7xl xl:mx-auto mx-3 md:mx-0 py-10 ">
         <button
-          onClick={() => navigate("/posts")}
+          onClick={() => navigate("/blogs")}
           className="inline-block cursor-pointer md:mb-8 mb-5 md:mt-0 mt-10 text-indigo-600 hover:underline"
         >
           ← ফিরে যান

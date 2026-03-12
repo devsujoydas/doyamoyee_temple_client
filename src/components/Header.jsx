@@ -39,13 +39,7 @@ const Header = () => {
   const navItems = [
     { label: t("nav_home"), to: "/" },
     { label: t("nav_history"), to: "/history" },
-    // {
-    //   label: t("nav_about"),
-    //   dropdown: [
-    //     { label: t("nav_history"), to: "#history", anchor: true },
-    //     { label: t("nav_events"), to: "#puja", anchor: true },
-    //   ],
-    // },
+    { label: t("nav_puja"), to: "/puja" },
     {
       label: t("nav_media"),
       dropdown: [
@@ -58,13 +52,14 @@ const Header = () => {
       dropdown: [
         { label: t("nav_pandits"), to: "/pandits" },
         { label: t("nav_committee"), to: "/committee" },
-        { label: t("nav_members"), to: "/lifetime-members" },
-        { label: t("nav_advisor"), to: "/advisor" },
+        { label: t("nav_members"), to: "/members" },
+        { label: t("nav_advisor"), to: "/advisors" },
       ],
     },
     { label: t("nav_notice"), to: "/notices" },
-    { label: t("nav_posts"), to: "/posts" },
+    { label: t("nav_posts"), to: "/blogs" },
     { label: t("nav_contact"), to: "/contact" },
+    { label: t("nav_donation"), to: "/donate" },
   ];
 
   return (
@@ -74,7 +69,7 @@ const Header = () => {
         bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 shadow-sm
       `}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div className="container mx-auto flex items-center justify-between px-4 py-3">
 
         {/* Logo */}
         <Link

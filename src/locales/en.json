@@ -15,6 +15,8 @@
   "nav_media": "Media",
   "nav_management": "Management",
   "nav_updates": "Updates",
+  "nav_donation": "Donation",
+  "nav_puja": "Puja",
 
   "auth_signin": "Signin",
   "auth_signup": "Signup",

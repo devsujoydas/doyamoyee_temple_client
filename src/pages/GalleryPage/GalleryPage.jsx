@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-
-// Fancybox imports
+ 
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import PageHeading from "../../components/PageHeading";
@@ -37,14 +36,14 @@ function Gallery() {
   // Initialize Fancybox with thumbnails + toolbar
   useEffect(() => {
     Fancybox.bind("[data-fancybox='gallery']", {
-      Thumbs: { autoStart: true },                 // Modern thumbnails
+      Thumbs: { autoStart: true },
       Toolbar: { display: ["zoom", "prev", "next", "close"] },
       dragToClose: true,
       animated: true,
-      animationEffect: "fade",                     // fade effect
-      animationDuration: 150,                      // hide/show duration কমিয়ে দেওয়া
-      clickSlide: "close",                         // slide click এ close
-      clickOutside: "close",                       // background click এ close
+      animationEffect: "fade",
+      animationDuration: 150,
+      clickSlide: "close",
+      clickOutside: "close",
     });
 
     return () => {

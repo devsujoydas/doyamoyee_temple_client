@@ -7,8 +7,8 @@ const BlogCard = ({ blog }) => {
     <div className="p-1">
       <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
         {/* 🔹 Blog Image */}
-        <div className="h-64 w-full overflow-hidden">
-          <Link to={`/posts/${blog?.slug}`}>
+        <div className="h-70 w-full overflow-hidden">
+          <Link to={`/blogs/${blog?.slug}`}>
             <img
               src={blog?.postImg || blog?.images[0]}
               alt={blog?.title}
@@ -39,13 +39,13 @@ const BlogCard = ({ blog }) => {
 
           {/* Title */}
           <h3 className="text-xl hover:text-[#DB4242] cursor-pointer font-bold font-family-lora mb-2">
-            <Link to={`/posts/${blog?.slug}`}>{blog?.title}</Link>
+            <Link to={`/blogs/${blog?.slug}`}>{blog?.title}</Link>
           </h3>
 
           {/* Short Description */}
           <p className="text-[#777777] line-clamp-3 text-[16px] mb-4">
             {blog?.desc.length > 120
-              ? blog.desc.slice(0, 120) + "..."
+              ? blog.desc.slice(0, 150) + "..."
               : blog.desc}
           </p>
 

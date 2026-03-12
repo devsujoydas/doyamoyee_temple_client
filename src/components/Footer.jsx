@@ -25,9 +25,10 @@ const Footer = () => {
   ];
 
   const otherLinks = [
-    { to: "/posts", label: t("nav_posts") },
+    { to: "/blogs", label: t("nav_posts") },
     { to: "/notices", label: t("nav_notice") },
     { to: "/contact", label: t("nav_contact") },
+    { to: "/donate", label: t("nav_donation") },
   ];
 
   const renderLinks = (links) =>
@@ -44,7 +45,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 pt-16 pb-8 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row gap-10 lg:gap-20">
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-10 lg:gap-20">
 
         {/* Left Column: About + Links */}
         <div className="flex-1 flex flex-col lg:flex-row gap-10 lg:gap-20">

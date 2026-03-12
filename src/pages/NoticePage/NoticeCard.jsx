@@ -29,11 +29,11 @@ const NoticeCard = ({ notice }) => {
       className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden group relative"
     >
       {/* IMAGE */}
-      <Link to={`/notices/${id}`} className="relative block w-full h-56">
+      <Link to={`/notices/${id}`} className="relative block w-full h-70">
         <LazyImage
           src={thumbnail || placeholder}
           alt={title}
-          className="w-full h-56 object-cover group-hover:scale-105 transition-all duration-300"
+          className="w-full 70 object-cover group-hover:scale-105 transition-all duration-300"
           placeholder={placeholder}
         />
 

@@ -11,7 +11,7 @@ const LazyImage = ({ src, alt, className, placeholder }) => {
       <img
         src={src || placeholder}
         alt={alt}
-        className={`${className}  transform hover:scale-125 transition duration-500 cursor-pointer transition-all${
+        className={`${className} h-full  transform hover:scale-125 transition duration-500 cursor-pointer transition-all${
           loaded ? "opacity-100" : "opacity-0"
         }`}
         onLoad={() => setLoaded(true)}

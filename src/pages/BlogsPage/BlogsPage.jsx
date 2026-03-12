@@ -4,7 +4,7 @@ import BlogCard from '../../components/BlogCard';
 import SharedPageHeading from "../../shared/SharedPageHeading";
 
 
-const Blogs = () => {
+const BlogsPage = () => {
   const [blogsData, setBlogsData] = useState([]);
 
   useEffect(() => {
@@ -16,10 +16,10 @@ const Blogs = () => {
 
 
   return (
-    <section id="blogs" className="relative bg-color-primary bg-no-repeat bg-center w-full " style={{ backgroundImage: `url(${""})` }} >
+    <section id="blogs" className="relative  bg-no-repeat bg-center w-full "  >
 
       {/* <SharedPageHeading title="দয়াময়ী মন্দিরের পোস্টসমূহ" path="পোস্ট" path2="" /> */}
-      <div className="max-w-7xl xl:mx-auto mx-3 md:mx-0 py-10 md:py-20">
+      <div className="container xl:mx-auto mx-3 md:mx-0 py-10 md:py-20">
 
         <PageHeading
           title={"দয়াময়ী মন্দিরের ব্লগ ও প্রবন্ধসমূহ"}
@@ -35,7 +35,7 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default BlogsPage;
 
 
 
