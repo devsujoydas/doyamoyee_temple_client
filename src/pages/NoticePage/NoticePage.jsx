@@ -1,9 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import NoticeCard from "./NoticeCard";
 import PageHeading from "../../shared/PageHeading";
+import { useTranslation } from "react-i18next";
 
 
 const NoticePage = () => {
+  const { t } = useTranslation();
   const [notices, setNotices] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -45,7 +47,7 @@ const NoticePage = () => {
   const noticeTypes = ["all", "event", "religious", "meeting", "announcement"];
 
   return (
-    <div className="bg-linear-to-b from-[#fffaf3] via-[#f7e6d3] to-[#f1dcc6] min-h-screen">
+    <div className=" min-h-screen">
       <div className="container mx-auto px-4 py-16 flex flex-col lg:flex-row gap-8">
 
         <div className="flex-1">
@@ -55,7 +57,7 @@ const NoticePage = () => {
           {importantNotices.length > 0 && (
             <div className="mb-10 -mt-5">
               <h3 className="text-xl font-semibold mb-5 text-red-600">
-                গুরুত্বপূর্ণ নোটিশ
+                {t("important_notice")}
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -19,7 +19,7 @@ const About = () => {
           title={t("about_title")}
           pathname={t("read_more")}
           path="/history"
-          textcolor={"text-white"}
+          textcolor={"text-black"}
         />
 
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
@@ -48,7 +48,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* About Description */}
-            <p className="text-white text-base sm:text-lg leading-relaxed">
+            <p className=" text-base sm:text-lg leading-relaxed">
               {t("about_text")}
             </p>
 
@@ -59,7 +59,7 @@ const About = () => {
             <h3 className="text-2xl sm:text-3xl font-semibold text-amber-700">
               {t("history_title")}
             </h3>
-            <p className="text-white text-base sm:text-lg leading-relaxed">
+            <p className=" text-base sm:text-lg leading-relaxed">
               {t("history_text")}
             </p>
 

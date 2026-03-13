@@ -54,11 +54,7 @@ const Pandits = () => {
     <section className="relative min-h-screen py-24 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
-        <PageHeading
-          title={"পুরোহিত"}
-          desc={"আমাদের মন্দিরে নিয়মিত পূজা ও ধর্মীয় আচার অনুষ্ঠান সম্পাদন করেন অভিজ্ঞ পুরোহিতবৃন্দ।"}
-          shortdesc={"তারা প্রতিদিনের পূজা, বিশেষ উৎসব এবং ভক্তদের ধর্মীয় নির্দেশনা প্রদান করেন।"}
-        />
+        <PageHeading section="purohit" />
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-10">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import PageHeading from "../../shared/PageHeading";
 
 const AdvisorsPage = () => {
@@ -23,11 +23,7 @@ const AdvisorsPage = () => {
 
       <div className="relative max-w-7xl mx-auto">
 
-        <PageHeading
-          title={"১৪৩০-১৪৩১ সালের সম্মানিত উপদেষ্টাবৃন্দ"}
-          desc={"শ্রী শ্রী দয়াময়ী মন্দির পরিচালনা পরিষদ"}
-          shortdesc={"জামালপুর"}
-        />
+        <PageHeading section="advisors" />
 
         <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
 

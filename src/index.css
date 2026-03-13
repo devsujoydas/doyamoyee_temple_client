@@ -62,7 +62,7 @@ p, span, div {
 
 
 
-
+/* bg-linear-to-b from-[#fffaf3] via-[#f7e6d3] to-[#f1dcc6] */
 
 
 
@@ -100,7 +100,7 @@ p, span, div {
 } */
 
 .bg-section-primary {
-  background-color: #460B2F;
+  background-color: #fffdfe;
 }
 
 .bg-section-secondary {

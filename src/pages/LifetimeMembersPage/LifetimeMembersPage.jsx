@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PageHeading from "../../shared/PageHeading";
+import { useTranslation } from "react-i18next";
 
 const LifetimeMembersPage = () => {
     const [members, setMembers] = useState([]);
 
+    const { t } = useTranslation();
     useEffect(() => {
         fetch("/json/members.json")
             .then((res) => res.json())
@@ -19,10 +21,11 @@ const LifetimeMembersPage = () => {
 
             <div className="max-w-7xl mx-auto">
 
+
                 <PageHeading
-                    title={"শ্রী শ্রী দয়াময়ী মন্দির পরিচালনা পরিষদ"}
-                    desc={"আজীবন সদস্যদের তালিকা"}
-                    shortdesc={` মোট সদস্য: ${members.length} জন`}
+                    title={t("member_title")}
+                    desc={t("member_desc")}
+                    shortdesc={t("member_shortdesc", { count: members.length })}
                 />
 
 

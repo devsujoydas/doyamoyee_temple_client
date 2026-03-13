@@ -16,7 +16,7 @@ const PageHeading = ({ title, desc, shortdesc, section }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-center mb-8 sm:mb-14 md:mb-18"
+        className="text-center"
       >
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#7a0c0c] leading-snug">
           {headingTitle}

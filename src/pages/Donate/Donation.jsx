@@ -98,17 +98,14 @@ const Donation = () => {
   };
 
   return (
-    <section className="relative py-16 px-4 sm:py-20 sm:px-6 bg-gradient-to-b from-amber-50 via-yellow-50 to-orange-100">
+    <section className="relative py-16 px-4 sm:py-20 sm:px-6 ">
       {/* Background Glow */}
       <div className="absolute top-10 left-4 w-32 h-32 sm:w-40 sm:h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full animate-pulse"></div>
       <div className="absolute bottom-10 right-4 w-40 h-40 sm:w-52 sm:h-52 bg-red-600 blur-3xl opacity-20 rounded-full animate-pulse"></div>
 
       <div className="relative max-w-6xl mx-auto">
-        <PageHeading
-          title="Donation"
-          desc="Your contribution helps Maa Doyamoyee Temple maintain its services, pujas, and spiritual activities."
-          shortdesc="Use any of the bank accounts or mobile banking options below to donate."
-        />
+        <PageHeading section="donation" />
+
 
         {/* Payment Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 md:mt-12">

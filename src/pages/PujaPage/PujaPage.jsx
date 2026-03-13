@@ -46,10 +46,10 @@ const PujaPage = () => {
       <PageHeading section="events" />
 
 
-      <div className="flex flex-col md:flex-row justify-center items-center mb-8 md:mb-12">
+      <div className="flex flex-col md:flex-row justify-center items-center mb-8 md:mb-10">
 
         {/* Filter Buttons */}
-        <div className="flex gap-2 mt-4 md:mt-0">
+        <div className="flex gap-2 ">
           {filters.map((filter) => (
             <button
               key={filter}

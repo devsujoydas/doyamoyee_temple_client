@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { useTranslation } from "react-i18next";
 
 const BlogPostCard = ({ blog }) => {
+   const { t } = useTranslation();
+
+
   useEffect(() => {
     Fancybox.bind("[data-fancybox='blog-image']", {});
     return () => Fancybox.unbind("[data-fancybox='blog-image']");
@@ -17,8 +21,8 @@ const BlogPostCard = ({ blog }) => {
 
       {/* Meta info */}
       <div className="flex flex-wrap items-center text-gray-500 text-xs sm:text-sm md:text-base gap-3 sm:gap-4 mb-5">
-        <span>👁️ {blog?.views || 0} Views</span>
-        <span>💬 {blog?.comments?.length || 0} Comments</span>
+        <span>👁️ {blog?.views || 0} {t("views")}</span>
+        <span>💬 {blog?.comments?.length || 0} {t("comments")}</span>
         <span>📅 {blog?.date}</span>
       </div>
 

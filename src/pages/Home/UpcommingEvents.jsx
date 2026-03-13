@@ -44,7 +44,7 @@ const UpcommingEvents = () => {
           title={t("upcoming_festivals")}
           pathname={t("view_all")}
           path={"/puja"}
-          textcolor={"text-white"}
+          textcolor={"text-black"}
         />
 
 

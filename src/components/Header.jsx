@@ -39,7 +39,7 @@ const Header = () => {
   const navItems = [
     { label: t("nav_home"), to: "/" },
     { label: t("nav_history"), to: "/history" },
-    { label: t("nav_puja"), to: "/puja" },
+    { label: t("nav_events"), to: "/puja" },
     {
       label: t("nav_media"),
       dropdown: [
@@ -50,14 +50,14 @@ const Header = () => {
     {
       label: t("nav_management"),
       dropdown: [
-        { label: t("nav_pandits"), to: "/pandits" },
+        { label: t("nav_purohit"), to: "/pandits" },
         { label: t("nav_committee"), to: "/committee" },
         { label: t("nav_members"), to: "/members" },
         { label: t("nav_advisor"), to: "/advisors" },
       ],
     },
-    { label: t("nav_notice"), to: "/notices" },
     { label: t("nav_posts"), to: "/blogs" },
+    { label: t("nav_notice"), to: "/notices" },
     { label: t("nav_contact"), to: "/contact" },
     { label: t("nav_donation"), to: "/donate" },
   ];
@@ -145,8 +145,8 @@ const Header = () => {
                   <div
                     onClick={() => changeLang("bn")}
                     className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "bn"
-                        ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
-                        : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
+                      ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
+                      : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
                       }`}
                   >
                     বাংলা
@@ -154,8 +154,8 @@ const Header = () => {
                   <div
                     onClick={() => changeLang("en")}
                     className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "en"
-                        ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
-                        : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
+                      ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
+                      : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
                       }`}
                   >
                     English
@@ -181,25 +181,25 @@ const Header = () => {
                   exit={{ opacity: 0 }}
                   className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 shadow-md rounded-md overflow-hidden"
                 >
-                  {user ? (
+                  {!user ? (
                     <>
                       <Link
-                        to="/dashboard"
+                        to="/admin"
                         className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
-                        Dashboard
+                        {t("auth_dashboard")}
                       </Link>
                       <Link
-                        to="/my-blogs"
+                        to="/profile"
                         className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
-                        My Blogs
+                        {t("auth_profile")}
                       </Link>
                       <button
                         onClick={() => setUser(null)}
                         className="w-full text-left px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
-                        Logout
+                        {t("auth_logout")}
                       </button>
                     </>
                   ) : (
@@ -208,13 +208,13 @@ const Header = () => {
                         to="/auth/signin"
                         className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
-                        Signin
+                        {t("auth_signin")}
                       </Link>
                       <Link
                         to="/auth/signup"
                         className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
-                        Signup
+                        {t("auth_signup")}
                       </Link>
                     </>
                   )}
@@ -315,14 +315,25 @@ const Header = () => {
               <div className="pt-3 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-2">
                 {user ? (
                   <>
-                    <Link to="/dashboard" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">Dashboard</Link>
-                    <Link to="/my-blogs" className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-center">My Blogs</Link>
-                    <button onClick={() => setUser(null)} className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center">Logout</button>
+                    <Link to="/admin" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">
+                      {t("auth_dashboard")}
+                    </Link>
+                    <Link to="/profile" className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-center">
+                      {t("auth_profile")}
+                    </Link>
+                    <button onClick={() => setUser(null)} className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center">
+
+                      {t("auth_logout")}
+                    </button>
                   </>
                 ) : (
                   <>
-                    <Link to="/auth/signin" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">Signin</Link>
-                    <Link to="/auth/signup" className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center">Signup</Link>
+                    <Link to="/auth/signin" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">
+                      {t("auth_signin")}
+                    </Link>
+                    <Link to="/auth/signup" className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center">
+                      {t("auth_signup")}
+                    </Link>
                   </>
                 )}
               </div>

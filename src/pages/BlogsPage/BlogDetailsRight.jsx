@@ -5,21 +5,26 @@ import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 
 
 const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
+  const { t } = useTranslation();
+
+
+
+
   useEffect(() => {
     Fancybox.bind("[data-fancybox='author-image']", {});
     return () => Fancybox.unbind("[data-fancybox='author-image']");
   }, []);
-
-  // Shuffle and pick 3 random posts excluding current blog
+ 
   const randomPosts = useMemo(() => {
     const filtered = recentPosts.filter((post) => post.id !== blog.id);
     for (let i = filtered.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [filtered[i], filtered[j]] = [filtered[j], filtered[i]]; // shuffle
+      [filtered[i], filtered[j]] = [filtered[j], filtered[i]]; 
     }
     return filtered.slice(0, 3);
   }, [recentPosts, blog.id]);
@@ -54,16 +59,16 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
       {/* Search */}
       <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
         <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-900">
-          Search
+          {t("search")}
         </h3>
         <div className="flex">
           <input
             type="text"
-            placeholder="Search blog posts..."
+            placeholder={t("search_placeholder")}
             className="border border-gray-300 rounded-l-xl p-2 sm:p-3 w-full text-sm sm:text-base focus:ring-2 focus:ring-[#7E4555] focus:outline-none"
           />
           <button className="bg-[#7E4555] text-white px-3 sm:px-4 py-2 sm:py-3 rounded-r-xl hover:bg-[#B5697E] text-sm sm:text-base cursor-pointer active:scale-95 transition-all">
-            Search
+            {t("search")}
           </button>
         </div>
       </div>
@@ -71,7 +76,7 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
       {/* Recent Posts */}
       <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
         <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-900">
-          Recent Posts
+          {t("recent_posts")}
         </h3>
         <div
 

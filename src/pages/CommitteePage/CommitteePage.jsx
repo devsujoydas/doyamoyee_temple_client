@@ -41,12 +41,8 @@ const CommitteePage = () => {
 
             <div className="relative max-w-7xl mx-auto">
 
-                <PageHeading
-                    title={"১৪৩০-১৪৩১ বঙ্গাব্দ কার্যকরী পরিষদ"}
-                    desc={"শ্রী শ্রী দয়াময়ী মন্দির পরিচালনা পরিষদ"}
-                />
-
-                {/* ================= TOP SECTION ================= */}
+              <PageHeading section="committee" />
+ 
 
                 <div className="grid md:grid-cols-2 gap-10 mb-24">
 

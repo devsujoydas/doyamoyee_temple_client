@@ -8,8 +8,8 @@ const Footer = () => {
   const { t } = useTranslation();
 
   const templeLinks = [
-    { to: "#history", label: t("nav_history") },
-    { to: "#puja", label: t("nav_events") },
+    { to: "/history", label: t("nav_history") },
+    { to: "/puja", label: t("nav_events") },
   ];
 
   const mediaLinks = [
@@ -18,7 +18,7 @@ const Footer = () => {
   ];
 
   const managementLinks = [
-    { to: "/pandits", label: t("nav_pandits") },
+    { to: "/pandits", label: t("nav_purohit") },
     { to: "/committee", label: t("nav_committee") },
     { to: "/members", label: t("nav_members") },
     { to: "/advisors", label: t("nav_advisor") },
@@ -56,13 +56,13 @@ const Footer = () => {
             <p className="text-sm leading-relaxed mb-4">{t("footer_about_text")}</p>
             <div className="space-y-2 text-sm">
               <p className="flex items-center gap-2">
-                <IoCall className="text-yellow-600 dark:text-yellow-400" /> +880 1234-567890
+                <IoCall className="text-yellow-600 dark:text-yellow-400" /> {t("footer_contact_phone")}
               </p>
               <p className="flex items-center gap-2">
-                <MdOutlineAlternateEmail className="text-yellow-600 dark:text-yellow-400" /> doyamoyee@gmail.com
+                <MdOutlineAlternateEmail className="text-yellow-600 dark:text-yellow-400" /> {t("footer_contact_email")}
               </p>
               <p className="flex items-center gap-2">
-                <IoLocationSharp className="text-yellow-600 dark:text-yellow-400" /> Medical Rd, Jamalpur
+                <IoLocationSharp className="text-yellow-600 dark:text-yellow-400" />  {t("footer_contact_address")}
               </p>
             </div>
           </div>
@@ -71,25 +71,25 @@ const Footer = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10">
             {/* Temple */}
             <div>
-              <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">মন্দির</h3>
+              <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">{t("nav_temple_title")}</h3>
               <ul className="space-y-2">{renderLinks(templeLinks)}</ul>
             </div>
 
             {/* Media */}
             <div>
-              <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">মিডিয়া</h3>
+              <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">{t("nav_media")}</h3>
               <ul className="space-y-2">{renderLinks(mediaLinks)}</ul>
             </div>
 
             {/* Management */}
             <div>
-              <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">পরিচালনা</h3>
+              <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">{t("nav_management")}</h3>
               <ul className="space-y-2">{renderLinks(managementLinks)}</ul>
             </div>
 
             {/* Others */}
             <div>
-              <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">অন্যান্য</h3>
+              <h3 className="text-xl font-bold text-yellow-600 mb-4 dark:text-yellow-400">{t("nav_media")}</h3>
               <ul className="space-y-2">{renderLinks(otherLinks)}</ul>
             </div>
           </div>

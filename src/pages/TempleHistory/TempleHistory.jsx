@@ -9,27 +9,14 @@ import {
   Flame,
   Calendar,
 } from "lucide-react";
+import PageHeading from "../../shared/PageHeading";
 
 export default function TempleHistory() {
   return (
-    <div className="bg-amber-50 min-h-screen py-16 px-4 md:px-10">
+    <div className=" min-h-screen py-16 px-4 md:px-10">
       <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-red-800">
-            ঐতিহ্যবাহী দয়াময়ী মন্দির
-          </h1>
-
-          <p className="text-gray-700 mt-4 text-lg">
-            মন্দিরের ইতিহাস ও ঐতিহ্য
-          </p>
-        </motion.div>
+        <PageHeading section="history" />
 
         {/* Hero Image */}
         <motion.img
