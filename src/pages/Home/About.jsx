@@ -8,11 +8,11 @@ const About = () => {
   const { t } = useTranslation();
 
   return (
-    <section
+    <section 
       id="history"
-      className="py-24  overflow-hidden bg-section-primary"
+      className="bg-section-primary"
     >
-      <div className="container mx-auto px-3">
+      <div className="custom-container">
 
         {/* Section Heading */}
         <SectionHeading

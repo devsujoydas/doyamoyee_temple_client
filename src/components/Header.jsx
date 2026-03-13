@@ -39,7 +39,7 @@ const Header = () => {
   const navItems = [
     { label: t("nav_home"), to: "/" },
     { label: t("nav_history"), to: "/history" },
-    { label: t("nav_events"), to: "/puja" },
+    { label: t("nav_events"), to: "/events" },
     {
       label: t("nav_media"),
       dropdown: [
@@ -50,7 +50,7 @@ const Header = () => {
     {
       label: t("nav_management"),
       dropdown: [
-        { label: t("nav_purohit"), to: "/pandits" },
+        { label: t("nav_purohit"), to: "/purohit" },
         { label: t("nav_committee"), to: "/committee" },
         { label: t("nav_members"), to: "/members" },
         { label: t("nav_advisor"), to: "/advisors" },

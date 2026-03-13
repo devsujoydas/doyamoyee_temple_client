@@ -15,17 +15,15 @@ const AdvisorsPage = () => {
 
 
   return (
-    <section className="relative overflow-hidden py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-
-      {/* Glow Background */}
+    <section className="relative"> 
       <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
-      <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
-
-      <div className="relative max-w-7xl mx-auto">
-
+      <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div> 
+      <div className="custom-container"> 
         <PageHeading section="advisors" />
 
-        <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+        
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 my-10">
 
           {advisors.map((advisor, index) => (
             <motion.div
@@ -49,7 +47,7 @@ const AdvisorsPage = () => {
 
               {/* Glow Hover Effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 
-              bg-gradient-to-r from-yellow-400/10 to-red-600/10 
+              bg-linear-to-r from-yellow-400/10 to-red-600/10 
               transition duration-500"></div>
 
               {/* Content */}

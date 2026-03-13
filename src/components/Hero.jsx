@@ -103,7 +103,7 @@ const Hero = () => {
                       className="mt-6 flex gap-4"
                     >
                       <Link
-                        to="/puja"
+                        to="/events"
                         className="bg-yellow-500 px-6 py-3 rounded font-semibold hover:bg-yellow-600 transition"
                       >
                         {t("hero_cta_events")}
@@ -180,7 +180,7 @@ const Hero = () => {
                       className="mt-4 sm:mt-6 flex  flex-row gap-3 sm:gap-4"
                     >
                       <Link
-                        to="/puja"
+                        to="/events"
                         className="bg-yellow-500 px-4 sm:px-6 py-2 sm:py-3 rounded font-semibold text-sm sm:text-base md:text-lg lg:text-xl hover:bg-yellow-600 transition"
                       >
                         {t("hero_cta_events")}

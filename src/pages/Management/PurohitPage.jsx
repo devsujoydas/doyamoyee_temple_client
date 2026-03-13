@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import PageHeading from "../../shared/PageHeading";
 
-const Pandits = () => {
+const PurohitPage = () => {
   const pandits = [
     {
       id: 1,
@@ -51,13 +51,14 @@ const Pandits = () => {
   ];
 
   return (
-    <section className="relative min-h-screen py-24 px-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-
+    <section className="relative">
+      <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
+      <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
+      <div className="custom-container">
         <PageHeading section="purohit" />
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-6 lg:gap-8 xl:gap-10 my-10">
           {pandits.map((pandit, index) => (
             <motion.div
               key={pandit.id}
@@ -157,4 +158,4 @@ const Pandits = () => {
   );
 };
 
-export default Pandits;
+export default PurohitPage;

@@ -33,21 +33,17 @@ const CommitteePage = () => {
     );
 
     return (
-        <section className="relative overflow-hidden py-16 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
-
-            {/* Glow Background */}
+        <section className="relative">
             <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
             <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
+            <div className="custom-container">
+                <PageHeading section="committee" />
 
-            <div className="relative max-w-7xl mx-auto">
 
-              <PageHeading section="committee" />
- 
-
-                <div className="grid md:grid-cols-2 gap-10 mb-24">
+                <div className="grid md:grid-cols-2 gap-10 my-10">
 
                     {/* LEFT SIDE */}
-                    <div className="space-y-8">
+                    <div className="space-y-8 shadow-md h-fit p-3 rounded-xl">
 
                         {/* President */}
                         {president && (
@@ -69,32 +65,34 @@ const CommitteePage = () => {
                         )}
 
                         {/* Vice Presidents */}
-                        {vicePresidents.map((m, i) => (
-                            <motion.div
-                                key={m.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * .05 }}
-                                viewport={{ once: true }}
-                                className="relative bg-white/80 backdrop-blur border border-yellow-500/30 p-6 rounded-xl text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition"
-                            >
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {vicePresidents.map((m, i) => (
+                                <motion.div
+                                    key={m.id}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * .05 }}
+                                    viewport={{ once: true }}
+                                    className="relative bg-white/80 backdrop-blur border border-yellow-500/30 p-6 rounded-xl text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition"
+                                >
 
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-yellow-500 to-red-700 text-white px-3 py-1 rounded-full text-xs">
-                                    {m.designation}
-                                </div>
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-yellow-500 to-red-700 text-white px-3 py-1 rounded-full text-xs">
+                                        {m.designation}
+                                    </div>
 
-                                <h3 className="mt-2 text-lg font-semibold text-gray-800 ">
-                                    {m.name}
-                                </h3>
+                                    <h3 className="mt-2 text-lg font-semibold text-gray-800 ">
+                                        {m.name}
+                                    </h3>
 
-                            </motion.div>
-                        ))}
-
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
 
 
+
                     {/* RIGHT SIDE */}
-                    <div className="space-y-8">
+                    <div className="space-y-8 shadow-md h-fit p-3 rounded-xl">
 
                         {/* General Secretary */}
                         {generalSecretary && (
@@ -118,27 +116,28 @@ const CommitteePage = () => {
                         )}
 
                         {/* Other Secretaries */}
-                        {secretaries.map((m, i) => (
-                            <motion.div
-                                key={m.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * .05 }}
-                                viewport={{ once: true }}
-                                className="relative bg-white/80 backdrop-blur border border-yellow-500/30 p-6 rounded-xl text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition"
-                            >
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {secretaries.map((m, i) => (
+                                <motion.div
+                                    key={m.id}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * .05 }}
+                                    viewport={{ once: true }}
+                                    className="relative bg-white/80 backdrop-blur border border-yellow-500/30 p-6 rounded-xl text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition"
+                                >
 
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-yellow-500 to-red-700 text-white px-3 py-1 rounded-full text-xs">
-                                    {m.designation}
-                                </div>
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-yellow-500 to-red-700 text-white px-3 py-1 rounded-full text-xs">
+                                        {m.designation}
+                                    </div>
 
-                                <h3 className="mt-2 text-lg font-semibold text-gray-800 ">
-                                    {m.name}
-                                </h3>
+                                    <h3 className="mt-2 text-lg font-semibold text-gray-800 ">
+                                        {m.name}
+                                    </h3>
 
-                            </motion.div>
-                        ))}
-
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
 
                 </div>

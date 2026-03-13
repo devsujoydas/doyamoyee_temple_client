@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import omSymbolsvg from "/Om_symbol.svg";
+import { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 import axios from "axios";
 import PageHeading from "../../shared/PageHeading";
@@ -7,8 +6,6 @@ import PageHeading from "../../shared/PageHeading";
 const Videos = () => {
     const [videoUrls, setVideoUrls] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [selectedTemple, setSelectedTemple] = useState("all");
-    const [selectedTopic, setSelectedTopic] = useState("all");
 
     useEffect(() => {
         const getVideos = async () => {
@@ -32,36 +29,31 @@ const Videos = () => {
     }, []);
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-10 md:py-16">
+        <div className="relative">
+            <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
+            <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
+            <div className="custom-container">
+                <PageHeading section="videos" />
 
-       
 
-            <PageHeading
-                title={"শ্রী শ্রীঁ রী দয়াময়ী মন্দিরের ভিডিওসমূহ"}
-                desc={"মন্দিরের পূজা-পার্বণ, উৎসব, সাংস্কৃতিক অনুষ্ঠান ও বিশেষ মুহূর্তের ভিডিও সংগ্রহ"}
-            />
-      
-
-            {/* Loading */}
-            {loading && (
-                <div className="text-center text-gray-500">Loading videos...</div>
-            )}
-
-            {/* Masonry Grid */}
-            {!loading && (
-                <div className="columns-1 sm:columns-3 lg:columns-4 gap-6 space-y-6">
-                    {videoUrls.map((video) => (
-                        <VideoCard key={video.id} video={video} />
-                    ))}
-                </div>
-            )}
-
-            {/* Empty State */}
-            {!loading && videoUrls.length === 0 && (
-                <div className="text-center text-gray-500 mt-10">
-                    No videos found.
-                </div>
-            )}
+                {loading && (
+                    <div className="text-center text-gray-500">Loading videos...</div>
+                )}
+ 
+                {!loading && (
+                    <div className="columns-1 sm:columns-3 lg:columns-4 gap-6 space-y-6">
+                        {videoUrls.map((video) => (
+                            <VideoCard key={video.id} video={video} />
+                        ))}
+                    </div>
+                )}
+ 
+                {!loading && videoUrls.length === 0 && (
+                    <div className="text-center text-gray-500 mt-10">
+                        No videos found.
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

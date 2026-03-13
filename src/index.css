@@ -111,3 +111,8 @@ p, span, div {
 
 /* 7A0000 bg primary er jonno  */
 /* FB8B24 button er jonno */
+
+
+.custom-container{
+  @apply container mx-auto px-3 md:px-10 xl:px-0 py-10  md:py-20  
+}

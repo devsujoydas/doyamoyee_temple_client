@@ -47,12 +47,15 @@ const NoticePage = () => {
   const noticeTypes = ["all", "event", "religious", "meeting", "announcement"];
 
   return (
-    <div className=" min-h-screen">
-      <div className="container mx-auto px-4 py-16 flex flex-col lg:flex-row gap-8">
+    <div className="  relative">
+      <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
+      <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
+      <div className="custom-container">
+        <PageHeading section="notice" />
 
-        <div className="flex-1">
-          <PageHeading section="notice" />
 
+
+        <div className="">
           {/* Important Notices */}
           {importantNotices.length > 0 && (
             <div className="mb-10 -mt-5">
@@ -93,7 +96,7 @@ const NoticePage = () => {
               ))
             ) : (
               <p className="text-center text-gray-500 mt-10 col-span-full">
-                বর্তমানে কোনো নোটিশ নেই।
+                {t("no_notice")}
               </p>
             )}
           </div>

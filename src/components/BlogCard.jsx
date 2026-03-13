@@ -1,8 +1,10 @@
 import { FaRegCalendarAlt } from "react-icons/fa";
 import omSymbolsvg from "/Om_symbol.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const BlogCard = ({ blog }) => {
+    const { t } = useTranslation();
   return (
     <div className="p-1">
       <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
@@ -51,8 +53,8 @@ const BlogCard = ({ blog }) => {
 
           {/* Views & Comments */}
           <div className="flex items-center gap-4 text-gray-500 text-sm mb-4">
-            <span>👁️ {blog?.views?.length || blog?.views} Views</span>
-            <span>💬 {blog?.comments?.length} Comments</span>
+            <span>👁️ {blog?.views?.length || blog?.views} {t("views")}</span>
+            <span>💬 {blog?.comments?.length} {t("comments")}</span>
           </div>
 
           {/* Author */}

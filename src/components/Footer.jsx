@@ -9,7 +9,7 @@ const Footer = () => {
 
   const templeLinks = [
     { to: "/history", label: t("nav_history") },
-    { to: "/puja", label: t("nav_events") },
+    { to: "/events", label: t("nav_events") },
   ];
 
   const mediaLinks = [
@@ -18,7 +18,7 @@ const Footer = () => {
   ];
 
   const managementLinks = [
-    { to: "/pandits", label: t("nav_purohit") },
+    { to: "/purohit", label: t("nav_purohit") },
     { to: "/committee", label: t("nav_committee") },
     { to: "/members", label: t("nav_members") },
     { to: "/advisors", label: t("nav_advisor") },

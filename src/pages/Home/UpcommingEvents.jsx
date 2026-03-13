@@ -43,7 +43,7 @@ const UpcommingEvents = () => {
         <SectionHeading
           title={t("upcoming_festivals")}
           pathname={t("view_all")}
-          path={"/puja"}
+          path={"/events"}
           textcolor={"text-black"}
         />
 

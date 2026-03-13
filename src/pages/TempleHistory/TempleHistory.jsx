@@ -13,8 +13,13 @@ import PageHeading from "../../shared/PageHeading";
 
 export default function TempleHistory() {
   return (
-    <div className=" min-h-screen py-16 px-4 md:px-10">
-      <div className="max-w-6xl mx-auto">
+    <div className=" min-h-screen py-16 px-4 md:px-10 relative">
+      {/* Glow Background */}
+      <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
+      <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
+
+
+      <div className="container mx-auto">
 
         <PageHeading section="history" />
 

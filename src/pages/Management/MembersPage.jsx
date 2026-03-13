@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import PageHeading from "../../shared/PageHeading";
 import { useTranslation } from "react-i18next";
 
-const LifetimeMembersPage = () => {
+const MembersPage = () => {
     const [members, setMembers] = useState([]);
 
     const { t } = useTranslation();
@@ -17,11 +17,10 @@ const LifetimeMembersPage = () => {
 
 
     return (
-        <section className="py-24 px-4 sm:px-6 ">
-
-            <div className="max-w-7xl mx-auto">
-
-
+        <section className="relative"> 
+            <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
+            <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
+            <div className="custom-container">
                 <PageHeading
                     title={t("member_title")}
                     desc={t("member_desc")}
@@ -29,7 +28,10 @@ const LifetimeMembersPage = () => {
                 />
 
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-10">
 
                     {members.map((member, index) => (
                         <motion.div
@@ -58,4 +60,4 @@ const LifetimeMembersPage = () => {
     );
 };
 
-export default LifetimeMembersPage;
+export default MembersPage;
