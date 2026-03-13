@@ -42,7 +42,7 @@ const LifetimeMembersPage = () => {
 
                             </div>
 
-                            <h3 className="mt-3 text-sm sm:text-base md:text-lg font-semibold text-gray-800 font-family-hindSiliguri">
+                            <h3 className="mt-3 text-sm sm:text-base md:text-lg font-semibold text-gray-800 ">
                                 {member.name}
                             </h3>
                         </motion.div>

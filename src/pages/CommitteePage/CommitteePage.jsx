@@ -66,7 +66,7 @@ const CommitteePage = () => {
                                     সভাপতি
                                 </div>
 
-                                <h3 className="mt-3 text-xl md:text-2xl font-bold font-family-hindSiliguri">
+                                <h3 className="mt-3 text-xl md:text-2xl font-bold ">
                                     {president.name}
                                 </h3>
                             </motion.div>
@@ -87,7 +87,7 @@ const CommitteePage = () => {
                                     {m.designation}
                                 </div>
 
-                                <h3 className="mt-2 text-lg font-semibold text-gray-800 font-family-hindSiliguri">
+                                <h3 className="mt-2 text-lg font-semibold text-gray-800 ">
                                     {m.name}
                                 </h3>
 
@@ -114,7 +114,7 @@ const CommitteePage = () => {
                                     সাধারণ সম্পাদক
                                 </div>
 
-                                <h3 className="mt-3 text-xl md:text-2xl font-bold font-family-hindSiliguri">
+                                <h3 className="mt-3 text-xl md:text-2xl font-bold ">
                                     {generalSecretary.name}
                                 </h3>
 
@@ -136,7 +136,7 @@ const CommitteePage = () => {
                                     {m.designation}
                                 </div>
 
-                                <h3 className="mt-2 text-lg font-semibold text-gray-800 font-family-hindSiliguri">
+                                <h3 className="mt-2 text-lg font-semibold text-gray-800 ">
                                     {m.name}
                                 </h3>
 
@@ -172,7 +172,7 @@ const CommitteePage = () => {
                                     {m.designation}
                                 </div>
 
-                                <h3 className="mt-2 text-base font-semibold text-gray-800 font-family-hindSiliguri">
+                                <h3 className="mt-2 text-base font-semibold text-gray-800 ">
                                     {m.name}
                                 </h3>
 

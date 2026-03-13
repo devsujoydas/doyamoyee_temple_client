@@ -17,7 +17,7 @@ const About = () => {
         {/* Section Heading */}
         <SectionHeading
           title={t("about_title")}
-          pathname={"Read More"}
+          pathname={t("read_more")}
           path="/history"
           textcolor={"text-white"}
         />

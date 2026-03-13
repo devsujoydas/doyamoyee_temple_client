@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 const ErrorPage = () => {
   const navigate = useNavigate()
   return (
-    <div className='flex justify-center items-center h-screen font-family-poppins'>
+    <div className='flex justify-center items-center h-screen'>
       <div className='text-center space-y-2'>
 
         <h1 className='font-semibold text-2xl'>This page isn't available right now</h1>

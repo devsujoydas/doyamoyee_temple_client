@@ -3,8 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HiArrowRight, HiCalendar } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import SectionHeading from "../../shared/SectionHeading";
+import { useTranslation } from "react-i18next";
+
 
 const UpcommingEvents = () => {
+  const { t } = useTranslation();
   const [upcommingEvents, setUpcommingEvents] = useState([]);
 
   useEffect(() => {
@@ -38,8 +41,8 @@ const UpcommingEvents = () => {
 
 
         <SectionHeading
-          title={"Upcoming Festivals"}
-          pathname={"View All"}
+          title={t("upcoming_festivals")}
+          pathname={t("view_all")}
           path={"/puja"}
           textcolor={"text-white"}
         />

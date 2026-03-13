@@ -5,7 +5,7 @@ import PageHeading from "../../shared/PageHeading";
 
 const Contact = () => {
   return (
-    <section className="min-h-screen py-16 px-4 sm:py-24 bg-gradient-to-b from-yellow-50 via-amber-50 to-orange-100">
+    <section className="min-h-screen py-16 px-4 sm:py-24">
       <div className="max-w-7xl mx-auto">
 
         {/* Animated Page Heading */}
@@ -14,11 +14,7 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <PageHeading
-            title="যোগাযোগ"
-            desc="আমাদের মন্দির সম্পর্কে তথ্য বা যোগাযোগের জন্য নিচের ঠিকানা ব্যবহার করুন।"
-            shortdesc="ফোন, ইমেইল অথবা সরাসরি আসার মাধ্যমে যোগাযোগ করা সম্ভব।"
-          />
+          <PageHeading section="contact" />
         </motion.div>
 
         {/* Grid: Contact Info + Map */}

@@ -60,7 +60,7 @@ const AdvisorsPage = () => {
               <div className="relative border-l-4 border-yellow-600 pl-4 space-y-2">
 
                 <h3 className="text-lg font-semibold text-gray-900 
-                font-family-hindSiliguri leading-snug">
+                 leading-snug">
                   {advisor.name}
                 </h3>
 

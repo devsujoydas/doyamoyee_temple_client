@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useState, useEffect } from "react"; 
 import { motion } from "framer-motion";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
@@ -14,8 +13,7 @@ const images = Object.values(
   })
 );
 
-function Gallery() {
-  const { t } = useTranslation();
+function Gallery() { 
   const [visibleCount, setVisibleCount] = useState(12);
 
   const itemVariants = {
@@ -49,12 +47,9 @@ function Gallery() {
       <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
       <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative container mx-auto">
 
-        <PageHeading
-          title={t("gallery_title")}
-          desc={t("gallery_text")}
-        />
+       <PageHeading section="gallery" />
 
         {/* Gallery Grid */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
@@ -81,7 +76,7 @@ function Gallery() {
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-400 flex items-center justify-center">
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-400 flex items-center justify-center">
 
                 <FiZoomIn className="text-white text-3xl opacity-90" />
 

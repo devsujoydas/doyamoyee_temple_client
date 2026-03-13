@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import NoticeCard from "./NoticeCard";
 import PageHeading from "../../shared/PageHeading";
 
+
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -47,13 +48,8 @@ const NoticePage = () => {
     <div className="bg-linear-to-b from-[#fffaf3] via-[#f7e6d3] to-[#f1dcc6] min-h-screen">
       <div className="container mx-auto px-4 py-16 flex flex-col lg:flex-row gap-8">
 
-        {/* Main Content */}
         <div className="flex-1">
-          {/* Heading */}
-          <PageHeading
-            title={"শ্রী শ্রী দয়াময়ী মন্দিরের নোটিশ"}
-            desc={"মন্দিরের সকল গুরুত্বপূর্ণ ঘোষণা ও অনুষ্ঠান"}
-          />
+          <PageHeading section="notice" />
 
           {/* Important Notices */}
           {importantNotices.length > 0 && (

@@ -144,13 +144,19 @@ const Header = () => {
                 >
                   <div
                     onClick={() => changeLang("bn")}
-                    className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
+                    className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "bn"
+                        ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
+                        : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
+                      }`}
                   >
                     বাংলা
                   </div>
                   <div
                     onClick={() => changeLang("en")}
-                    className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
+                    className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "en"
+                        ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
+                        : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
+                      }`}
                   >
                     English
                   </div>

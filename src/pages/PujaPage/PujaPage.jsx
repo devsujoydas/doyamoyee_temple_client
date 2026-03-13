@@ -43,11 +43,7 @@ const PujaPage = () => {
       {/* Section Header */}
 
 
-      <PageHeading
-        title={"দয়াময়ী মন্দিরের পূজা ও ধর্মীয় উৎসবসমূহ"}
-        desc={"শ্রী শ্রী দয়াময়ী মন্দিরে সারা বছর জুড়ে অনুষ্ঠিত বিভিন্ন পূজা, ধর্মীয় অনুষ্ঠান ও উৎসবের তথ্য এখানে প্রদান করা হয়েছে।"}
-        shortdesc={"ভক্তরা এখানে আসন্ন পূজা, উৎসবের তারিখ এবং বিস্তারিত তথ্য সহজেই জানতে পারবেন।"}
-      />
+      <PageHeading section="events" />
 
 
       <div className="flex flex-col md:flex-row justify-center items-center mb-8 md:mb-12">

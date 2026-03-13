@@ -1,48 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@300;400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif+Bengali:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --color-temple-primary: #E65100;
-  --color-temple-secondary: #7A0000;
-  --color-temple-accent: #C9A227;
-  
-  --color-temple-bg: #FFF8E1;
-  --color-temple-text: #3E2723;
-  --color-temple-muted: #5D4037;
+:root {
+  /* Light Mode Colors */
+  --bg-primary-light: #FFFFFF;
+  --bg-secondary-light: #FDF5E6;
+  /* Old Lace - হালকা চন্দন রঙ */
+  --text-main-light: #2F2F2F;
+  /* Description এর জন্য */
+  --heading-page-light: #B22222;
+  /* H1 এর জন্য গাঢ় লাল */
+  --heading-section-light: #8B4513;
+  /* H2/H3 এর জন্য খয়েরি */
+  --nav-link-light: #555555;
+  --nav-active-light: #800000;
+
+  /* Dark Mode Colors */
+  --bg-primary-dark: #121212;
+  --bg-secondary-dark: #1A1A1A;
+  --text-main-dark: #E0E0E0;
+  --heading-page-dark: #FF9933;
+  /* Saffron */
+  --heading-section-dark: #FFD700;
+  /* Gold */
+  --nav-link-dark: #B0B0B0;
+  --nav-active-dark: #FFD700;
+
+  /* Universal Accents (Buttons & Icons) */
+  --accent-gold: #FFD700;
+  --accent-saffron: #FF9933;
+  --accent-saffron-hover: #E67E22;
 }
 
-.font-family-poppins {
-  font-family: "Poppins", sans-serif;
-}
 
-.font-family-hindSiliguri {
+/* বাংলা ভাষার জন্য স্টাইল */
+.lang-bn {
   font-family: "Hind Siliguri", sans-serif;
+  /* font-family: 'Noto Serif Bengali', serif !important; */
+}
+.lang-bn h1, .lang-bn h2, .lang-bn .heading-style {
+  font-family: 'Galada', cursive !important;
+  line-height: 1.4;
 }
 
-.font-family-playfairDisplay {
-  font-family: "Playfair Display", serif;
+/* ইংরেজি ভাষার জন্য স্টাইল */
+.lang-en {
+  font-family: 'Lora', serif !important;
+}
+.lang-en h1, .lang-en h2, .lang-en .heading-style {
+  font-family: 'Playfair Display', serif !important;
+  line-height: 1.2;
 }
 
-.font-family-inter {
-  font-family: "Inter", sans-serif;
+/* কমন বডি টেক্সট সেটিংস */
+p, span, div {
+  line-height: 1.6;
 }
 
-.section-title {
-  color: #fa0002;
 
-}
 
-.section-text {
-  color: #44233B;
-}
 
-.text-color-primary {
-  color: white;
-}
 
-.text-color-secondary {
-  color: #CB8401;
-}
+
+
+
+
 
 
 .btn-primary {
@@ -68,12 +90,24 @@
 }
 
 
+/* .bg-section-primary { */
+/* @apply bg-linear-to-b from-yellow-50 via-amber-50 to-orange-100 */
+/* background-color: #7A0000;
+} */
+
+/* .bg-section-secondary { 
+  background-color: #FFF8E1;
+} */
+
 .bg-section-primary {
-  /* @apply bg-linear-to-b from-yellow-50 via-amber-50 to-orange-100 */
-  background-color: #7A0000;
+  background-color: #460B2F;
 }
 
 .bg-section-secondary {
-  /* @apply bg-linear-to-b from-yellow-50 via-amber-50 to-orange-100 */
-  background-color: #FFF8E1;
+  background-color: #FDF5E6;
 }
+
+
+
+/* 7A0000 bg primary er jonno  */
+/* FB8B24 button er jonno */

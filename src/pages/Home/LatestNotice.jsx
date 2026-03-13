@@ -9,9 +9,10 @@ import { Autoplay } from 'swiper/modules';
 import { useEffect, useState } from "react";
 import NoticeCard from '../NoticePage/NoticeCard';
 import SectionHeading from '../../shared/SectionHeading';
-
+import { useTranslation } from "react-i18next";
 
 const LatestNotice = () => {
+    const { t } = useTranslation();
   const [notices, setNotices] = useState([]);
 
   useEffect(() => {
@@ -46,9 +47,10 @@ const LatestNotice = () => {
 
 
         <SectionHeading
-          title={"Latest Notices"}
-          pathname={"View All"}
+          title={t("latest_notices")}
+          pathname={t("view_all")}
           path={"/notices"}
+          textcolor={"text-black"}
         />
 
 

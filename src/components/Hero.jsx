@@ -111,7 +111,7 @@ const Hero = () => {
 
                       <Link
                         to="/history"
-                        className="bg-green-500 px-6 py-3 rounded font-semibold hover:bg-green-600 transition"
+                        className="bg-[#9A031E] px-6 py-3 rounded font-semibold  transition"
                       >
                         {t("hero_cta_volunteer")}
                       </Link>
@@ -188,7 +188,7 @@ const Hero = () => {
 
                       <Link
                         to="/history"
-                        className="bg-green-500 px-4 sm:px-6 py-2 sm:py-3 rounded font-semibold text-sm sm:text-base md:text-lg lg:text-xl hover:bg-green-600 transition"
+                        className="bg-[#9A031E] px-4 sm:px-6 py-2 sm:py-3 rounded font-semibold text-sm sm:text-base md:text-lg lg:text-xl  transition"
                       >
                         {t("hero_cta_volunteer")}
                       </Link>

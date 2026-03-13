@@ -12,19 +12,21 @@ const MainLayout = () => {
 
 
     useEffect(() => {
-        document.body.style.fontFamily =
-            i18n.language === "bn"
-                ? '"Hind Siliguri", sans-serif'
-                // ? '"Noto Sans Bengali", sans-serif'
-                : '"Inter", sans-serif';
+        const currentLang = i18n.language;
+        document.documentElement.lang = currentLang;
 
-        document.documentElement.lang = i18n.language;
+        // বডি থেকে পুরানো ল্যাঙ্গুয়েজ ক্লাস রিমুভ করে নতুনটা অ্যাড করা
+        document.body.classList.remove('lang-bn', 'lang-en');
+        document.body.classList.add(`lang-${currentLang}`);
     }, [i18n.language]);
 
     setTimeout(() => {
         setLoading(false)
     }, 500);
-// bg-linear-to-b from-[#fffaf3] via-[#f7e6d3] to-[#f1dcc6]
+
+
+
+    // bg-linear-to-b from-[#fffaf3] via-[#f7e6d3] to-[#f1dcc6]
     return (
         <div className=''>
             {loading ?

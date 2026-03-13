@@ -10,10 +10,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi";
 import SectionHeading from "../../shared/SectionHeading";
-
+import { useTranslation } from "react-i18next";
 
 
 const BlogsSection = () => {
+    const { t } = useTranslation();
   const [blogsData, setBlogsData] = useState([]);
 
   useEffect(() => {
@@ -29,9 +30,10 @@ const BlogsSection = () => {
       <div className="container xl:mx-auto md:px-0 px-3 md:mx-10 py-10 md:py-20">
 
         <SectionHeading
-          title={"Blogs"}
-          pathname={"View All"}
+          title={t("blogs")}
+          pathname={t("view_all")}
           path={"/blogs"}
+          textcolor={"text-black"}
         />
 
 

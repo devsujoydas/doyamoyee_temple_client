@@ -38,7 +38,7 @@ const BlogCard = ({ blog }) => {
           </div>
 
           {/* Title */}
-          <h3 className="text-xl hover:text-[#DB4242] cursor-pointer font-bold font-family-lora mb-2">
+          <h3 className="text-xl hover:text-[#DB4242] cursor-pointer font-bold  mb-2">
             <Link to={`/blogs/${blog?.slug}`}>{blog?.title}</Link>
           </h3>
 
