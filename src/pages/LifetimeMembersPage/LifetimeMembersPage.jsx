@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import PageHeading from "../../components/PageHeading";
+import PageHeading from "../../shared/PageHeading";
 
 const LifetimeMembersPage = () => {
     const [members, setMembers] = useState([]);

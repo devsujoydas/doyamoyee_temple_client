@@ -5,6 +5,7 @@
   --color-temple-primary: #E65100;
   --color-temple-secondary: #7A0000;
   --color-temple-accent: #C9A227;
+  
   --color-temple-bg: #FFF8E1;
   --color-temple-text: #3E2723;
   --color-temple-muted: #5D4037;
@@ -38,29 +39,28 @@
 .text-color-primary {
   color: white;
 }
+
 .text-color-secondary {
   color: #CB8401;
 }
 
-.bg-color-primary {
-  background-color: #FDF8F2;
+
+.btn-primary {
+  @apply bg-[#7a0c0c] text-white md:text-[16px] text-sm md:px-6 px-4 py-2 md:py-3 rounded-md hover:bg-white hover:text-[#4B1E2F] border border-transparent hover:border-zinc-300 active:scale-95 transition-all cursor-pointer
 }
 
-.bg-color-secondary {
-  background-color: #101828;
-}
-
-.btn-primary{
-  @apply bg-[#7a0c0c] text-white md:text-[16px] text-sm md:px-6 px-4 py-2 md:py-3 rounded-md hover:bg-white hover:text-[#4B1E2F] border border-transparent hover:border-zinc-300 active:scale-95 transition-all cursor-pointer 
-}
-
-.btn-signin{
+.btn-signin {
   @apply bg-[#7a0c0c] text-white px-8 py-2 rounded-md hover:bg-white hover:text-[#4B1E2F] border border-transparent hover:border-black active:scale-95 transition-all cursor-pointer
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .animate-fadeIn {
@@ -68,93 +68,12 @@
 }
 
 
+.bg-section-primary {
+  /* @apply bg-linear-to-b from-yellow-50 via-amber-50 to-orange-100 */
+  background-color: #7A0000;
+}
 
-
-
-@layer base {
-  :root {
-    --background: 30 25% 97%;
-    --foreground: 20 20% 12%;
-
-    --card: 30 20% 99%;
-    --card-foreground: 20 20% 12%;
-
-    --popover: 30 20% 99%;
-    --popover-foreground: 20 20% 12%;
-
-    --primary: 15 80% 45%;
-    --primary-foreground: 30 25% 97%;
-
-    --secondary: 35 60% 92%;
-    --secondary-foreground: 20 20% 12%;
-
-    --muted: 30 15% 93%;
-    --muted-foreground: 20 10% 45%;
-
-    --accent: 45 85% 55%;
-    --accent-foreground: 20 20% 12%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 15 80% 45%;
-
-    --radius: 0.75rem;
-
-    --temple-gold: 45 85% 55%;
-    --temple-saffron: 15 80% 45%;
-    --temple-maroon: 0 60% 30%;
-    --temple-cream: 30 25% 97%;
-    --temple-dark: 20 20% 12%;
-
-    --sidebar-background: 20 15% 15%;
-    --sidebar-foreground: 30 15% 90%;
-    --sidebar-primary: 15 80% 45%;
-    --sidebar-primary-foreground: 30 25% 97%;
-    --sidebar-accent: 20 15% 20%;
-    --sidebar-accent-foreground: 30 15% 90%;
-    --sidebar-border: 20 10% 22%;
-    --sidebar-ring: 15 80% 45%;
-  }
-
-  .dark {
-    --background: 20 15% 8%;
-    --foreground: 30 15% 92%;
-
-    --card: 20 15% 11%;
-    --card-foreground: 30 15% 92%;
-
-    --popover: 20 15% 11%;
-    --popover-foreground: 30 15% 92%;
-
-    --primary: 15 80% 50%;
-    --primary-foreground: 20 15% 8%;
-
-    --secondary: 20 12% 18%;
-    --secondary-foreground: 30 15% 92%;
-
-    --muted: 20 12% 18%;
-    --muted-foreground: 30 10% 55%;
-
-    --accent: 45 85% 55%;
-    --accent-foreground: 20 15% 8%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 20 12% 20%;
-    --input: 20 12% 20%;
-    --ring: 15 80% 50%;
-
-    --sidebar-background: 20 15% 6%;
-    --sidebar-foreground: 30 15% 90%;
-    --sidebar-primary: 15 80% 50%;
-    --sidebar-primary-foreground: 30 25% 97%;
-    --sidebar-accent: 20 15% 12%;
-    --sidebar-accent-foreground: 30 15% 90%;
-    --sidebar-border: 20 10% 15%;
-    --sidebar-ring: 15 80% 50%;
-  }
+.bg-section-secondary {
+  /* @apply bg-linear-to-b from-yellow-50 via-amber-50 to-orange-100 */
+  background-color: #FFF8E1;
 }

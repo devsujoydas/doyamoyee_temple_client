@@ -3,7 +3,7 @@ import BlogDetailsLeft from "./BlogDetailsLeft";
 import SharedPageHeading from "../../shared/SharedPageHeading";
 import BlogDetailsRight from "./BlogDetailsRight";
 import { useNavigate, useParams } from "react-router-dom";
-import PageHeading from "../../components/PageHeading";
+import PageHeading from "../../shared/PageHeading";
 
 const BlogsDetails = () => {
   const navigate = useNavigate();

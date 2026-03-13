@@ -27,6 +27,7 @@ import Donation from "../pages/Donate/Donation";
 import PujaPage from "../pages/PujaPage/PujaPage";
 import BlogsPage from "../pages/BlogsPage/BlogsPage";
 import BlogsDetails from "../pages/BlogsPage/BlogsDetails";
+import Uploads from "../pages/Uploads/Uploads";
 
 
 
@@ -96,5 +97,6 @@ export const router = createBrowserRouter([
       { path: 'events', element: <AdminEvents /> },
       { path: 'donations', element: <AdminDonations /> },
     ]
-  }
+  },
+      { path: '/uploads', element: <Uploads />, },
 ]);

@@ -1,266 +1,388 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { HiHeart } from "react-icons/hi";
-import PageHeading from "../../components/PageHeading";
+import PageHeading from "../../shared/PageHeading";
+import toast from "react-hot-toast";
 
-const presetAmounts = [500, 1000, 2000, 5000, 10000, 20000];
+const bankAccounts = [
+  {
+    bank: "DBBL",
+    accountName: "Maa Doyamoyee Mandir",
+    number: "112233445566778899",
+    branch: "Jamalpur Branch",
+    logo: "https://images.seeklogo.com/logo-png/31/1/dutch-bangla-bank-ltd-logo-png_seeklogo-310356.png",
+  },
+  {
+    bank: "Sonali Bank",
+    accountName: "Maa Doyamoyee Mandir",
+    number: "112233445566778899",
+    branch: "Jamalpur Branch",
+    logo: "https://images.seeklogo.com/logo-png/31/1/sonali-bank-limited-logo-png_seeklogo-318183.png",
+  },
+  {
+    bank: "Islami Bank",
+    accountName: "Maa Doyamoyee Mandir",
+    number: "112233445566778899",
+    branch: "Jamalpur Branch",
+    logo: "https://images.seeklogo.com/logo-png/55/1/islami-bank-bangladesh-plc-logo-png_seeklogo-550096.png",
+  },
+];
+
+const mobileBanking = [
+  {
+    name: "bKash",
+    accountName: "Maa Doyamoyee Mandir",
+    number: "0123456789",
+    logo: "https://images.seeklogo.com/logo-png/27/1/bkash-logo-png_seeklogo-273684.png",
+  },
+  {
+    name: "Nagad",
+    accountName: "Maa Doyamoyee Mandir",
+    number: "0123456789",
+    logo: "https://images.seeklogo.com/logo-png/41/1/nagad-logo-png_seeklogo-411803.png",
+  },
+  {
+    name: "Rocket",
+    accountName: "Maa Doyamoyee Mandir",
+    number: "0123456789",
+    logo: "https://images.seeklogo.com/logo-png/31/1/dutch-bangla-rocket-logo-png_seeklogo-317692.png",
+  },
+];
 
 const Donation = () => {
-  const [form, setForm] = useState({
-    name: "",
+  const [formData, setFormData] = useState({
+    donorName: "",
     email: "",
     phone: "",
+    paymentMethod: "bank",
+    bankName: "",
+    accountNumber: "",
+    branchName: "",
+    mobileBankName: "",
+    transactionID: "",
     amount: "",
+    screenshot: null,
     message: "",
   });
 
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!form.name.trim()) newErrors.name = "Name is required";
-
-    if (!form.email.trim()) newErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(form.email))
-      newErrors.email = "Invalid email";
-
-    if (!form.phone.trim()) newErrors.phone = "Phone number is required";
-    else if (form.phone.length < 10)
-      newErrors.phone = "Enter valid phone number";
-
-    if (!form.amount || form.amount <= 0)
-      newErrors.amount = "Enter donation amount";
-
-    return newErrors;
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (files) setFormData({ ...formData, [name]: files[0] });
+    else setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const validationErrors = validateForm();
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setErrors({});
-    setSubmitted(true);
-
-    setForm({
-      name: "",
+    const data = new FormData();
+    for (let key in formData) data.append(key, formData[key]);
+    console.log("Send to backend:", data);
+    toast.success("Donation proof submitted successfully!");
+    setFormData({
+      donorName: "",
       email: "",
       phone: "",
+      paymentMethod: "bank",
+      bankName: "",
+      accountNumber: "",
+      branchName: "",
+      mobileBankName: "",
+      transactionID: "",
       amount: "",
+      screenshot: null,
       message: "",
     });
   };
 
+  const copyNumber = (num) => {
+    navigator.clipboard.writeText(num);
+    toast.success("Number Copied!");
+  };
+
   return (
-    <div className="bg-orange-50">
+    <section className="relative py-16 px-4 sm:py-20 sm:px-6 bg-gradient-to-b from-amber-50 via-yellow-50 to-orange-100">
+      {/* Background Glow */}
+      <div className="absolute top-10 left-4 w-32 h-32 sm:w-40 sm:h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full animate-pulse"></div>
+      <div className="absolute bottom-10 right-4 w-40 h-40 sm:w-52 sm:h-52 bg-red-600 blur-3xl opacity-20 rounded-full animate-pulse"></div>
 
+      <div className="relative max-w-6xl mx-auto">
+        <PageHeading
+          title="Donation"
+          desc="Your contribution helps Maa Doyamoyee Temple maintain its services, pujas, and spiritual activities."
+          shortdesc="Use any of the bank accounts or mobile banking options below to donate."
+        />
 
+        {/* Payment Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 md:mt-12">
+          {/* Bank Accounts */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/80 backdrop-blur border border-yellow-500/40 rounded-2xl p-6 sm:p-8 shadow-lg"
+          >
+            <h2 className="text-lg sm:text-xl font-bold text-red-700 mb-4 sm:mb-6 text-center">Bank Accounts</h2>
+            <div className="space-y-3 sm:space-y-4">
+              {bankAccounts.map((acc, i) => (
+                <div
+                  key={i}
+                  className="flex justify-between items-center bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 sm:px-4 sm:py-3 hover:shadow-lg transition"
+                >
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <img src={acc.logo} alt={acc.bank} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+                    <div className="text-xs sm:text-sm">
+                      <p className="text-gray-600">{acc.bank}</p>
+                      <p className="font-semibold">{acc.accountName}</p>
+                      <p className="text-gray-700">{acc.number}</p>
+                      <p className="text-gray-500">{acc.branch}</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => copyNumber(acc.number)}
+                    className="text-xs sm:text-sm bg-red-600 text-white px-2 sm:px-3 py-1 rounded hover:bg-red-700 cursor-pointer"
+                  >
+                    Copy
+                  </button>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
+          {/* Mobile Banking */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/80 backdrop-blur border border-yellow-500/40 rounded-2xl p-6 sm:p-8 shadow-lg"
+          >
+            <h2 className="text-lg sm:text-xl font-bold text-red-700 mb-4 sm:mb-6 text-center">Mobile Banking</h2>
+            <div className="space-y-3 sm:space-y-4">
+              {mobileBanking.map((acc, i) => (
+                <div
+                  key={i}
+                  className="flex justify-between items-center bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 sm:px-4 sm:py-3 hover:shadow-lg transition"
+                >
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <img src={acc.logo} alt={acc.name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+                    <div className="text-xs sm:text-sm">
+                      <p className="text-gray-600">{acc.name}</p>
+                      <p className="font-semibold">{acc.accountName}</p>
+                      <p className="text-gray-700">{acc.number}</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => copyNumber(acc.number)}
+                    className="text-xs sm:text-sm bg-red-600 text-white px-2 sm:px-3 py-1 rounded hover:bg-red-700 cursor-pointer"
+                  >
+                    Copy
+                  </button>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
 
-      {/* Donation Form */}
-      <section className="py-16">
-        {/* Animated Page Heading */}
+        {/* Donation Proof Form */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-white/80 backdrop-blur border border-zinc-200 rounded-2xl p-6 sm:p-8 shadow-lg mt-10 sm:mt-16"
         >
-          <PageHeading
-            title="অনুদান"
-            desc="মা দয়াময়ী মন্দিরের সেবা, পূজা-অর্চনা ও বিভিন্ন ধর্মীয় কার্যক্রম পরিচালনার জন্য আপনার অনুদান আমাদের জন্য অত্যন্ত মূল্যবান।"
-            shortdesc="আপনার সামান্য অনুদানও মন্দিরের উন্নয়ন, উৎসব আয়োজন এবং ধর্মীয় ঐতিহ্য সংরক্ষণে গুরুত্বপূর্ণ ভূমিকা রাখে।"
-          />
-        </motion.div>
-        <div className="max-w-xl mx-auto px-4">
-
-          {submitted ? (
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="text-center py-16"
-            >
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 0.6 }}
-              >
-                <HiHeart size={70} className="text-red-500 mx-auto mb-4" />
-              </motion.div>
-
-              <h2 className="text-2xl font-bold text-red-700 mb-2">
-                Thank You!
-              </h2>
-
-              <p className="text-gray-600 mb-6">
-                Your donation has been received. Maa Doyamoyee bless you.
-              </p>
-
-              <button
-                onClick={() => setSubmitted(false)}
-                className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
-              >
-                Donate Again
-              </button>
-            </motion.div>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="border border-orange-200 bg-white shadow-lg rounded-xl p-6 space-y-5"
-            >
-              {/* Name */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Full Name
-                </label>
-
-                <input
-                  type="text"
-                  value={form.name}
-                  onChange={(e) =>
-                    setForm({ ...form, name: e.target.value })
-                  }
-                  className="w-full mt-1 bg-orange-50 border border-orange-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-
-                {errors.name && (
-                  <p className="text-red-500 text-sm">{errors.name}</p>
-                )}
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Email
-                </label>
-
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={(e) =>
-                    setForm({ ...form, email: e.target.value })
-                  }
-                  className="w-full mt-1 bg-orange-50 border border-orange-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-
-                {errors.email && (
-                  <p className="text-red-500 text-sm">{errors.email}</p>
-                )}
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Phone
-                </label>
-
-                <input
-                  type="tel"
-                  value={form.phone}
-                  onChange={(e) =>
-                    setForm({ ...form, phone: e.target.value })
-                  }
-                  className="w-full mt-1 bg-orange-50 border border-orange-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-
-                {errors.phone && (
-                  <p className="text-red-500 text-sm">{errors.phone}</p>
-                )}
-              </div>
-
-              {/* Amount */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Donation Amount (৳)
-                </label>
-
-                <div className="flex flex-wrap gap-2 my-3">
-                  {presetAmounts.map((amt) => (
-                    <button
-                      key={amt}
-                      type="button"
-                      onClick={() =>
-                        setForm({ ...form, amount: amt })
-                      }
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition ${form.amount === amt
-                        ? "bg-orange-600 text-white"
-                        : "bg-orange-100 text-orange-700 hover:bg-orange-200"
-                        }`}
-                    >
-                      ৳{amt}
-                    </button>
-                  ))}
-                </div>
-
-                <input
-                  type="number"
-                  placeholder="Custom amount"
-                  value={form.amount}
-                  onChange={(e) =>
-                    setForm({
-                      ...form,
-                      amount: Number(e.target.value),
-                    })
-                  }
-                  className="w-full bg-orange-50 border border-orange-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-
-                {errors.amount && (
-                  <p className="text-red-500 text-sm">
-                    {errors.amount}
-                  </p>
-                )}
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Message (Optional)
-                </label>
-
-                <textarea
-                  value={form.message}
-                  onChange={(e) =>
-                    setForm({ ...form, message: e.target.value })
-                  }
-                  className="w-full bg-orange-50 border border-orange-200 rounded-lg px-4 py-2 h-20 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-              </div>
-
-              {/* Button */}
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition"
-              >
-                Donate ৳{form.amount || ""}
-              </button>
-            </form>
-          )}
-        </div>
-      </section>
-
-      {/* Why Donate */}
-      <section className="py-16 bg-orange-100">
-        <div className="max-w-2xl mx-auto text-center px-4">
-          <h2 className="text-2xl font-bold text-red-700 mb-4">
-            Why Donate?
+          <h2 className="text-xl sm:text-2xl font-bold text-red-700 mb-6 sm:mb-8 text-center">
+            Submit Donation Proof
           </h2>
 
-          <p className="text-gray-700 leading-relaxed">
-            Your donations help maintain the temple premises,
-            organize religious festivals, support community
-            programs, and preserve our spiritual heritage for
-            future generations.
-          </p>
-        </div>
-      </section>
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {/* Name, Email, Phone */}
+            <div className="flex flex-col">
+              <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Full Name</label>
+              <input
+                type="text"
+                name="donorName"
+                placeholder="Enter your full name"
+                onChange={handleChange}
+                required
+                className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none text-sm sm:text-base"
+              />
+            </div>
 
-    </div>
+            <div className="flex flex-col">
+              <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                onChange={handleChange}
+                required
+                className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none text-sm sm:text-base"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Phone Number</label>
+              <input
+                type="text"
+                name="phone"
+                placeholder="Enter your phone number"
+                onChange={handleChange}
+                required
+                className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none text-sm sm:text-base"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Payment Method</label>
+              <select
+                name="paymentMethod"
+                value={formData.paymentMethod}
+                onChange={handleChange}
+                className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none cursor-pointer text-sm sm:text-base"
+              >
+                <option value="bank">Bank Transfer</option>
+                <option value="mobile">Mobile Banking</option>
+              </select>
+            </div>
+
+            {/* Conditional Fields */}
+            {formData.paymentMethod === "bank" ? (
+              <>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Bank Name</label>
+                  <input
+                    type="text"
+                    name="bankName"
+                    placeholder="Bank Name"
+                    onChange={handleChange}
+                    required
+                    className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none text-sm sm:text-base"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Account Number</label>
+                  <input
+                    type="text"
+                    name="accountNumber"
+                    placeholder="Account Number"
+                    onChange={handleChange}
+                    required
+                    className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none text-sm sm:text-base"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Branch Name</label>
+                  <input
+                    type="text"
+                    name="branchName"
+                    placeholder="Branch Name"
+                    onChange={handleChange}
+                    required
+                    className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none text-sm sm:text-base"
+                  />
+                </div>
+              </>
+            ) : (
+              <div className="flex flex-col sm:col-span-2 relative">
+                <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Mobile Banking Name</label>
+                <select
+                  name="mobileBankName"
+                  value={formData.mobileBankName}
+                  onChange={handleChange}
+                  required
+                  className="appearance-none w-full border border-zinc-200 focus:border-zinc-300 rounded-md p-2 sm:p-3 mt-1 bg-white outline-none cursor-pointer text-sm sm:text-base"
+                >
+                  <option value="">Select Mobile Banking</option>
+                  <option value="bKash">bKash</option>
+                  <option value="Nagad">Nagad</option>
+                  <option value="Rocket">Rocket</option>
+                </select>
+              </div>
+            )}
+
+            {/* Amount */}
+            <div className="flex flex-col">
+              <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Donation Amount</label>
+              <input
+                type="number"
+                name="amount"
+                placeholder="Enter amount"
+                onChange={handleChange}
+                required
+                className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none text-sm sm:text-base"
+              />
+            </div>
+
+            {/* Transaction ID */}
+            <div className="flex flex-col sm:col-span-2">
+              <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Transaction ID / Reference</label>
+              <input
+                type="text"
+                name="transactionID"
+                placeholder="Transaction ID / Reference"
+                onChange={handleChange}
+                required
+                className="border border-zinc-200 focus:border-zinc-300 p-2 sm:p-3 rounded-md mt-1 bg-white outline-none text-sm sm:text-base"
+              />
+            </div>
+
+            {/* Screenshot Upload */}
+            <div className="flex flex-col sm:col-span-2">
+              <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Upload Screenshot</label>
+              <label
+                htmlFor="dropzone-file"
+                className="flex flex-col items-center justify-center w-full h-48 sm:h-64 bg-neutral-secondary-medium border border-dashed border-zinc-400 rounded-lg cursor-pointer hover:bg-neutral-tertiary-medium"
+              >
+                {formData.screenshot ? (
+                  <img
+                    src={URL.createObjectURL(formData.screenshot)}
+                    alt="Preview"
+                    className="h-48 sm:h-64 object-contain rounded-md"
+                  />
+                ) : (
+                  <p className="text-center text-sm sm:text-base">Click to upload or drag and drop</p>
+                )}
+                <input
+                  id="dropzone-file"
+                  type="file"
+                  name="screenshot"
+                  onChange={handleChange}
+                  accept="image/*"
+                  className="hidden"
+                />
+              </label>
+              {formData.screenshot && (
+                <button
+                  type="button"
+                  className="mt-2 sm:mt-3 bg-red-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded hover:bg-red-700"
+                  onClick={() => setFormData({ ...formData, screenshot: null })}
+                >
+                  Remove / Change
+                </button>
+              )}
+            </div>
+
+            {/* Message */}
+            <div className="flex flex-col sm:col-span-2">
+              <label className="font-medium text-gray-700 mb-1 text-sm sm:text-base">Optional Message</label>
+              <textarea
+                name="message"
+                placeholder="Message"
+                onChange={handleChange}
+                className="border p-2 sm:p-3 rounded mt-1 bg-white outline-none border-zinc-200 text-sm sm:text-base"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="bg-red-700 text-white py-2.5 sm:py-3 rounded font-semibold hover:bg-red-800 sm:col-span-2 mt-2"
+            >
+              Submit Donation Proof
+            </button>
+          </form>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

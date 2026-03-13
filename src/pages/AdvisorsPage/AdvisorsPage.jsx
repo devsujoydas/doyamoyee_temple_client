@@ -1,65 +1,84 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import PageHeading from "../../components/PageHeading";
+import { motion } from "framer-motion"; 
+import PageHeading from "../../shared/PageHeading";
 
 const AdvisorsPage = () => {
- const [advisors, setAdvisors] = useState([]);
+
+  const [advisors, setAdvisors] = useState([]);
 
   useEffect(() => {
     fetch("/json/advisors.json")
       .then((res) => res.json())
       .then(setAdvisors)
       .catch(console.error);
-  }, []);  
+  }, []);
 
 
-    return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 ">
+  return (
+    <section className="relative overflow-hidden py-16 md:py-24 px-4 sm:px-6 lg:px-8">
 
-            <div className="max-w-7xl mx-auto">
+      {/* Glow Background */}
+      <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
+      <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
 
-                <PageHeading
-                    title={"১৪৩০-১৪৩১ সালের সম্মানিত উপদেষ্টাবৃন্দ"}
-                    desc={"শ্রী শ্রী দয়াময়ী মন্দির পরিচালনা পরিষদ"}
-                    shortdesc={`জামালপুর`}
-                />
+      <div className="relative max-w-7xl mx-auto">
 
-                <div className=" mt-8 md:mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8">
+        <PageHeading
+          title={"১৪৩০-১৪৩১ সালের সম্মানিত উপদেষ্টাবৃন্দ"}
+          desc={"শ্রী শ্রী দয়াময়ী মন্দির পরিচালনা পরিষদ"}
+          shortdesc={"জামালপুর"}
+        />
 
-                    {advisors.map((advisor, index) => (
-                        <motion.div
-                            key={advisor.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.01 }}
-                            
-                            className="group bg-white border border-amber-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                        >
+        <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
 
-                            {/* Left Accent Line */}
-                            <div className="absolute"></div>
+          {advisors.map((advisor, index) => (
+            <motion.div
+              key={advisor.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: .4, delay: index * .03 }}
 
-                            <div className="border-l-4 border-amber-600 pl-4 space-y-2">
+              className="relative group bg-white/80 backdrop-blur border border-yellow-500/30 
+              rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 
+              transition-all duration-500"
+            >
 
-                                <h3 className="text-lg font-semibold text-gray-900 font-family-hindSiliguri leading-snug">
-                                    {advisor.name}
-                                </h3>
+              {/* Top Badge */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 
+              bg-linear-to-r from-yellow-500 to-red-700 text-white 
+              px-3 py-1 rounded-full text-xs shadow-md">
+                উপদেষ্টা
+              </div>
 
-                                <p className="text-sm text-gray-600">
-                                    {advisor.address}
-                                </p>
+              {/* Glow Hover Effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 
+              bg-gradient-to-r from-yellow-400/10 to-red-600/10 
+              transition duration-500"></div>
 
-                            </div>
+              {/* Content */}
+              <div className="relative border-l-4 border-yellow-600 pl-4 space-y-2">
 
-                        </motion.div>
-                    ))}
+                <h3 className="text-lg font-semibold text-gray-900 
+                font-family-hindSiliguri leading-snug">
+                  {advisor.name}
+                </h3>
 
-                </div>
+                <p className="text-sm text-gray-600">
+                  {advisor.address}
+                </p>
 
-            </div>
-        </section>
-    );
+              </div>
+
+            </motion.div>
+          ))}
+
+        </div>
+
+      </div>
+
+    </section>
+  );
 };
 
 export default AdvisorsPage;

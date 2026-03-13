@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PageHeading from "../../components/PageHeading";
+import PageHeading from "../../shared/PageHeading";
 import DashboardGrid from "../../components/DashboardGrid";
 import ModalForm from "../../components/ModalForm";
 import DashboardNoticeCard from "./DashboardNoticeCard";

@@ -20,8 +20,8 @@ const Footer = () => {
   const managementLinks = [
     { to: "/pandits", label: t("nav_pandits") },
     { to: "/committee", label: t("nav_committee") },
-    { to: "/lifetime-members", label: t("nav_members") },
-    { to: "/advisor", label: t("nav_advisor") },
+    { to: "/members", label: t("nav_members") },
+    { to: "/advisors", label: t("nav_advisor") },
   ];
 
   const otherLinks = [

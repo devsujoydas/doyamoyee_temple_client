@@ -102,19 +102,19 @@ const Hero = () => {
                       transition={{ delay: 0.9, duration: 0.6 }}
                       className="mt-6 flex gap-4"
                     >
-                      <a
-                        href="#events"
+                      <Link
+                        to="/puja"
                         className="bg-yellow-500 px-6 py-3 rounded font-semibold hover:bg-yellow-600 transition"
                       >
                         {t("hero_cta_events")}
-                      </a>
+                      </Link>
 
-                      <a
-                        href="#history"
+                      <Link
+                        to="/history"
                         className="bg-green-500 px-6 py-3 rounded font-semibold hover:bg-green-600 transition"
                       >
                         {t("hero_cta_volunteer")}
-                      </a>
+                      </Link>
 
                     </motion.div>
 
@@ -179,12 +179,12 @@ const Hero = () => {
                       transition={{ delay: 0.9, duration: 0.6 }}
                       className="mt-4 sm:mt-6 flex  flex-row gap-3 sm:gap-4"
                     >
-                      <a
-                        href="#events"
+                      <Link
+                        to="/puja"
                         className="bg-yellow-500 px-4 sm:px-6 py-2 sm:py-3 rounded font-semibold text-sm sm:text-base md:text-lg lg:text-xl hover:bg-yellow-600 transition"
                       >
                         {t("hero_cta_events")}
-                      </a>
+                      </Link>
 
                       <Link
                         to="/history"
@@ -275,5 +275,5 @@ export default Hero;
         </div> */}
 
 
-        
+
 

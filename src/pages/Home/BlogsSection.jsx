@@ -9,6 +9,7 @@ import { Autoplay } from 'swiper/modules';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi";
+import SectionHeading from "../../shared/SectionHeading";
 
 
 
@@ -23,17 +24,15 @@ const BlogsSection = () => {
   }, []);
 
   return (
-    <section id="blogs" className="relative bg-color-primary bg-no-repeat bg-center w-full " style={{ backgroundImage: `url(${""})` }} >
+    <section id="blogs" className="relative  w-full bg-section-secondary " >
 
       <div className="container xl:mx-auto md:px-0 px-3 md:mx-10 py-10 md:py-20">
 
-
-
-
-        <div className="flex items-center justify-between mb-8">
-          <p className="text-center text-3xl md:text-5xl font-family-lora font-bold section-text mt-2 md:mt-5">Blogs</p>
-          <Link to="/blogs" className="text-primary font-medium flex items-center gap-1 hover:underline">View All <HiArrowRight /></Link>
-        </div>
+        <SectionHeading
+          title={"Blogs"}
+          pathname={"View All"}
+          path={"/blogs"}
+        />
 
 
         <div className="mt-10 ">

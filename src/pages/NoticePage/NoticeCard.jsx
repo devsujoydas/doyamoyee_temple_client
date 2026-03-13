@@ -59,18 +59,23 @@ const NoticeCard = ({ notice }) => {
 
         <p className="text-gray-600 text-sm line-clamp-3">{shortDescription}</p>
 
-        {category && (
-          <span className="inline-block mt-3 text-xs bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full capitalize">
-            {category}
-          </span>
-        )}
 
-        <Link
-          to={`/notices/${id}`}
-          className="inline-block mt-4 text-indigo-600 font-medium hover:underline"
-        >
-          বিস্তারিত দেখুন →
-        </Link>
+
+        <div className="flex items-center gap-2 mt-4">
+
+          {category && (
+            <span className="inline-block text-xs bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full capitalize">
+              {category}
+            </span>
+          )}
+
+          <Link
+            to={`/notices/${id}`}
+            className="inline-block text-indigo-600 font-medium hover:underline"
+          >
+            বিস্তারিত দেখুন →
+          </Link>
+        </div>
       </div>
     </motion.div>
   );

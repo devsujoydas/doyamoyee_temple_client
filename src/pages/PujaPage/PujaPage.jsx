@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiCalendar } from "react-icons/hi";
-import PageHeading from "../../components/PageHeading";
+import PageHeading from "../../shared/PageHeading";
 
 
 const filters = ["All", "Upcoming", "Past Events"];
@@ -16,6 +16,16 @@ const PujaPage = () => {
       .then(setEvents)
       .catch(console.error);
   }, []);
+
+
+  const formatDateBN = (dateStr) => {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString("bn-BD", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
 
   const today = new Date();
 
@@ -60,7 +70,7 @@ const PujaPage = () => {
       </div>
 
       {/* Grid Gallery */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
         <AnimatePresence>
           {filteredItems.map((item) => (
             <motion.div
@@ -75,17 +85,17 @@ const PujaPage = () => {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-56 md:h-80 object-cover transition-transform duration-300 group-active:scale-105 group-hover:scale-105"
               />
 
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-black/40  transition-opacity duration-300"></div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-300 z-10">
+              <div className="absolute bottom-0 left-0 right-0 p-5 duration-300 z-10">
                 <div className="flex items-center gap-2 text-white text-sm text-primary mb-2">
-                  <HiCalendar /> {item.date}
+                  <HiCalendar /> {formatDateBN(item.date)}
                 </div>
                 <h5 className="text-xl md:text-2xl font-semibold text-white">{item.title}</h5>
-                <p className="text-sm text-white">{item.description}</p>
+                <p className="text-sm text-white line-clamp-3">{item.description}</p>
               </div>
             </motion.div>
           ))}

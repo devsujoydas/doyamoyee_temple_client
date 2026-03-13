@@ -1,7 +1,7 @@
 
 
-import Hero from "../../components/Hero";
-import About from "../../components/About";   
+import Hero from "../../components/Hero";   
+import About from "./About";
 import BlogsSection from "./BlogsSection";
 import LatestNotice from "./LatestNotice"; 
 import UpcommingEvents from "./UpcommingEvents";
@@ -13,8 +13,8 @@ const Home = () => {
     <div className="">
 
       <Hero />
+      <About /> 
       <LatestNotice /> 
-      {/* <About />  */}
       <UpcommingEvents />
       <BlogsSection />
 

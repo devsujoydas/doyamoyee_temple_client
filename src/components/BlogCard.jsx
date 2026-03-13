@@ -43,10 +43,10 @@ const BlogCard = ({ blog }) => {
           </h3>
 
           {/* Short Description */}
-          <p className="text-[#777777] line-clamp-3 text-[16px] mb-4">
-            {blog?.desc.length > 120
-              ? blog.desc.slice(0, 150) + "..."
-              : blog.desc}
+          <p className="text-[#777777] line-clamp-3 text-[16px] mb-4">{blog.desc}
+            {/* {blog?.desc.length > 120
+              ? blog.desc.slice(0, 200) + "..."
+              : blog.desc} */}
           </p>
 
           {/* Views & Comments */}

@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { Autoplay } from 'swiper/modules';
 import { useEffect, useState } from "react";
 import NoticeCard from '../NoticePage/NoticeCard';
-
+import SectionHeading from '../../shared/SectionHeading';
 
 
 const LatestNotice = () => {
@@ -41,13 +41,15 @@ const LatestNotice = () => {
 
 
   return (
-    <div>
+    <div className='bg-section-secondary'>
       <div className='container xl:mx-auto md:px-0 px-3 md:mx-10 py-10 md:py-20'>
 
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-display font-bold text-foreground">Latest Notices</h2>
-          <Link to="/notices" className="text-primary font-medium flex items-center gap-1 hover:underline">View All <HiArrowRight /></Link>
-        </div>
+
+        <SectionHeading
+          title={"Latest Notices"}
+          pathname={"View All"}
+          path={"/notices"}
+        />
 
 
         <Swiper

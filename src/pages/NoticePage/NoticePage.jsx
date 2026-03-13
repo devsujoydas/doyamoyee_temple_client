@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import NoticeCard from "./NoticeCard";
-import PageHeading from "../../components/PageHeading";
+import PageHeading from "../../shared/PageHeading";
 
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);

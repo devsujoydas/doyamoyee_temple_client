@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PageHeading from "../../components/PageHeading";
+import PageHeading from "../../shared/PageHeading";
 import BlogCard from '../../components/BlogCard';
 import SharedPageHeading from "../../shared/SharedPageHeading";
 
@@ -19,7 +19,7 @@ const BlogsPage = () => {
     <section id="blogs" className="relative  bg-no-repeat bg-center w-full "  >
 
       {/* <SharedPageHeading title="দয়াময়ী মন্দিরের পোস্টসমূহ" path="পোস্ট" path2="" /> */}
-      <div className="container xl:mx-auto mx-3 md:mx-0 py-10 md:py-20">
+      <div className="container xl:mx-auto px-3 md:px-0 py-10 md:py-20">
 
         <PageHeading
           title={"দয়াময়ী মন্দিরের ব্লগ ও প্রবন্ধসমূহ"}
