@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PageHeading from "../../shared/PageHeading";
 import { useTranslation } from "react-i18next";
+import { membersData } from "../../data/data";
 
 const MembersPage = () => {
-    const [members, setMembers] = useState([]);
-
     const { t } = useTranslation();
-    useEffect(() => {
-        fetch("/json/members.json")
-            .then((res) => res.json())
-            .then(setMembers)
-            .catch(console.error);
-    }, []);
-
 
 
     return (
@@ -24,7 +15,7 @@ const MembersPage = () => {
                 <PageHeading
                     title={t("member_title")}
                     desc={t("member_desc")}
-                    shortdesc={t("member_shortdesc", { count: members.length })}
+                    shortdesc={t("member_shortdesc", { count: membersData.length })}
                 />
 
 
@@ -33,7 +24,7 @@ const MembersPage = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-10">
 
-                    {members.map((member, index) => (
+                    {membersData.map((member, index) => (
                         <motion.div
                             key={member.sl_no}
                             initial={{ opacity: 0, y: 30 }}

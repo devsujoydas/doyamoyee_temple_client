@@ -1,54 +1,9 @@
-import React from "react";
 import { motion } from "framer-motion";
 import PageHeading from "../../shared/PageHeading";
+import { purohitsData } from "../../data/data";
 
 const PurohitPage = () => {
-  const pandits = [
-    {
-      id: 1,
-      name: "শ্রী সজল চক্রবর্তী",
-      designation: "প্রধান পুরোহিত",
-      experience: "১৫ বছর",
-      phone: "017XXXXXXXX",
-      email: "sajal@gmail.com",
-      speciality: "দুর্গাপূজা ও কালীপূজা",
-      availableDays: "প্রতিদিন সকাল ৮টা - দুপুর ১টা",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?_=20170328184010"
-    },
-    {
-      id: 2,
-      name: "শ্রী নিরঞ্জন ভাদুড়ি",
-      designation: "প্রধান পুরোহিত",
-      experience: "১৫ বছর",
-      phone: "018XXXXXXXX",
-      email: "niranjan@gmail.com",
-      speciality: "দুর্গাপূজা ও কালীপূজা",
-      availableDays: "শুক্র ও শনিবার",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?_=20170328184010"
-    },
-    {
-      id: 3,
-      name: "শ্রী অমিতাভ বন্দ্যোপাধ্যায়",
-      designation: "বৈদিক পুরোহিত",
-      experience: "১২ বছর",
-      phone: "019XXXXXXXX",
-      email: "amitabh.pandit@example.com",
-      speciality: "বিবাহ ও উপনয়ন অনুষ্ঠান",
-      availableDays: "সোম - বৃহস্পতি",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?_=20170328184010"
-    },
-    {
-      id: 4,
-      name: "শ্রী দেবাশিস ভট্টাচার্য",
-      designation: "যজ্ঞ ও হোম বিশেষজ্ঞ",
-      experience: "১৮ বছর",
-      phone: "016XXXXXXXX",
-      email: "",
-      speciality: "যজ্ঞ, গৃহশান্তি ও বিশেষ পূজা",
-      availableDays: "শনিবার ও রবিবার",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?_=20170328184010"
-    }
-  ];
+
 
   return (
     <section className="relative">
@@ -59,7 +14,7 @@ const PurohitPage = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-6 lg:gap-8 xl:gap-10 my-10">
-          {pandits.map((pandit, index) => (
+          {purohitsData.map((pandit, index) => (
             <motion.div
               key={pandit.id}
               initial={{ opacity: 0, y: 40 }}

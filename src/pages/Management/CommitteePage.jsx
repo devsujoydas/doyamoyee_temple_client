@@ -1,34 +1,27 @@
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PageHeading from "../../shared/PageHeading";
+import { committeeData } from "../../data/data";
 
 const CommitteePage = () => {
-    const [committee, setCommittee] = useState([]);
+    
 
-    useEffect(() => {
-        fetch("/json/committee.json")
-            .then((res) => res.json())
-            .then(setCommittee)
-            .catch(console.error);
-    }, []);
+    const president = committeeData.find(m => m.designation === "সভাপতি");
 
-    const president = committee.find(m => m.designation === "সভাপতি");
-
-    const vicePresidents = committee.filter(
+    const vicePresidents = committeeData.filter(
         m => m.designation === "সহ-সভাপতি"
     );
 
-    const generalSecretary = committee.find(
+    const generalSecretary = committeeData.find(
         m => m.designation === "সাধারণ সম্পাদক"
     );
 
-    const secretaries = committee.filter(
+    const secretaries = committeeData.filter(
         m =>
             m.designation.includes("সম্পাদক") &&
             m.designation !== "সাধারণ সম্পাদক"
     );
 
-    const members = committee.filter(
+    const members = committeeData.filter(
         m => m.designation === "সদস্য"
     );
 

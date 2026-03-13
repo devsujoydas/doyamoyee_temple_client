@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "donorName": "Rahul Das",
+    "email": "rahul.das@gmail.com",
+    "phone": "01712345678",
+    "paymentMethod": "bank",
+    "bankName": "DBBL",
+    "accountNumber": "1122334455",
+    "branchName": "Jamalpur Branch",
+    "mobileBankName": "",
+    "transactionID": "TXN87456321",
+    "amount": 1000,
+    "date": "2026-03-10",
+    "status": "verified",
+    "screenshot": null,
+    "message": "Donation for temple puja."
+  },
+  {
+    "id": 2,
+    "donorName": "Suman Roy",
+    "email": "suman.roy@gmail.com",
+    "phone": "01898765432",
+    "paymentMethod": "mobile",
+    "bankName": "",
+    "accountNumber": "",
+    "branchName": "",
+    "mobileBankName": "bKash",
+    "transactionID": "BK45781236",
+    "amount": 500,
+    "date": "2026-03-11",
+    "status": "pending",
+    "screenshot": null,
+    "message": "May Maa bless everyone."
+  },
+  {
+    "id": 3,
+    "donorName": "Anita Saha",
+    "email": "anita.saha@gmail.com",
+    "phone": "01634567890",
+    "paymentMethod": "mobile",
+    "bankName": "",
+    "accountNumber": "",
+    "branchName": "",
+    "mobileBankName": "Nagad",
+    "transactionID": "NG99887766",
+    "amount": 750,
+    "date": "2026-03-12",
+    "status": "verified",
+    "screenshot": null,
+    "message": "Support temple development."
+  }
+]

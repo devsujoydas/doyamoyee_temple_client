@@ -1,37 +1,156 @@
- 
-import SEOHead from "../../components/SEOHead"; 
-import { dummyDonations } from "../../data/dummyData";
-import DashboardLayout from "../../Layouts/DashboardLayout";
+import { useEffect, useState } from "react";
+import SEOHead from "../../components/SEOHead";
 
-const AdminDonations = () => (
-  <DashboardLayout>
-    <SEOHead title="Donation Overview" description="View donation records." path="/admin/donations" />
-    <h1 className="text-2xl font-display font-bold text-foreground mb-6">Donation Overview</h1>
-    <div className="glass-card rounded-xl overflow-hidden">
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead className="bg-muted">
-            <tr>
-              <th className="text-left px-4 py-3 font-medium text-foreground">Donor</th>
-              <th className="text-left px-4 py-3 font-medium text-foreground">Amount</th>
-              <th className="text-left px-4 py-3 font-medium text-foreground">Date</th>
-              <th className="text-left px-4 py-3 font-medium text-foreground">Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dummyDonations.map(d => (
-              <tr key={d.id} className="border-t border-border">
-                <td className="px-4 py-3 text-foreground">{d.name}</td>
-                <td className="px-4 py-3 font-semibold text-foreground">₹{d.amount.toLocaleString()}</td>
-                <td className="px-4 py-3 text-muted-foreground">{d.date}</td>
-                <td className="px-4 py-3 text-muted-foreground">{d.message}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+const AdminDonations = () => {
+  const [donations, setDonations] = useState([]);
+
+  useEffect(() => {
+    fetch("/json/donation.json")
+      .then((res) => res.json())
+      .then(setDonations)
+      .catch(console.error);
+  }, []);
+
+  const handleStatusChange = (id, newStatus) => {
+    const updated = donations.map((d) =>
+      d.id === id ? { ...d, status: newStatus } : d
+    );
+
+    setDonations(updated);
+  };
+
+  const totalDonation = donations.reduce((sum, d) => sum + d.amount, 0);
+
+  const verifiedDonation = donations
+    .filter((d) => d.status === "verified")
+    .reduce((sum, d) => sum + d.amount, 0);
+
+  const pendingDonation = donations
+    .filter((d) => d.status === "pending")
+    .reduce((sum, d) => sum + d.amount, 0);
+
+  return (
+    <div className="space-y-6">
+
+      <SEOHead
+        title="Donation Overview"
+        description="Temple donation records."
+        path="/admin/donations"
+      />
+
+      <h1 className="text-2xl font-bold">Donation Dashboard</h1>
+
+      {/* Analytics Cards */}
+
+      <div className="grid md:grid-cols-3 gap-4">
+
+        <div className="bg-white border rounded-xl p-4">
+          <p className="text-sm text-muted-foreground">Total Donation</p>
+          <h3 className="text-xl font-bold text-green-600">
+            ৳{totalDonation.toLocaleString()}
+          </h3>
+        </div>
+
+        <div className="bg-white border rounded-xl p-4">
+          <p className="text-sm text-muted-foreground">Verified</p>
+          <h3 className="text-xl font-bold text-blue-600">
+            ৳{verifiedDonation.toLocaleString()}
+          </h3>
+        </div>
+
+        <div className="bg-white border rounded-xl p-4">
+          <p className="text-sm text-muted-foreground">Pending</p>
+          <h3 className="text-xl font-bold text-yellow-600">
+            ৳{pendingDonation.toLocaleString()}
+          </h3>
+        </div>
+
       </div>
+
+      {/* Donation Table */}
+
+      <div className="bg-white border rounded-xl overflow-hidden">
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+
+            <thead className="bg-muted">
+              <tr>
+                <th className="px-4 py-3 text-left">Donor</th>
+                <th className="px-4 py-3 text-left">Amount</th>
+                <th className="px-4 py-3 text-left">Payment</th>
+                <th className="px-4 py-3 text-left">Transaction</th>
+                <th className="px-4 py-3 text-left">Status</th>
+                <th className="px-4 py-3 text-left">Message</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              {donations.map((d) => (
+
+                <tr key={d.id} className="border-t hover:bg-muted/40">
+
+                  {/* Donor */}
+                  <td className="px-4 py-3">
+                    <div className="font-medium">{d.donorName}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {d.email}
+                    </div>
+                  </td>
+
+                  {/* Amount */}
+                  <td className="px-4 py-3 font-semibold text-green-600">
+                    ৳{d.amount.toLocaleString()}
+                  </td>
+
+                  {/* Payment */}
+                  <td className="px-4 py-3 text-xs">
+                    {d.paymentMethod === "bank"
+                      ? d.bankName
+                      : d.mobileBankName}
+                  </td>
+
+                  {/* Transaction */}
+                  <td className="px-4 py-3 text-xs text-muted-foreground">
+                    {d.transactionID}
+                  </td>
+
+                  {/* Status Dropdown */}
+                  <td className="px-4 py-3">
+
+                    <select
+                      value={d.status}
+                      onChange={(e) =>
+                        handleStatusChange(d.id, e.target.value)
+                      }
+                      className="border rounded px-2 py-1 text-xs"
+                    >
+                      <option value="pending">Pending</option>
+                      <option value="verified">Verified</option>
+                      <option value="rejected">Rejected</option>
+                    </select>
+
+                  </td>
+
+                  {/* Message */}
+                  <td className="px-4 py-3 text-xs text-muted-foreground max-w-[200px] truncate">
+                    {d.message}
+                  </td>
+
+                </tr>
+
+              ))}
+
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+
     </div>
-  </DashboardLayout>
-);
+  );
+};
 
 export default AdminDonations;

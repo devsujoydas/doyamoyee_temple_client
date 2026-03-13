@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PageHeading from "../../shared/PageHeading";
+import { advisorsData } from "../../data/data";
 
 const AdvisorsPage = () => {
-
-  const [advisors, setAdvisors] = useState([]);
-
-  useEffect(() => {
-    fetch("/json/advisors.json")
-      .then((res) => res.json())
-      .then(setAdvisors)
-      .catch(console.error);
-  }, []);
 
 
   return (
@@ -25,7 +16,7 @@ const AdvisorsPage = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 my-10">
 
-          {advisors.map((advisor, index) => (
+          {advisorsData.map((advisor, index) => (
             <motion.div
               key={advisor.id}
               initial={{ opacity: 0, y: 40 }}

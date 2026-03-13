@@ -1,5 +1,4 @@
-import DashboardLayout from "../../Layouts/DashboardLayout";
-import SEOHead from "../../components/SEOHead"; 
+import SEOHead from "../../components/SEOHead";
 import { HiUsers, HiDocumentText, HiBell, HiCalendar, HiCurrencyDollar } from "react-icons/hi";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import SectionReveal from "../../components/SectionReveal";
@@ -23,7 +22,7 @@ const categoryData = [
 const COLORS = ["hsl(15, 80%, 45%)", "hsl(45, 85%, 55%)", "hsl(0, 60%, 30%)", "hsl(30, 25%, 50%)"];
 
 const AdminOverview = () => (
-  <DashboardLayout>
+  <div>
     <SEOHead title="Admin Dashboard" description="Admin overview for Maa Doyamoyee Temple." path="/admin" />
 
     <div className="space-y-6">
@@ -76,7 +75,7 @@ const AdminOverview = () => (
         </SectionReveal>
       </div>
     </div>
-  </DashboardLayout>
+  </div>
 );
 
 export default AdminOverview;

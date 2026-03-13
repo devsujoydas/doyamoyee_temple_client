@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { HiHome, HiDocumentText, HiCalendar, HiBell, HiCurrencyDollar, HiChartBar, HiMenu, HiX } from "react-icons/hi";
 
@@ -12,7 +12,7 @@ const adminLinks = [
   { label: "Back to Site", path: "/", icon: HiHome },
 ];
 
-const SidebarContent = ({setSidebarOpen}) => {
+const SidebarContent = ({ setSidebarOpen }) => {
   return (
     <div className="flex flex-col h-full">
       <div className="p-6 border-b border-sidebar-border">
@@ -49,7 +49,7 @@ const DashboardLayout = ({ children }) => {
     <div className="min-h-screen flex">
       {/* Desktop Sidebar */}
       <aside className="hidden lg:block w-64 bg-sidebar border-r border-sidebar-border shrink-0">
-        <SidebarContent  setSidebarOpen={setSidebarOpen}/>
+        <SidebarContent setSidebarOpen={setSidebarOpen} />
       </aside>
 
       {/* Mobile Sidebar */}
@@ -79,7 +79,7 @@ const DashboardLayout = ({ children }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          {children}
+          <Outlet />
         </motion.main>
       </div>
     </div>
