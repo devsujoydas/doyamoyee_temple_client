@@ -14,9 +14,9 @@ const MainLayout = () => {
     useEffect(() => {
         const currentLang = i18n.language;
         document.documentElement.lang = currentLang;
-        console.log(document.documentElement.lang)
 
-        document.body.classList.remove('lang-bn-BD', 'lang-en-BD');
+        // বডি থেকে পুরানো ল্যাঙ্গুয়েজ ক্লাস রিমুভ করে নতুনটা অ্যাড করা
+        document.body.classList.remove('lang-bn', 'lang-en');
         document.body.classList.add(`lang-${currentLang}`);
     }, [i18n.language]);
 
