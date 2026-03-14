@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaCalendarAlt, FaMapMarkerAlt, FaUser, FaPhone } from "react-icons/fa";
 import placeholder from "/placeholder.png";
-import { formatBanglaDate } from "../../helpers/date";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import NoticeSidebar from "./NoticeSidebar";
+import { formatDateDynamic } from "../../utils/formatDateDynamic";
 
 const categoryColors = {
   event: "bg-red-600",
@@ -18,7 +18,7 @@ const categoryColors = {
 const NoticeDetails = () => {
   const { id } = useParams();
   const [notice, setNotice] = useState(null);
-  const [notices, setNotices] = useState([]); // all notices for sidebar
+  const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ const NoticeDetails = () => {
     fetch("/json/notice.json")
       .then((res) => res.json())
       .then((data) => {
-        setNotices(data); // save all notices for sidebar
+        setNotices(data);
         const found = data.find((item) => item.id === id);
         setNotice(found || null);
       })
@@ -116,7 +116,7 @@ const NoticeDetails = () => {
             {displayDate && (
               <p className="text-gray-500 mb-6">
                 <FaCalendarAlt className="inline mr-2" />
-                {formatBanglaDate(displayDate)}
+                {formatDateDynamic(displayDate)}
                 {eventTime && ` | ${eventTime}`}
               </p>
             )}
@@ -127,7 +127,7 @@ const NoticeDetails = () => {
                 <img
                   src={imageSrc}
                   alt={title}
-                  className="w-full max-h-[500px] object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full max-h-125 object-cover hover:scale-105 transition-transform duration-300"
                 />
               </a>
             </div>

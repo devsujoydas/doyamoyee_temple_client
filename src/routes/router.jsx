@@ -37,6 +37,8 @@ import PurohitPage from "../pages/Management/PurohitPage";
 import CommitteePage from "../pages/Management/CommitteePage";
 import AdvisorsPage from "../pages/Management/AdvisorsPage";
 import MembersPage from "../pages/Management/MembersPage";
+import EventDetailsPage from "../pages/EventsPage/EventDetailsPage";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
 
 
@@ -48,7 +50,6 @@ export const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home />, },
       { path: '/history', element: <TempleHistory />, },
-      { path: '/events', element: <EventsPage />, },
       { path: '/gallery', element: <GalleryPage />, },
       { path: '/videos', element: <Videos />, },
       { path: '/purohit', element: <PurohitPage />, },
@@ -57,6 +58,12 @@ export const router = createBrowserRouter([
       { path: '/members', element: <MembersPage />, },
       { path: '/contact', element: <ContactPage />, },
       { path: '/donate', element: <Donation />, },
+      
+      { path: '/profile', element: <ProfilePage />, },
+
+
+      { path: '/events', element: <EventsPage />, },
+      { path: '/events/:slug', element: <EventDetailsPage />, },
 
       { path: '/notices', element: <NoticePage />, },
       { path: '/notices/:id', element: <NoticeDetails />, },

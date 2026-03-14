@@ -18,10 +18,10 @@ const AdminEvents = () => {
     <div>
       <SEOHead title="Event Management" description="Manage events." path="/admin/events" />
       <h1 className="text-2xl font-display font-bold text-foreground mb-6">Event Management</h1>
-      <div className="glass-card rounded-xl overflow-hidden">
+      <div className="shadow-md bg-[#FCFBFB]  rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-muted">
+            <thead className="bg-[#F0EDEA]">
               <tr>
                 <th className="text-left px-4 py-3 font-medium text-foreground">Event</th>
                 <th className="text-left px-4 py-3 font-medium text-foreground">Date</th>
@@ -31,7 +31,7 @@ const AdminEvents = () => {
             </thead>
             <tbody>
               {events.map(event => (
-                <tr key={event.id} className="border-t border-border">
+                <tr key={event.id} className="border-t border-zinc-300">
                   <td className="px-4 py-3 text-foreground">{event.title}</td>
                   <td className="px-4 py-3 text-muted-foreground">{event.date}</td>
                   <td className="px-4 py-3">

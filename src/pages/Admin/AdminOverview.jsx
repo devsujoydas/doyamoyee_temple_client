@@ -4,11 +4,11 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import SectionReveal from "../../components/SectionReveal";
 
 const stats = [
-  { label: "Total Users", value: 1250, icon: HiUsers, color: "bg-primary/10 text-primary" },
-  { label: "Total Blogs", value: 48, icon: HiDocumentText, color: "bg-accent/20 text-accent-foreground" },
-  { label: "Total Notices", value: 23, icon: HiBell, color: "bg-secondary text-secondary-foreground" },
-  { label: "Total Events", value: 15, icon: HiCalendar, color: "bg-primary/10 text-primary" },
-  { label: "Total Donations", value: "₹2,45,000", icon: HiCurrencyDollar, color: "bg-accent/20 text-accent-foreground" },
+  { label: "Total Users", value: 1250, icon: HiUsers, color: "bg-[#F7E9E3] text-[#CE4517]" },
+  { label: "Total Blogs", value: 48, icon: HiDocumentText, color: "bg-[#FAF0D2] text-[#251D18]" },
+  { label: "Total Notices", value: 23, icon: HiBell, color: "bg-[#F7EDDE] text-[#251D18]" },
+  { label: "Total Events", value: 15, icon: HiCalendar, color: "bg-[#F7E9E3] text-[#CE4517]" },
+  { label: "Total Donations", value: "₹2,45,000", icon: HiCurrencyDollar, color: "bg-[#FAF0D2] text-[#251D18]" },
 ];
 
 const monthlyDonations = [
@@ -22,57 +22,89 @@ const categoryData = [
 const COLORS = ["hsl(15, 80%, 45%)", "hsl(45, 85%, 55%)", "hsl(0, 60%, 30%)", "hsl(30, 25%, 50%)"];
 
 const AdminOverview = () => (
-  <div>
+  <div className="">
     <SEOHead title="Admin Dashboard" description="Admin overview for Maa Doyamoyee Temple." path="/admin" />
 
     <div className="space-y-6">
-      <h1 className="text-2xl font-display font-bold text-foreground">Dashboard Overview</h1>
+      <h1 className="text-2xl font-display font-bold ">Dashboard Overview</h1>
 
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {stats.map((stat, i) => (
           <SectionReveal key={stat.label} delay={i * 0.05}>
-            <div className="glass-card rounded-xl p-4">
+            <div className="bg-white shadow-md rounded-xl p-4">
               <div className={`w-10 h-10 rounded-lg ${stat.color} flex items-center justify-center mb-3`}>
                 <stat.icon size={20} />
               </div>
-              <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-              <p className="text-xs text-muted-foreground">{stat.label}</p>
+              <p className="text-2xl text-[#251D18] font-bold ">{stat.value}</p>
+              <p className="text-xs text-[#251D18] ">{stat.label}</p>
             </div>
           </SectionReveal>
         ))}
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
+
+        {/* Monthly Donations */}
         <SectionReveal>
-          <div className="glass-card rounded-xl p-5">
-            <h3 className="font-semibold text-foreground mb-4">Monthly Donations</h3>
+          <div className="bg-white rounded-xl p-6 shadow-md border border-zinc-200 outline-none focus:outline-none">
+            <h3 className="font-semibold text-lg mb-4 text-gray-800">
+              Monthly Donations
+            </h3>
+
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={monthlyDonations}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
-                <YAxis tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
+                <CartesianGrid strokeDasharray="3 3" />
+
+                <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+
+                <YAxis tick={{ fontSize: 12 }} />
+
                 <Tooltip />
-                <Bar dataKey="amount" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+
+                <Bar
+                  dataKey="amount"
+                  fill="#CF4517"
+                  radius={[6, 6, 0, 0]}
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </SectionReveal>
 
+
+        {/* Donation Categories */}
         <SectionReveal delay={0.1}>
-          <div className="glass-card rounded-xl p-5">
-            <h3 className="font-semibold text-foreground mb-4">Donation Categories</h3>
+          <div className="bg-white rounded-xl p-6 shadow-md border border-zinc-200 outline-none focus:outline-none">
+            <h3 className="font-semibold text-lg mb-4 text-gray-800">
+              Donation Categories
+            </h3>
+
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
-                <Pie data={categoryData} cx="50%" cy="50%" outerRadius={80} dataKey="value" label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>
+                <Pie
+                  data={categoryData}
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={90}
+                  dataKey="value"
+                  label={({ name, percent }) =>
+                    `${name} ${(percent * 100).toFixed(0)}%`
+                  }
+                >
                   {categoryData.map((_, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
                   ))}
                 </Pie>
+
                 <Tooltip />
               </PieChart>
             </ResponsiveContainer>
           </div>
         </SectionReveal>
+
       </div>
     </div>
   </div>

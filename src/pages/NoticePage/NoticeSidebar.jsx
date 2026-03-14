@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import placeholder from "/placeholder.png";
-import { formatBanglaDate } from "../../helpers/date";
+import { formatDateDynamic } from "../../utils/formatDateDynamic";
 
 const NoticeSidebar = ({ notices = [] }) => {
   if (!notices.length) return null;
@@ -37,7 +37,7 @@ const NoticeSidebar = ({ notices = [] }) => {
                 </Link>
                 <span className="text-gray-500 text-xs sm:text-sm">
                   {notice.eventDate || notice.publishDate
-                    ? formatBanglaDate(notice.eventDate || notice.publishDate)
+                    ? formatDateDynamic(notice.eventDate || notice.publishDate)
                     : ""}
                 </span>
               </div>

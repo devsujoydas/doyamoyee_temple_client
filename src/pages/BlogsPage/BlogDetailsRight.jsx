@@ -6,6 +6,7 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { formatDateDynamic } from "../../utils/formatDateDynamic";
 
 
 
@@ -102,7 +103,7 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
                     {post.title}
                   </h4>
                 </Link>
-                <span className="text-gray-500 text-xs sm:text-sm">{post.date}</span>
+                <span className="text-gray-500 text-xs sm:text-sm">{formatDateDynamic(blog?.date)}</span>
               </div>
             </motion.div>
           ))}

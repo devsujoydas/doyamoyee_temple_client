@@ -4,6 +4,7 @@ import Hero from "../../components/Hero";
 import About from "./About";
 import BlogsSection from "./BlogsSection";
 import LatestNotice from "./LatestNotice"; 
+import SupporttheTemple from "./SupporttheTemple";
 import UpcommingEvents from "./UpcommingEvents";
 
 
@@ -17,6 +18,8 @@ const Home = () => {
       <LatestNotice /> 
       <UpcommingEvents />
       <BlogsSection />
+      <SupporttheTemple />
+
 
     </div>
   )

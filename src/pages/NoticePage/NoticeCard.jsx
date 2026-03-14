@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import placeholder from "/placeholder.png";
-import { formatBanglaDate } from "../../helpers/date";
 import LazyImage from "../../components/LazyImage";
+import { formatDateDynamic } from "../../utils/formatDateDynamic";
 
 const NoticeCard = ({ notice }) => {
   const {
@@ -52,7 +52,7 @@ const NoticeCard = ({ notice }) => {
       {/* CONTENT */}
       <div className="p-5">
         <p className="text-sm text-gray-500 mb-2">
-          {displayDate && formatBanglaDate(displayDate)}
+          {displayDate && formatDateDynamic(displayDate)}
         </p>
 
         <h3 className="text-lg font-semibold mb-2 line-clamp-2">{title}</h3>

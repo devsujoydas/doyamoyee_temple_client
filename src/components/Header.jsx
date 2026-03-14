@@ -143,8 +143,8 @@ const Header = () => {
                   className="absolute right-0 mt-2 bg-white dark:bg-gray-800 shadow-md rounded-md overflow-hidden"
                 >
                   <div
-                    onClick={() => changeLang("bn")}
-                    className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "bn"
+                    onClick={() => changeLang("bn-BD")}
+                    className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "bn-BD"
                       ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
                       : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
                       }`}
@@ -152,8 +152,8 @@ const Header = () => {
                     বাংলা
                   </div>
                   <div
-                    onClick={() => changeLang("en")}
-                    className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "en"
+                    onClick={() => changeLang("en-BD")}
+                    className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "en-BD"
                       ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
                       : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
                       }`}
@@ -295,13 +295,13 @@ const Header = () => {
                       className="flex flex-col mt-2 bg-white dark:bg-gray-800 rounded-md overflow-hidden"
                     >
                       <div
-                        onClick={() => changeLang("bn")}
+                        onClick={() => changeLang("bn-BD")}
                         className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
                       >
                         বাংলা
                       </div>
                       <div
-                        onClick={() => changeLang("en")}
+                        onClick={() => changeLang("en-BD")}
                         className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
                       >
                         English

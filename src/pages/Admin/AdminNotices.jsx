@@ -17,10 +17,10 @@ const AdminNotices = () => {
     <div>
       <SEOHead title="Notice Management" description="Manage notices." path="/admin/notices" />
       <h1 className="text-2xl font-display font-bold text-foreground mb-6">Notice Management</h1>
-      <div className="glass-card rounded-xl overflow-hidden">
+      <div className="shadow-md bg-[#FCFBFB]  rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-muted">
+            <thead className="bg-[#F0EDEA]">
               <tr>
                 <th className="text-left px-4 py-3 font-medium text-foreground">Title</th>
                 <th className="text-left px-4 py-3 font-medium text-foreground">Date</th>
@@ -30,7 +30,7 @@ const AdminNotices = () => {
             </thead>
             <tbody>
               {notices.map(notice => (
-                <tr key={notice.id} className="border-t border-border">
+                <tr key={notice.id} className="border-t border-zinc-300">
                   <td className="px-4 py-3 text-foreground">{notice.title}</td>
                   <td className="px-4 py-3 text-muted-foreground">{notice.eventDate}</td>
                   <td className="px-4 py-3">{notice.isImportant && <HiStar className="text-accent" />}</td>

@@ -28,6 +28,9 @@ const AdminDonations = () => {
   const pendingDonation = donations
     .filter((d) => d.status === "pending")
     .reduce((sum, d) => sum + d.amount, 0);
+  const rejectedDonation = donations
+    .filter((d) => d.status === "rejected")
+    .reduce((sum, d) => sum + d.amount, 0);
 
   return (
     <div className="space-y-6">
@@ -40,41 +43,47 @@ const AdminDonations = () => {
 
       <h1 className="text-2xl font-bold">Donation Dashboard</h1>
 
-      {/* Analytics Cards */}
 
-      <div className="grid md:grid-cols-3 gap-4">
 
-        <div className="bg-white border rounded-xl p-4">
+      <div className="grid md:grid-cols-4 gap-4">
+
+        <div className="bg-white border border-zinc-300 shadow-md rounded-xl p-4">
           <p className="text-sm text-muted-foreground">Total Donation</p>
           <h3 className="text-xl font-bold text-green-600">
             ৳{totalDonation.toLocaleString()}
           </h3>
         </div>
 
-        <div className="bg-white border rounded-xl p-4">
+        <div className="bg-white border border-zinc-300 shadow-md rounded-xl p-4">
           <p className="text-sm text-muted-foreground">Verified</p>
           <h3 className="text-xl font-bold text-blue-600">
             ৳{verifiedDonation.toLocaleString()}
           </h3>
         </div>
 
-        <div className="bg-white border rounded-xl p-4">
+        <div className="bg-white border border-zinc-300 shadow-md rounded-xl p-4">
           <p className="text-sm text-muted-foreground">Pending</p>
           <h3 className="text-xl font-bold text-yellow-600">
             ৳{pendingDonation.toLocaleString()}
           </h3>
         </div>
 
+        <div className="bg-white border border-zinc-300 shadow-md rounded-xl p-4">
+          <p className="text-sm text-muted-foreground">Rejected</p>
+          <h3 className="text-xl font-bold text-yellow-600">
+            ৳{rejectedDonation.toLocaleString()}
+          </h3>
+        </div>
       </div>
 
       {/* Donation Table */}
 
-      <div className="bg-white border rounded-xl overflow-hidden">
+      <div className="bg-white border border-zinc-300 shadow-md rounded-xl overflow-hidden">
 
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
 
-            <thead className="bg-muted">
+            <thead className="bg-[#F0EDEA]">
               <tr>
                 <th className="px-4 py-3 text-left">Donor</th>
                 <th className="px-4 py-3 text-left">Amount</th>
@@ -89,7 +98,7 @@ const AdminDonations = () => {
 
               {donations.map((d) => (
 
-                <tr key={d.id} className="border-t hover:bg-muted/40">
+                <tr key={d.id} className="border-t border-zinc-300">
 
                   {/* Donor */}
                   <td className="px-4 py-3">
@@ -124,7 +133,7 @@ const AdminDonations = () => {
                       onChange={(e) =>
                         handleStatusChange(d.id, e.target.value)
                       }
-                      className="border rounded px-2 py-1 text-xs"
+                      className="border border-zinc-300 rounded px-2 py-1 text-xs outline-none"
                     >
                       <option value="pending">Pending</option>
                       <option value="verified">Verified</option>

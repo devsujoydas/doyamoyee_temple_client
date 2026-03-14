@@ -2,6 +2,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import omSymbolsvg from "/Om_symbol.svg";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { formatDateDynamic } from "../utils/formatDateDynamic";
 
 const BlogCard = ({ blog }) => {
     const { t } = useTranslation();
@@ -34,7 +35,7 @@ const BlogCard = ({ blog }) => {
             <div className="flex gap-2 items-center">
               <FaRegCalendarAlt className="text-[#DB4242]" size={14} />
               <span className="text-[13px] font-semibold text-[#44233B]">
-                {blog?.date}
+                {formatDateDynamic(blog?.date)}
               </span>
             </div>
           </div>

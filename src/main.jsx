@@ -11,14 +11,14 @@ import "./i18n";
 import Lenis from 'lenis';
   
  
-const lenis = new Lenis();
+// const lenis = new Lenis();
  
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
+// function raf(time) {
+//   lenis.raf(time);
+//   requestAnimationFrame(raf);
+// }
 
-requestAnimationFrame(raf);
+// requestAnimationFrame(raf);
 
 
 createRoot(document.getElementById('root')).render(

@@ -26,7 +26,7 @@ const UpcommingEvents = () => {
       .catch(console.error);
   }, []);
 
-  const formatDateBN = (dateStr) => {
+  const formatDateDynamic = (dateStr) => {
     const d = new Date(dateStr);
     return d.toLocaleDateString("bn-BD", {
       day: "numeric",
@@ -61,31 +61,31 @@ const UpcommingEvents = () => {
                 transition={{ duration: 0.3 }}
                 className="relative group rounded-xl overflow-hidden shadow-xl cursor-pointer "
               >
-                {/* Event Image */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-56 md:h-114 object-cover transition-transform duration-300 group-hover:scale-105"
-                />
 
-                {/* Ribbon */}
-                <div className="absolute top-3 left-3 bg-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  আসন্ন উৎসব
-                </div>
+                <Link to={`/events/${item.slug}`}>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-56 md:h-114 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/30  duration-300"></div>
-
-                {/* Event Details */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 transform  duration-300 z-10 bg-linear-to-t from-black/70 to-transparent">
-                  <div className="flex items-center gap-2 text-white text-sm mb-2">
-                    <HiCalendar /> {formatDateBN(item.date)}
+                  {/* Ribbon */}
+                  <div className="absolute top-3 left-3 bg-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    আসন্ন উৎসব
                   </div>
-                  <h5 className="text-xl md:text-2xl font-semibold text-white">
-                    {item.title}
-                  </h5>
-                  <p className="text-sm text-white line-clamp-3">{item.description}</p>
-                </div>
+
+                  <div className="absolute inset-0 bg-black/30  duration-300"></div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-5 transform  duration-300 z-10 bg-linear-to-t from-black/70 to-transparent">
+                    <div className="flex items-center gap-2 text-white text-sm mb-2">
+                      <HiCalendar /> {formatDateDynamic(item.date)}
+                    </div>
+                    <h5 className="text-xl md:text-2xl font-semibold text-white">
+                      {item.title}
+                    </h5>
+                    <p className="text-sm text-white line-clamp-3">{item.description}</p>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </AnimatePresence>

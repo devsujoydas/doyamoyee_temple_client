@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { useTranslation } from "react-i18next";
+import { formatDateDynamic } from "../../utils/formatDateDynamic";
 
-const BlogPostCard = ({ blog }) => {
-   const { t } = useTranslation();
+const BlogPostCard = ({ blog, profile }) => {
+  const { t } = useTranslation();
 
 
   useEffect(() => {
@@ -21,14 +22,14 @@ const BlogPostCard = ({ blog }) => {
 
       {/* Meta info */}
       <div className="flex flex-wrap items-center text-gray-500 text-xs sm:text-sm md:text-base gap-3 sm:gap-4 mb-5">
-        <span>👁️ {blog?.views || 0} {t("views")}</span>
+        <span>👁️ {blog?.views?.length || 0} {t("views")}</span>
         <span>💬 {blog?.comments?.length || 0} {t("comments")}</span>
-        <span>📅 {blog?.date}</span>
+        <span>📅 {formatDateDynamic(blog?.date)}</span>
       </div>
 
       {/* Description */}
       <p className="text-gray-700 leading-relaxed text-sm sm:text-base mb-5">
-        {blog?.desc}
+        {profile == "true" ? blog.desc.slice(0, 200) + "..." : blog?.desc} 
       </p>
 
       {/* Blog Image */}

@@ -14,9 +14,9 @@ const adminLinks = [
 
 const SidebarContent = ({ setSidebarOpen }) => {
   return (
-    <div className="flex flex-col h-full">
-      <div className="p-6 border-b border-sidebar-border">
-        <h2 className="text-lg font-display font-bold text-sidebar-foreground">Admin Dashboard</h2>
+    <div className="flex flex-col h-full bg-[#2C2421] text-[#F9F7F5]">
+      <div className="p-6 border-b border-zinc-500">
+        <h2 className="text-lg  font-bold text-sidebar-foreground">Admin Dashboard</h2>
       </div>
       <nav className="flex-1 p-4 space-y-1">
         {adminLinks.map((link) => (
@@ -24,9 +24,9 @@ const SidebarContent = ({ setSidebarOpen }) => {
             key={link.path}
             to={link.path}
             onClick={() => setSidebarOpen(false)}
-            className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${location.pathname === link.path
-              ? "bg-sidebar-primary text-sidebar-primary-foreground"
-              : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent"
+            className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-colors ${location.pathname === link.path
+              ? "bg-[#CF4517] text-zinc-50"
+              : "text-zinc-300 hover:bg-white/10 hover:text-zinc-50"
               }`}
           >
             <link.icon size={18} />
@@ -41,21 +41,17 @@ const DashboardLayout = ({ children }) => {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-
-
-
-
   return (
     <div className="min-h-screen flex">
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block w-64 bg-sidebar border-r border-sidebar-border shrink-0">
+      <aside className="hidden lg:block w-64 shrink-0">
         <SidebarContent setSidebarOpen={setSidebarOpen} />
       </aside>
 
       {/* Mobile Sidebar */}
       {sidebarOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-foreground/50" onClick={() => setSidebarOpen(false)} />
+          <div className="absolute inset-0 " onClick={() => setSidebarOpen(false)} />
           <motion.aside
             initial={{ x: -260 }}
             animate={{ x: 0 }}
@@ -67,14 +63,14 @@ const DashboardLayout = ({ children }) => {
       )}
 
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="h-14 border-b border-border flex items-center px-4 bg-card">
-          <button className="lg:hidden mr-3 text-foreground" onClick={() => setSidebarOpen(true)} aria-label="Open sidebar">
+        <header className="h-14 bg-white border-b border-zinc-200 flex items-center px-4 ">
+          <button className="lg:hidden mr-3 " onClick={() => setSidebarOpen(true)} aria-label="Open sidebar">
             <HiMenu size={22} />
           </button>
-          <h1 className="text-lg font-semibold text-foreground">Maa Doyamoyee Admin</h1>
+          <h1 className="text-lg font-semibold ">Maa Doyamoyee Admin</h1>
         </header>
         <motion.main
-          className="flex-1 p-4 md:p-6 bg-background overflow-auto"
+          className="flex-1 p-4 md:p-6 bg-[#F9F7F5] overflow-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
