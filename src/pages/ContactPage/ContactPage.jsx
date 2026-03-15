@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, PhoneCall, Mail, Facebook, Instagram, Twitter } from "lucide-react";
 import PageHeading from "../../shared/PageHeading";

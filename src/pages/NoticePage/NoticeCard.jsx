@@ -50,7 +50,7 @@ const NoticeCard = ({ notice }) => {
       </Link>
 
       {/* CONTENT */}
-      <div className="p-5">
+      <div className="p-5 lang-bn-BD">
         <p className="text-sm text-gray-500 mb-2">
           {displayDate && formatDateDynamic(displayDate)}
         </p>

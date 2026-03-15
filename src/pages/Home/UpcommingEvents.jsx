@@ -4,6 +4,7 @@ import { HiArrowRight, HiCalendar } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import SectionHeading from "../../shared/SectionHeading";
 import { useTranslation } from "react-i18next";
+import { formatDateDynamic } from "../../utils/formatDateDynamic";
 
 
 const UpcommingEvents = () => {
@@ -26,14 +27,6 @@ const UpcommingEvents = () => {
       .catch(console.error);
   }, []);
 
-  const formatDateDynamic = (dateStr) => {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString("bn-BD", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-  };
 
   return (
     <div className="bg-section-primary">
@@ -58,11 +51,11 @@ const UpcommingEvents = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="relative group rounded-xl overflow-hidden shadow-xl cursor-pointer "
+                className="relative group rounded-xl overflow-hidden shadow-xl cursor-pointer lang-bn-BD "
               >
 
                 <Link to={`/events/${item.slug}`}>
-                  <img
+                  <img loading="lazy"
                     src={item.image}
                     alt={item.title}
                     className="w-full h-56 md:h-114 object-cover transition-transform duration-300 group-hover:scale-105"

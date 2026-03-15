@@ -19,8 +19,8 @@ const AdminEvents = () => {
       <SEOHead title="Event Management" description="Manage events." path="/admin/events" />
       <h1 className="text-2xl font-display font-bold text-foreground mb-6">Event Management</h1>
       <div className="shadow-md bg-[#FCFBFB]  rounded-xl overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+        <div className="overflow-x-auto ">
+          <table className="w-full text-sm ">
             <thead className="bg-[#F0EDEA]">
               <tr>
                 <th className="text-left px-4 py-3 font-medium text-foreground">Event</th>

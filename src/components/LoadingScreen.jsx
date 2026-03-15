@@ -7,7 +7,7 @@ const LoadingScreen = () => {
       <div className="flex flex-col items-center gap-4">
         {/* Image with soft shadow and scale animation */}
         <div className="animate-pulse transform hover:scale-105 transition-transform duration-500">
-          <img
+          <img loading="lazy"
             src={loadingImg}
             alt="Loading"
             className="w-32 h-32 object-contain drop-shadow-xl"

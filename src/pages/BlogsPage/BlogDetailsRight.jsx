@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import  { useEffect, useMemo } from "react";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Fancybox } from "@fancyapps/ui";
@@ -35,10 +35,10 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
 
       {/* Author Card */}
       {blog?.author && (
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 text-center">
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 text-center  lang-bn-BD">
           {blog.author.image && (
             <a href={blog.author.image} data-fancybox="author-image" data-caption="Author">
-              <img
+              <img loading="lazy"
                 src={blog.author.image}
                 alt={blog.author.name}
                 className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full object-cover mb-3 sm:mb-4"
@@ -62,7 +62,7 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
         <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-900">
           {t("search")}
         </h3>
-        <div className="flex">
+        <div className="flex ">
           <input
             type="text"
             placeholder={t("search_placeholder")}
@@ -81,7 +81,7 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
         </h3>
         <div
 
-          className="space-y-3 sm:space-y-4">
+          className="space-y-3 sm:space-y-4  lang-bn-BD">
           {randomPosts.map((post) => (
             <motion.div
               key={post.id}
@@ -91,7 +91,7 @@ const BlogDetailsRight = ({ blog, recentPosts = [] }) => {
               className="flex gap-3 sm:gap-4 items-center pb-3 sm:pb-4 border-b border-gray-200 last:border-b-0 last:pb-0"
             >
               <Link to={`/blogs/${post.slug}`}>
-                <img
+                <img loading="lazy"
                   src={post.postImg}
                   alt={post.title}
                   className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover"

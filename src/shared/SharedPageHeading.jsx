@@ -52,7 +52,7 @@ const SharedPageHeading = ({ title, path, path2 }) => {
                 {/* Path1 */}
                 {path && (
                     <>
-                        <img className="w-5 h-5" src={omSymbolsvg} alt="Om" />
+                        <img loading="lazy" className="w-5 h-5" src={omSymbolsvg} alt="Om" />
                         <span>{path}</span>
                     </>
                 )}
@@ -60,7 +60,7 @@ const SharedPageHeading = ({ title, path, path2 }) => {
                 {/* Path2 */}
                 {path2 && (
                     <>
-                        <img className="w-5 h-5" src={omSymbolsvg} alt="Om" />
+                        <img loading="lazy" className="w-5 h-5" src={omSymbolsvg} alt="Om" />
                         <span>{path2}</span>
                     </>
                 )}

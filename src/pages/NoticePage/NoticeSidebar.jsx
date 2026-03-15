@@ -23,7 +23,7 @@ const NoticeSidebar = ({ notices = [] }) => {
               className="flex gap-3 items-center pb-3 border-b border-gray-200 last:border-b-0 last:pb-0"
             >
               <Link to={`/notices/${notice.id}`}>
-                <img
+                <img loading="lazy"
                   src={notice.thumbnail || placeholder}
                   alt={notice.title}
                   className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover"

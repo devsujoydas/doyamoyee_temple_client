@@ -76,7 +76,7 @@ const Donation = () => {
     e.preventDefault();
     const data = new FormData();
     for (let key in formData) data.append(key, formData[key]);
-    console.log("Send to backend:", data);
+    // console.log("Send to backend:", data);
     toast.success("Donation proof submitted successfully!");
     setFormData({
       donorName: "",
@@ -125,7 +125,7 @@ const Donation = () => {
                     className="flex justify-between items-center bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 sm:px-4 sm:py-3 hover:shadow-lg transition"
                   >
                     <div className="flex items-center gap-2 sm:gap-3">
-                      <img src={acc.logo} alt={acc.bank} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+                      <img loading="lazy" src={acc.logo} alt={acc.bank} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
                       <div className="text-xs sm:text-sm">
                         <p className="text-gray-600">{acc.bank}</p>
                         <p className="font-semibold">{acc.accountName}</p>
@@ -159,7 +159,7 @@ const Donation = () => {
                     className="flex justify-between items-center bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 sm:px-4 sm:py-3 hover:shadow-lg transition"
                   >
                     <div className="flex items-center gap-2 sm:gap-3">
-                      <img src={acc.logo} alt={acc.name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+                      <img loading="lazy" src={acc.logo} alt={acc.name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
                       <div className="text-xs sm:text-sm">
                         <p className="text-gray-600">{acc.name}</p>
                         <p className="font-semibold">{acc.accountName}</p>
@@ -332,7 +332,7 @@ const Donation = () => {
                     className="flex flex-col items-center justify-center w-full h-48 sm:h-64 bg-neutral-secondary-medium border border-dashed border-zinc-400 rounded-lg cursor-pointer hover:bg-neutral-tertiary-medium"
                   >
                     {formData.screenshot ? (
-                      <img
+                      <img loading="lazy"
                         src={URL.createObjectURL(formData.screenshot)}
                         alt="Preview"
                         className="h-48 sm:h-64 object-contain rounded-md"

@@ -77,7 +77,7 @@ const BlogPostModal = ({ isOpen, onClose, onPost }) => {
             className="w-full border p-2 rounded"
           />
           <input type="file" onChange={handleImage} />
-          {imagePreview && <img src={imagePreview} className="h-40 mt-2 rounded" />}
+          {imagePreview && <img loading="lazy" src={imagePreview} className="h-40 mt-2 rounded" />}
           <div className="flex justify-end gap-3">
             <button
               type="button"

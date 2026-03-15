@@ -14,10 +14,10 @@ const EventCard = ({ item }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="relative group rounded-lg overflow-hidden shadow-lg cursor-pointer"
+            className="relative group rounded-lg overflow-hidden shadow-lg cursor-pointer "
         >
             <Link to={`/events/${item.slug}`}>
-                <img
+                <img loading="lazy"
                     src={item.image}
                     alt={item.title}
                     className="w-full h-56 md:h-80 object-cover transition-transform duration-300 group-active:scale-105 group-hover:scale-105"

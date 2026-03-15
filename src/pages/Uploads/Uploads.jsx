@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import toast, { Toaster } from "react-hot-toast";
@@ -18,7 +18,7 @@ const Uploads = () => {
     try {
       const res = await axios.get(`${API}/images`);
       setImages(res.data);
-      console.log(res.data)
+      // console.log(res.data)
     } catch (error) {
       console.error(error);
     }
@@ -67,7 +67,7 @@ const Uploads = () => {
       }
 
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       toast.error("Upload Failed");
 
     } finally {
@@ -139,7 +139,7 @@ const Uploads = () => {
           {preview && (
             <div className="mt-6">
 
-              <img
+              <img loading="lazy"
                 src={preview}
                 alt="preview"
                 className="rounded-lg max-h-64 object-cover"
@@ -181,7 +181,7 @@ const Uploads = () => {
                 className="relative group"
               >
 
-                <img
+                <img loading="lazy"
                   src={img.url}
                   className="rounded-lg object-cover h-40 w-full"
                 />

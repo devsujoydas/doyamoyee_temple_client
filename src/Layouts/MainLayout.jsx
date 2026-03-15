@@ -1,49 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom'
-import Header from '../components/Header';
-import LoadingScreen from '../components/LoadingScreen';
-import Footer from '../components/Footer';
-import { Toaster } from 'react-hot-toast';
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header";
+import LoadingScreen from "../components/LoadingScreen";
+import Footer from "../components/Footer";
+import { Toaster } from "react-hot-toast";
+import Music from "../components/MusicPlayer";
 const MainLayout = () => {
+  const { i18n } = useTranslation();
+  const [loading, setLoading] = useState(true);
 
-    const { i18n } = useTranslation();
-    const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    const currentLang = i18n.language;
+    document.documentElement.lang = currentLang;
+    document.body.classList.remove("lang-bn-BD", "lang-en-US");
+    document.body.classList.add(`lang-${currentLang}`);
+  }, [i18n.language]);
 
+  setTimeout(() => {
+    setLoading(false);
+  }, 500);
 
-    useEffect(() => {
-        const currentLang = i18n.language;
-        document.documentElement.lang = currentLang;
+  const [open, setOpen] = useState(false);
 
-        // বডি থেকে পুরানো ল্যাঙ্গুয়েজ ক্লাস রিমুভ করে নতুনটা অ্যাড করা
-        document.body.classList.remove('lang-bn', 'lang-en');
-        document.body.classList.add(`lang-${currentLang}`);
-    }, [i18n.language]);
-
-    setTimeout(() => {
-        setLoading(false)
-    }, 500);
-
-
-
-    // bg-linear-to-b from-[#fffaf3] via-[#f7e6d3] to-[#f1dcc6]
-    return (
-        <div className=''>
-            {loading ?
-                <LoadingScreen />
-                :
-                <div>
-                    <Header />
-                    <Toaster
-                        position="top-right"
-                        reverseOrder={false}
-                    />
-                    <Outlet />
-                    <Footer />
-                </div>
-            }
+  return (
+    <div className="relative">
+      <Music open={open} setOpen={setOpen} />
+      {loading ? (
+        <LoadingScreen />
+      ) : (
+        <div>
+          <Header />
+          <Toaster position="top-right" reverseOrder={false} />
+          <Outlet />
+          <Footer />
         </div>
-    )
-}
+      )}
+    </div>
+  );
+};
 
-export default MainLayout
+export default MainLayout;

@@ -1,6 +1,4 @@
-import React from "react";
-import { motion } from "framer-motion";
-import templeImage from "/about/tample-about.webp";
+import { motion } from "framer-motion"; 
 import { useTranslation } from "react-i18next";
 import SectionHeading from "../../shared/SectionHeading";
 
@@ -32,8 +30,8 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <img
-              src={templeImage}
+            <img loading="lazy"
+              src={"/about/tample-about.webp"}
               alt="Doyamoyee Temple"
               className="w-full h-100 sm:h-112.5 md:h-125 lg:h-137.5 xl:h-150 object-cover"
             />

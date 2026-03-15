@@ -3,7 +3,6 @@
 import { HiPencil, HiTrash } from "react-icons/hi";
 import SEOHead from "../../components/SEOHead";
 import { useEffect, useState } from "react";
-import { CloudLightning } from "lucide-react";
 import { formatDateDynamic } from "../../utils/formatDateDynamic";
 
 const AdminBlogs = () => {

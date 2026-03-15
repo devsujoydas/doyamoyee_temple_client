@@ -45,7 +45,7 @@ const GalleryCard = ({ img, gallerySEO }) => {
     >
       {/* Blur background */}
 
-      <img
+      <img loading="lazy"
         src={blurImg}
         alt=""
         aria-hidden="true"
@@ -56,13 +56,13 @@ const GalleryCard = ({ img, gallerySEO }) => {
 
       {/* Main Image */}
 
-      <img
+      <img 
+      loading="lazy"
         src={img800}
         srcSet={`${img400} 400w, ${img800} 800w, ${img1200} 1200w`}
         sizes="(max-width:768px) 50vw, (max-width:1200px) 33vw, 25vw"
         alt={altText}
         title={titleText}
-        loading="lazy"
         decoding="async"
         onLoad={() => setLoaded(true)}
         className="relative w-full h-full object-cover transition duration-500 group-hover:scale-110"

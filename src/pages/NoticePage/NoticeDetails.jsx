@@ -124,7 +124,7 @@ const NoticeDetails = () => {
             {/* Main Image */}
             <div className="mb-8 rounded-2xl overflow-hidden shadow-inner">
               <a href={imageSrc} data-fancybox="notice-gallery" data-caption={title}>
-                <img
+                <img loading="lazy"
                   src={imageSrc}
                   alt={title}
                   className="w-full max-h-125 object-cover hover:scale-105 transition-transform duration-300"
@@ -174,7 +174,7 @@ const NoticeDetails = () => {
                       data-caption={title}
                       className="block rounded-xl overflow-hidden"
                     >
-                      <img
+                      <img loading="lazy"
                         src={img}
                         alt={`gallery-${idx}`}
                         className="w-full h-40 object-cover hover:scale-105 transition-transform"

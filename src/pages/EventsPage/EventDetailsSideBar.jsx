@@ -22,7 +22,7 @@ const EventDetailsSideBar = ({ events = [] }) => {
                             className="flex gap-3 items-center pb-3 border-b border-gray-200 last:border-b-0 last:pb-0"
                         >
                             <Link to={`/events/${event.slug}`}>
-                                <img
+                                <img loading="lazy"
                                     src={event.image}
                                     alt={event.title}
                                     className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover"

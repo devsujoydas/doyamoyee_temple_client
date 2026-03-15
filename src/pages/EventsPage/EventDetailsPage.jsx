@@ -85,7 +85,7 @@ const EventDetailsPage = () => {
                             {/* Main Image */}
                             <div className="mb-8 rounded-2xl overflow-hidden shadow-inner">
                                 <a href={event.image} data-fancybox="event-gallery" data-caption={event.title}>
-                                    <img
+                                    <img loading="lazy"
                                         src={event.image}
                                         alt={event.title}
                                         className="w-full max-h-125 object-cover hover:scale-105 transition-transform duration-300"

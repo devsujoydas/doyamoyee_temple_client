@@ -34,20 +34,20 @@
 
 
 /* বাংলা ভাষার জন্য স্টাইল */
-.lang-bn {
+.lang-bn-BD {
   font-family: "Hind Siliguri", sans-serif;
   /* font-family: 'Noto Serif Bengali', serif !important; */
 }
-.lang-bn h1, .lang-bn h2, .lang-bn .heading-style {
+.lang-bn-BD h1, .lang-bn-BD h2, .lang-bn-BD .heading-style {
   font-family: 'Galada', cursive !important;
   line-height: 1.4;
 }
 
 /* ইংরেজি ভাষার জন্য স্টাইল */
-.lang-en {
+.lang-en-US {
   font-family: 'Lora', serif !important;
 }
-.lang-en h1, .lang-en h2, .lang-en .heading-style {
+.lang-en-US h1, .lang-en-US h2, .lang-en-US .heading-style {
   font-family: 'Playfair Display', serif !important;
   line-height: 1.2;
 }

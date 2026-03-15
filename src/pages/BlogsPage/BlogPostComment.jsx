@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { formatDateDynamic } from "../../utils/formatDateDynamic";
 
 const BlogPostComment = ({ comment }) => {
   useEffect(() => {
@@ -11,7 +12,7 @@ const BlogPostComment = ({ comment }) => {
   if (!comment?.author) return null;
 
   return (
-    <div className="flex gap-4 p-4 sm:p-5 bg-white rounded-xl shadow-md border border-gray-100 mb-4">
+    <div className="flex gap-4 p-4 sm:p-5 bg-white rounded-xl shadow-md border border-gray-100 mb-4  lang-bn-BD">
       
       {/* Author Photo */}
       <div className="w-16 h-16 rounded-full overflow-hidden shadow-inner shrink-0">
@@ -21,7 +22,7 @@ const BlogPostComment = ({ comment }) => {
             data-fancybox="comment-author"
             data-caption={comment.author.name}
           >
-            <img
+            <img loading="lazy"
               src={comment.author.image}
               alt={comment.author.name}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -36,7 +37,7 @@ const BlogPostComment = ({ comment }) => {
           <h4 className="font-semibold text-gray-800 text-sm sm:text-base">
             {comment.author.name}
           </h4>
-          <span className="text-gray-400 text-xs sm:text-sm">{comment.date}</span>
+          <span className="text-gray-400 text-xs sm:text-sm">{formatDateDynamic(comment.date)}</span>
         </div>
         <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{comment.text}</p>
       </div>

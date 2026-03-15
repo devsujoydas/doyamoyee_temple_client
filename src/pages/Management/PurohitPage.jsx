@@ -28,7 +28,7 @@ const PurohitPage = () => {
               <div className="pt-10 pb-3 flex flex-col items-center relative">
                 <div className="absolute -top-4 w-32 h-32 bg-yellow-100/40 rounded-full blur-2xl"></div>
                 <div className="relative w-28 h-28 rounded-full bg-yellow-50 flex items-center justify-center shadow-inner z-10">
-                  <img
+                  <img loading="lazy"
                     src={pandit.image}
                     alt={pandit.name}
                     className="w-24 h-24 rounded-full object-cover border-4 border-white shadow"

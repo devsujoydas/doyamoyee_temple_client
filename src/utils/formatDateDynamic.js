@@ -1,12 +1,10 @@
 export const formatDateDynamic = (dateStr) => {
-    const currentLang = document.documentElement.lang;
-    console.log(currentLang)
+  const currentLang = localStorage.getItem("i18nextLng")
 
-    const d = new Date(dateStr);
-    return d.toLocaleDateString(currentLang, {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    });
+  const d = new Date(dateStr);
+  return d.toLocaleDateString(currentLang, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 };
-

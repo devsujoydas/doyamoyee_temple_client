@@ -1,4 +1,3 @@
-import React from "react";
 import BlogPostCard from "./BlogPostCard";
 import BlogPostComment from "./BlogPostComment";
 import BlogLeaveAComment from "./BlogLeaveAComment";

@@ -1,34 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, User, ChevronDown } from "lucide-react";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
-  const location = useLocation();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(null);
   const [user, setUser] = useState(true);
-  const [hideHeader, setHideHeader] = useState(false);
-
-  // Header hide/show on scroll
-  // useEffect(() => {
-  //   let lastScrollY = 0;
-  //   const handleScroll = () => {
-  //     if (window.scrollY > lastScrollY && window.scrollY > 80) setHideHeader(true);
-  //     else setHideHeader(false);
-  //     lastScrollY = window.scrollY;
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
 
   const changeLang = (lang) => {
     i18n.changeLanguage(lang);
+    localStorage.setItem("i18nextLng", lang);
     setLangOpen(false);
   };
 
@@ -64,8 +51,7 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 backdrop-blur-md transition-transform duration-300
-        ${hideHeader ? "-translate-y-full" : "translate-y-0"}
+      className={`sticky top-0 w-full z-50 backdrop-blur-md transition-transform duration-300 
         bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 shadow-sm
       `}
     >
@@ -135,7 +121,7 @@ const Header = () => {
               onClick={() => setLangOpen(!langOpen)}
               className="border px-3 py-1 rounded-md bg-yellow-100 dark:bg-yellow-800 text-gray-800 dark:text-gray-100 text-sm flex items-center gap-1"
             >
-              {i18n.language === "bn" ? "বাংলা" : "EN"}
+              {i18n.language === "bn-BD" ? "বাংলা" : "EN"}
               <ChevronDown size={14} />
             </button>
             <AnimatePresence>
@@ -147,9 +133,9 @@ const Header = () => {
                   className="absolute right-0 mt-2 bg-white dark:bg-gray-800 shadow-md rounded-md overflow-hidden"
                 >
                   <div
-                    onClick={() => changeLang("bn")}
+                    onClick={() => changeLang("bn-BD")}
                     className={`px-4 py-2 text-sm cursor-pointer ${
-                      i18n.language === "bn"
+                      i18n.language === "bn-BD"
                         ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
                         : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
                     }`}
@@ -157,9 +143,9 @@ const Header = () => {
                     বাংলা
                   </div>
                   <div
-                    onClick={() => changeLang("en")}
+                    onClick={() => changeLang("en-US")}
                     className={`px-4 py-2 text-sm cursor-pointer ${
-                      i18n.language === "en"
+                      i18n.language === "en-US"
                         ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
                         : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
                     }`}
@@ -316,7 +302,7 @@ const Header = () => {
                   onClick={() => setLangOpen(!langOpen)}
                   className="w-full px-3 py-2 bg-yellow-100 dark:bg-yellow-800 text-gray-800 dark:text-gray-100 rounded-md flex justify-between items-center"
                 >
-                  {i18n.language === "bn" ? "বাংলা" : "EN"}
+                  {i18n.language === "bn-BD" ? "বাংলা" : "EN"}
                   <ChevronDown size={16} />
                 </button>
                 <AnimatePresence>
@@ -328,13 +314,19 @@ const Header = () => {
                       className="flex flex-col mt-2 bg-white dark:bg-gray-800 rounded-md overflow-hidden"
                     >
                       <div
-                        onClick={() => changeLang("bn")}
+                        onClick={() => {
+                          changeLang("bn-BD");
+                          setMenuOpen(!menuOpen);
+                        }}
                         className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
                       >
                         বাংলা
                       </div>
                       <div
-                        onClick={() => changeLang("en")}
+                        onClick={() => {
+                          changeLang("en-US");
+                          setMenuOpen(!menuOpen);
+                        }}
                         className="px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 cursor-pointer"
                       >
                         English

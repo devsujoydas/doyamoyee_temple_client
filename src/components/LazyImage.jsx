@@ -8,7 +8,7 @@ const LazyImage = ({ src, alt, className, placeholder }) => {
       {!loaded && (
         <div className="absolute inset-0 animate-pulse bg-gray-300" />
       )}
-      <img
+      <img loading="lazy"
         src={src || placeholder}
         alt={alt}
         className={`${className} h-full  transform hover:scale-125 transition duration-500 cursor-pointer transition-all${

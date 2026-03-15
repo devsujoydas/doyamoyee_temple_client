@@ -1,20 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import banner1 from "/banner/banner1.webp"
-import banner2 from "/banner/banner2.webp"
-import banner3 from "/banner/banner3.webp"
-import banner4 from "/banner/banner4.webp"
-import banner5 from "/banner/banner5.webp"
-import banner6 from "/banner/banner6.webp"
-import banner7 from "/banner/banner7.webp"
-import banner11 from "/about/tample-about.webp"
- 
-import bannerforsm2 from "/banner/bannerforsm2.webp"
-import bannerforsm3 from "/banner/bannerforsm3.webp"
-import bannerforsm4 from "/banner/bannerforsm4.webp"
-
-
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectFade, Autoplay } from 'swiper/modules'
 import 'swiper/css/effect-fade'
@@ -25,20 +11,20 @@ const Hero = () => {
   const { t } = useTranslation();
 
   const heroBanner = [
-    { url: banner1 },  
-    { url: banner2 },
-    { url: banner3 },
-    { url: banner4 },
-    { url: banner5 },
-    { url: banner6 },
-    { url: banner7 },
-    { url: banner11 },
+    { url: "/banner/banner1.webp" },  
+    { url: "/banner/banner2.webp" },
+    { url: "/banner/banner3.webp" },
+    { url: "/banner/banner4.webp" },
+    { url: "/banner/banner5.webp" },
+    { url: "/banner/banner6.webp" },
+    { url: "/banner/banner7.webp" },
+    { url: "/about/tample-about.webp" },
   ]
   const heroBannerforsm = [
     { url: "https://res.cloudinary.com/dpdsgroa7/image/upload/v1773583586/image38_p0mylr.webp" },
-    { url: bannerforsm2 },
-    { url: bannerforsm3 },
-    { url: bannerforsm4 },
+    { url: "/banner/bannerforsm2.webp" },
+    { url: "/banner/bannerforsm3.webp" },
+    { url: "/banner/bannerforsm4.webp" },
   ]
 
   return (
