@@ -10,7 +10,7 @@ const About = () => {
   return (
     <section 
       id="history"
-      className="bg-section-primary"
+      className="bg-section-primary overflow-hidden"
     >
       <div className="custom-container">
 

@@ -1,34 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
-import PageHeading from "../../shared/PageHeading";
-import { FiZoomIn } from "react-icons/fi";
-import GalleryCard from "./GalleryCard";
 
-// Auto-import all images
-const images = Object.values(
-  import.meta.glob("../../assets/gallery/*.{jpg,jpeg,png,webp}", {
-    eager: true,
-    import: "default",
-  })
-);
+import GalleryCard from "./GalleryCard";
+import PageHeading from "../../shared/PageHeading";
+import { galleryCategories, galleryImages, gallerySEO } from "../../data/data";
 
 function Gallery() {
+  const [filter, setFilter] = useState("all");
   const [visibleCount, setVisibleCount] = useState(12);
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.03, duration: 0.5 },
-    }),
-  };
-
-  const handleViewMore = () => {
-    setVisibleCount(images.length);
-  };
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox='gallery']", {
@@ -41,21 +21,57 @@ function Gallery() {
     return () => Fancybox.destroy();
   }, []);
 
+  const handleViewMore = () => {
+    setVisibleCount(galleryImages.length);
+  };
+
+  const filteredImages =
+    filter === "all"
+      ? galleryImages
+      : galleryImages.filter((img) => img.category === filter);
+
   return (
-    <section className="relative">
-      <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 blur-3xl opacity-20 rounded-full"></div>
-      <div className="absolute bottom-10 right-10 w-52 h-52 bg-red-600 blur-3xl opacity-20 rounded-full"></div>
+    <section className="py-20 relative">
       <div className="custom-container">
         <PageHeading section="gallery" />
 
+        {/* Category Filter */}
 
-        {/* Gallery Grid */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {images.slice(0, visibleCount).map((img, index) => <GalleryCard img={img} index={index} itemVariants={itemVariants} />)}
+        {/* <div className="flex flex-wrap gap-3 justify-center mt-10">
+
+          {galleryCategories.map((cat) => (
+
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-5 py-2 rounded-full border border-zinc-200 shadow-sm cursor-pointer transition
+              ${
+                filter === cat
+                  ? "bg-yellow-500 text-white"
+                  : "bg-white hover:bg-yellow-100"
+              }`}
+            >
+              {cat}
+            </button>
+
+          ))}
+
+        </div> */}
+
+        {/* Masonry Grid */}
+ 
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-12">
+          {galleryImages.slice(0, visibleCount).map((img, index) => (
+            <GalleryCard
+              key={img.id}
+              img={img}
+              index={index}
+              gallerySEO={gallerySEO}
+            />
+          ))}
         </div>
 
-        {/* View More Button */}
-        {visibleCount < images.length && (
+        {visibleCount < galleryImages.length && (
           <div className="text-center mt-12">
             <button
               onClick={handleViewMore}
@@ -66,12 +82,9 @@ function Gallery() {
             >
               View More
             </button>
-
           </div>
         )}
-
       </div>
-
     </section>
   );
 }

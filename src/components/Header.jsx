@@ -12,7 +12,7 @@ const Header = () => {
   const [langOpen, setLangOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(null);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(true);
   const [hideHeader, setHideHeader] = useState(false);
 
   // Header hide/show on scroll
@@ -70,7 +70,6 @@ const Header = () => {
       `}
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
-
         {/* Logo */}
         <Link
           to="/"
@@ -81,13 +80,15 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden lg:flex items-center gap-6 font-medium">
-
           {navItems.map((item, idx) =>
             item.dropdown ? (
               <div key={idx} className="relative group">
                 <button className="flex items-center gap-1 transition-colors hover:text-yellow-600 dark:hover:text-yellow-400">
                   {item.label}
-                  <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
+                  <ChevronDown
+                    size={16}
+                    className="transition-transform group-hover:rotate-180"
+                  />
                 </button>
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-active::visible group-active:opacity-100 group-hover:visible  transition-all">
                   {item.dropdown.map((sub, i) =>
@@ -107,7 +108,7 @@ const Header = () => {
                       >
                         {sub.label}
                       </NavLink>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -116,13 +117,16 @@ const Header = () => {
                 key={idx}
                 to={item.to}
                 className={({ isActive }) =>
-                  `transition hover:text-yellow-600 dark:hover:text-yellow-400 ${isActive ? "text-yellow-700 dark:text-yellow-300 font-semibold" : ""
+                  `transition hover:text-yellow-600 dark:hover:text-yellow-400 ${
+                    isActive
+                      ? "text-yellow-700 dark:text-yellow-300 font-semibold"
+                      : ""
                   }`
                 }
               >
                 {item.label}
               </NavLink>
-            )
+            ),
           )}
 
           {/* Language Dropdown */}
@@ -144,19 +148,21 @@ const Header = () => {
                 >
                   <div
                     onClick={() => changeLang("bn")}
-                    className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "bn"
-                      ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
-                      : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
-                      }`}
+                    className={`px-4 py-2 text-sm cursor-pointer ${
+                      i18n.language === "bn"
+                        ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
+                        : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
+                    }`}
                   >
                     বাংলা
                   </div>
                   <div
                     onClick={() => changeLang("en")}
-                    className={`px-4 py-2 text-sm cursor-pointer ${i18n.language === "en"
-                      ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
-                      : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
-                      }`}
+                    className={`px-4 py-2 text-sm cursor-pointer ${
+                      i18n.language === "en"
+                        ? "bg-yellow-200 dark:bg-yellow-700 font-bold"
+                        : "text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900"
+                    }`}
                   >
                     English
                   </div>
@@ -181,7 +187,7 @@ const Header = () => {
                   exit={{ opacity: 0 }}
                   className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 shadow-md rounded-md overflow-hidden"
                 >
-                  {!user ? (
+                  {user ? (
                     <>
                       <Link
                         to="/admin"
@@ -191,6 +197,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="/profile"
+                        onClick={() => setUserMenuOpen(!userMenuOpen)}
                         className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-yellow-100 dark:hover:bg-yellow-900 transition-colors"
                       >
                         {t("auth_profile")}
@@ -226,7 +233,11 @@ const Header = () => {
 
         {/* Mobile Toggle */}
         <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden">
-          {menuOpen ? <X size={28} className="text-gray-800 dark:text-gray-100" /> : <Menu size={28} className="text-gray-800 dark:text-gray-100" />}
+          {menuOpen ? (
+            <X size={28} className="text-gray-800 dark:text-gray-100" />
+          ) : (
+            <Menu size={28} className="text-gray-800 dark:text-gray-100" />
+          )}
         </button>
       </div>
 
@@ -241,7 +252,6 @@ const Header = () => {
             className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
           >
             <div className="flex flex-col px-4 py-4 space-y-3">
-
               {navItems.map((item, idx) =>
                 item.dropdown ? (
                   <div key={idx}>
@@ -250,31 +260,54 @@ const Header = () => {
                       className="flex justify-between items-center w-full font-semibold text-gray-800 dark:text-gray-100"
                     >
                       {item.label}
-                      <ChevronDown size={16} className={`transition ${mobileDropdown === idx ? "rotate-180" : ""}`} />
+                      <ChevronDown
+                        size={16}
+                        className={`transition ${mobileDropdown === idx ? "rotate-180" : ""}`}
+                      />
                     </button>
                     <AnimatePresence>
                       {mobileDropdown === idx && (
-                        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="ml-3 mt-2 flex flex-col space-y-1">
+                        <motion.div
+                          initial={{ height: 0 }}
+                          animate={{ height: "auto" }}
+                          exit={{ height: 0 }}
+                          className="ml-3 mt-2 flex flex-col space-y-1"
+                        >
                           {item.dropdown.map((sub, i) =>
                             sub.anchor ? (
-                              <a key={i} href={sub.to} onClick={() => setMenuOpen(false)} className="py-1 text-sm text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                              <a
+                                key={i}
+                                href={sub.to}
+                                onClick={() => setMenuOpen(false)}
+                                className="py-1 text-sm text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
+                              >
                                 {sub.label}
                               </a>
                             ) : (
-                              <NavLink key={i} to={sub.to} onClick={() => setMenuOpen(false)} className="py-1 text-sm text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                              <NavLink
+                                key={i}
+                                to={sub.to}
+                                onClick={() => setMenuOpen(false)}
+                                className="py-1 text-sm text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
+                              >
                                 {sub.label}
                               </NavLink>
-                            )
+                            ),
                           )}
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
                 ) : (
-                  <NavLink key={idx} to={item.to} onClick={() => setMenuOpen(false)} className="text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                  <NavLink
+                    key={idx}
+                    to={item.to}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-gray-800 dark:text-gray-100 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
+                  >
                     {item.label}
                   </NavLink>
-                )
+                ),
               )}
 
               {/* Mobile Language Switch */}
@@ -315,23 +348,38 @@ const Header = () => {
               <div className="pt-3 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-2">
                 {user ? (
                   <>
-                    <Link to="/admin" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">
+                    <Link
+                      to="/admin"
+                      className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center"
+                    >
                       {t("auth_dashboard")}
                     </Link>
-                    <Link to="/profile" className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-center">
+                    <Link
+                      to="/profile"
+                      onClick={() => setMenuOpen(!menuOpen)}
+                      className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-center"
+                    >
                       {t("auth_profile")}
                     </Link>
-                    <button onClick={() => setUser(null)} className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center">
-
+                    <button
+                      onClick={() => setUser(null)}
+                      className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center"
+                    >
                       {t("auth_logout")}
                     </button>
                   </>
                 ) : (
                   <>
-                    <Link to="/auth/signin" className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center">
+                    <Link
+                      to="/auth/signin"
+                      className="px-3 py-2 bg-yellow-600 text-white rounded-md text-center"
+                    >
                       {t("auth_signin")}
                     </Link>
-                    <Link to="/auth/signup" className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center">
+                    <Link
+                      to="/auth/signup"
+                      className="px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-center"
+                    >
                       {t("auth_signup")}
                     </Link>
                   </>

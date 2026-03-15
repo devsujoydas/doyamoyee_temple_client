@@ -39,7 +39,6 @@ const UpcommingEvents = () => {
     <div className="bg-section-primary">
       <div id="puja" className="py-10 md:py-20 container mx-auto px-4">
 
-
         <SectionHeading
           title={t("upcoming_festivals")}
           pathname={t("view_all")}
